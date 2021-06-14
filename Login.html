@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ログイン</title>
+</head>
+<body>
+<h1>ログイン</h1>
+<br>
+<h2>メールアドレスとパスワードを入力してください。</h2>
+<form action="/project1/LoginServlet" method="post">
+メールアドレス:<input type="text" name="mail">
+<br>
+パスワード:<input type="password" name="pass">
+<input type="hidden" name="action" value="login">
+<br>
+<input type="submit" value="ログイン">
+
+</form>
+</body>
+</html>
