@@ -31,10 +31,10 @@ public class MainPageServlet extends HttpServlet {
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
-			List<TextbookBean> list = dao.findAll();
+			List<TextBookBean> list = dao.findAll();
 			//リストをJSPに送る
 			request.setAttribute("TextBook", TextBook);
-			RequestDispatcher rd = request.getRequestDispatcher("/main_input.jsp);"
+			RequestDispatcher rd = request.getRequestDispatcher("/main-input.jsp);"
 			rd.forward(request,  response);
 		}catch(DAOException e) {
 			e.printStackTrace();
