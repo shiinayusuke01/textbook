@@ -25,7 +25,7 @@ public List<CategoryBean> findAllCategory() throws DAOException{
 	try{
 		String sql ="SELECT *FROM category ORDER BY code";
 
-		st=con.PreparedStatement(sql);
+		st=con.PrepareStatement(sql);
 		rs=st.executeQuery();
 		List<CategoryBean>list=new ArrayList<CategoryBean>();
 		while(rs.next()) {
