@@ -46,12 +46,17 @@ public class MembersServlet extends HttpServlet {
 				String month = request.getParameter("month");
 				String day = request.getParameter("day");
 				String password = request.getParameter("password");
-
-				bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);
-				MembersDAO dao = new MembersDAO();
-				dao.newMembers(bean);
-				request.setAttribute("message", "登録できました!");
-				gotoPage(request, response, "/newmembermessage.jsp");
+				String passadd = request.getParameter("passadd");
+				if (passadd.equals(password)) {
+					bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);
+					MembersDAO dao = new MembersDAO();
+					dao.newMembers(bean);
+					request.setAttribute("message", "登録できました!");
+					gotoPage(request, response, "/newmembermessage.jsp");
+				} else {
+					request.setAttribute("message", "入力されたパスワードが確認用パスワードと異なります");
+					gotoPage(request, response, "/errInternal.jsp");
+				}
 			} else {
 				request.setAttribute("message", "正しく操作してください。");
 				gotoPage(request, response, "/errInternal.jsp");
