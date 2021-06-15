@@ -41,8 +41,11 @@
 
 <form action="/textshop/OrderServlet?action=input_customer" method="post">
 	<input type="submit" value="購入する">
+
 </form>
 </c:if>
+<br>
+<input type="submit" value="トップページへ戻る">
 
 </body>
 </html>

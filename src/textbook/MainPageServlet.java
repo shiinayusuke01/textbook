@@ -1,6 +1,7 @@
 package textbook;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/MainPageServlet")
 public class MainPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Object textbook;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -30,16 +32,16 @@ public class MainPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			TextBookDAO dao = new TextBookDAO();
+			textDAO dao = new textDAO();
 			List<TextbookBean> list = dao.findAll();
 			//リストをJSPに送る
-			request.setAttribute("TextBook", TextBook);
-			RequestDispatcher rd = request.getRequestDispatcher("/main_input.jsp);"
+			request.setAttribute("textbook", list);
+			RequestDispatcher rd = request.getRequestDispatcher("/main-input.jsp");
 			rd.forward(request,  response);
 		}catch(DAOException e) {
 			e.printStackTrace();
 			request.setAttribute(" message", " 正しいタイトルを入力してください");
-			RequestDispatcher rd = request.getRequestDispatcher("/ErrInput.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/errInput.jsp");
 			rd.forward(request,  response);
 		}
 	}
@@ -52,3 +54,4 @@ public class MainPageServlet extends HttpServlet {
 	}
 
 }
+
