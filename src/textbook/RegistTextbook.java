@@ -28,11 +28,15 @@ public class RegistTextbook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int userId = 1;
 		String title = request.getParameter("title");
-		String category = request.getParameter("category");
-		String price = request.getParameter("price");
-		String grade = request.getParameter("grade");
+		String author = request.getParameter("author");
+		int category = Integer.parseInt(request.getParameter("category"));
+		String status = request.getParameter("status");
+		System.out.print(status);
+		int price = Integer.parseInt(request.getParameter("price"));
 		String info = request.getParameter("info");
+		//String userId = request.getParameter("user_id");
 
 
 		PrintWriter out = response.getWriter();
@@ -40,7 +44,7 @@ public class RegistTextbook extends HttpServlet {
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
-			dao.addTextbook(title, category, price, grade, info);
+			dao.addTextbook(title, author, category, status, price, info, userId );
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}

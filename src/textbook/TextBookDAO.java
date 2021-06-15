@@ -14,7 +14,10 @@ public class TextBookDAO {
 		getConnection();
 	}
 
-	public int addTextbook(int id, String title, String author, int category, String status, int price, String info ) throws DAOException{
+	public int addTextbook(String title, String author, int category, String status, int price, String info, int userId ) throws DAOException{
+
+		System.out.println(status);
+
 		if (con == null)
 			getConnection();
 
@@ -23,14 +26,17 @@ public class TextBookDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "INSERT INTO textbooks(id, title, author, category, status, price, info, user_id) VALUES(?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO textbooks(title, author, category, status, price, info, user_id) VALUES(?, ?, ?, ?, ?, ?, ?)";
 			st = con.prepareStatement(sql);
 
 			st.setString(1, title);
-			st.setInt(2, category);
-			st.setInt(3, price);
+			st.setString(2, author);
+			st.setInt(3, category);
 			st.setString(4, status);
-			st.setString(5, info);
+			st.setInt(5, price);
+			st.setString(6, info);
+			st.setInt(7, userId);
+
 
 
 			// SQLの実行
