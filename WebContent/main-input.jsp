@@ -23,12 +23,18 @@
 <a herf="">ログアウト</a>
 <br>
 
-検索（教科書タイルと入力）
+検索（教科書タイトルを入力してください）
 <br>
+<form action="/textbook/MainPageServlet" method="post">
+<input type="text" value="">
+<input type="submit" value="検索">
+</form>
+
 <br>
 <br>
 
 <h2>検索結果</h2>
+
 <table>
   <tr>
     <th>title</th>
@@ -54,3 +60,4 @@
 
 </body>
 </html>
+
