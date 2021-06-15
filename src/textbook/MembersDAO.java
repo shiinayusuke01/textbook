@@ -29,16 +29,18 @@ public class MembersDAO {
 			List<MembersBean> list = new ArrayList<MembersBean>();
 			while (rs.next()) {
 				int id = rs.getInt("id");
-			    String family_name = rs.getString("family_name");
+			    String last_name = rs.getString("last_name");
 			    String first_name = rs.getString("first_name");
 			    String postal = rs.getString("postal");
 			    String address = rs.getString("address");
 			    String tel = rs.getString("tel");
 			    String email = rs.getString("email");
-			    String birthday = rs.getString("birthday");
+			    String year = rs.getString("year");
+			    String month = rs.getString("month");
+			    String day = rs.getString("day");
 			    String password = rs.getString("password");
 
-			    MembersBean bean = new MembersBean(id, family_name, first_name, postal, address, tel, email, birthday, password);
+			    MembersBean bean = new MembersBean(id, last_name, first_name, postal, address, tel, email, year, month, day, password);
 			    list.add(bean);
 			}
 			return list;
@@ -66,15 +68,49 @@ public class MembersDAO {
 		PreparedStatement st = null;
 
 		try {
-			String sql = "INSERT INTO members VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO members(last_name, first_name, postal, address, tel, email, birthday, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 			st = con.prepareStatement(sql);
-			st.setString(1, members.getFamily_name());
+			st.setString(1, members.getLast_name());
 			st.setString(2, members.getFirst_name());
 			st.setString(3, members.getPostal());
 			st.setString(4, members.getAddress());
 			st.setString(5, members.getTel());
 			st.setString(6, members.getEmail());
-			st.setString(7, members.getBirthday());
+			st.setString(7, members.birthday(members.getYear(), members.getMonth(), members.getDay()));
+			st.setString(8, members.getPassword());
+			int rows = st.executeUpdate();
+			return rows;
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} finally {
+			try {
+				if (st != null) {
+					st.close();
+				}
+				close();
+			} catch (SQLException e) {
+				throw new DAOException("リソースの開放に失敗しました");
+			}
+		  }
+	}
+
+	public int changeMembers(MembersBean members) throws DAOException {
+		if (con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+
+		try {
+			String sql = "UPDATE members SET last_name=?, first_name=?, postal=?, adderss=?, tel=?, email=?, birthday=?, password=?)";
+			st = con.prepareStatement(sql);
+			st.setString(1, members.getLast_name());
+			st.setString(2, members.getFirst_name());
+			st.setString(3, members.getPostal());
+			st.setString(4, members.getAddress());
+			st.setString(5, members.getTel());
+			st.setString(6, members.getEmail());
+			st.setString(7, members.birthday(members.getYear(), members.getMonth(), members.getDay()));
 			st.setString(8, members.getPassword());
 			int rows = st.executeUpdate();
 			return rows;

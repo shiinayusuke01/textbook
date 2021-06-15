@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>完了</title>
 </head>
 <body>
 <h1>${message}</h1>
+
+<a href="/textbook/Login.html">ログイン画面に戻る</a>
 </body>
 </html>

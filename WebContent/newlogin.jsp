@@ -23,10 +23,11 @@
 <body>
 
 <h1>新規会員登録</h1>
-氏:<input type="text" name="name1">
-名:<input type="text" name="name2">
+<form action="/textbook/MembersServlet?action=setinfo" method="post">
+氏:<input type="text" name="last_name">
+名:<input type="text" name="first_name">
 <br>
-〒:<input type="text" name="num">
+〒:<input type="text" name="postal">
 <br>
 住所:<input type="text" name="address">
 <br>
@@ -35,27 +36,24 @@
 Email:<input type="email" name="email">
 <br>
 生年月日:
-<form>
 年:
-	<select>
+	<select name="year">
 		<script>func(2021)</script>
 	</select>
 月:
-	<select>
+	<select name="month">
 		<script>func2(12)</script>
 	</select>
 日:
-	<select>
+	<select name="day">
 		<script>func2(31)</script>
 	</select>
-	</form>
-
 <br>
-パスワード:<input type="password" name="pass">
+パスワード:<input type="password" name="password">
 <br>
 パスワードの確認:<input type="password" name="passadd">
 <br>
 <input type="submit" value="登録">
-
+</form>
 </body>
 </html>
