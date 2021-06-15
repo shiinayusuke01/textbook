@@ -1,4 +1,4 @@
-package la.Servlet;
+package textbook;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ShowItenServlet
  */
 @WebServlet("/ShowItenServlet")
-public class ShowItenServlet extends HttpServlet {
+public class ShowItemServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

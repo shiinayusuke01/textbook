@@ -1,4 +1,4 @@
-package la.bean;
+package textbook;
 
 import java.io.Serializable;
 

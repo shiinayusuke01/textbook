@@ -26,10 +26,10 @@ public class TextBookDAO {
 			String sql = "INSERT INTO textbooks(id, title, author, category, status, price, info, user_id) VALUES(?, ?, ?, ?, ?)";
 			st = con.prepareStatement(sql);
 
-			st.setInt(1, title);
-			st.setString(2, category);
-			st.setString(3, price);
-			st.setString(4, grade);
+			st.setString(1, title);
+			st.setInt(2, category);
+			st.setInt(3, price);
+			st.setString(4, status);
 			st.setString(5, info);
 
 
