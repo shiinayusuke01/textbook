@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ShowItenServlet
  */
-@WebServlet("/ShowItenServlet")
+@WebServlet("/ShowItemServlet")
 public class ShowItemServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,13 +30,13 @@ public class ShowItemServlet extends HttpServlet {
 				gotoPage(request,response,"list.jsp");
 			}else {
 				request.setAttribute("message", "正しく操作してください。");
-				gotoPage(request,response,"/errInternal.jsp");
+				gotoPage(request,response,"/errInput.jsp");
 			}
 
 		}catch(DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
-			gotoPage(request,response,"erInternal.jsp");
+			gotoPage(request,response,"errInput.jsp");
 		}
 	}
 public void init() throws ServletException{
@@ -49,7 +49,7 @@ public void init() throws ServletException{
 	}
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 
