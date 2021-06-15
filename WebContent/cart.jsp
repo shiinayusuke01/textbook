@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<jsp:include page="/menu.jsp" /><br>
 <h3>現在のカートの中身</h3>
 
 <c:if test="${empty cart.items}">
@@ -42,8 +41,11 @@
 
 <form action="/textshop/OrderServlet?action=input_customer" method="post">
 	<input type="submit" value="購入する">
+
 </form>
 </c:if>
+<br>
+<input type="submit" value="トップページへ戻る">
 
 </body>
 </html>
