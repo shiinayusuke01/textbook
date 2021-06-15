@@ -20,7 +20,7 @@ public class ShowItemServlet extends HttpServlet {
 			String action = request.getParameter("action");
 
 			if(action==null||action.length()==0||action.equals("top")) {
-				gotoPage(request,response, "/top.jsp");
+				gotoPage(request,response, "/Login.jsp");
 			}else if (action.equals("list")) {
 				int categoryCode=Integer.parseInt(request.getParameter("code"));
 				ItemDAO dao=new ItemDAO();
