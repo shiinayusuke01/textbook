@@ -29,7 +29,7 @@
 	<td align="right">${item.value.status}</td>
 	<td align="right">${item.value.info}</td>
 <td>
-<form action="/textshop/CartServlet?action=delete" method="post">
+<form action="/textbook/CartServlet?action=delete" method="post">
 	<input type="hidden" name="id" value="${item.value.id}">
 	<input type="submit" value="削除">
 </form>
@@ -39,7 +39,7 @@
 <tr><td align="right" colspan="6">合計金額：${cart.total}円</td></tr>
 </table>
 
-<form action="/textshop/OrderServlet?action=input_customer" method="post">
+<form action="/textbook/OrderServlet?action=input_customer" method="post">
 	<input type="submit" value="購入する">
 
 </form>
