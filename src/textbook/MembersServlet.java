@@ -43,7 +43,6 @@ public class MembersServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			if (action == null || action.length() == 0) {
 				gotoPage(request, response, "/newlogin.jsp");
-
 			} else if (action.equals("login")) {
 				String email = request.getParameter("email");
 				String password = request.getParameter("password");
@@ -94,18 +93,6 @@ public class MembersServlet extends HttpServlet {
 				String day = request.getParameter("day");
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
-<<<<<<< HEAD
-				if (passadd.equals(password)) {
-					bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);
-					MembersDAO dao = new MembersDAO();
-					dao.newMembers(bean);
-					request.setAttribute("message", "登録できました!");
-					gotoPage(request, response, "/newmembermessage.jsp");
-				} else {
-					request.setAttribute("message", "入力されたパスワードが確認用パスワードと異なります");
-					gotoPage(request, response, "/errInternal.jsp");
-				}
-=======
 
 				if (year.equals("1900") && month.equals("1") && day.equals("1")) {
 					request.setAttribute("message", "生年月日がデフォルトのまま変更されていません。");
@@ -142,7 +129,6 @@ public class MembersServlet extends HttpServlet {
 					request.setAttribute("message", "退会しました。<br>ご利用ありがとうございました。");
 					gotoPage(request, response, "/Login.html");
 
->>>>>>> 01bd242 (0616/15:30)
 			} else {
 				request.setAttribute("message", "正しく操作してください。");
 				gotoPage(request, response, "/errInternal.jsp");

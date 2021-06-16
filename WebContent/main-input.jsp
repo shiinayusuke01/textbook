@@ -16,9 +16,9 @@
 <br>
 <a href="">教科書情報変更・削除</a>
 <br>
-<a href="/mem-info-change.jsp">会員情報変更</a>
+<a href="/textbook/mem-info-change.jsp">会員情報変更</a>
 <br>
-<a href="/taikai.jsp">退会</a>
+<a href="/textbook/taikai.jsp">退会</a>
 <br>
 <a href="">ログアウト</a>
 <br>

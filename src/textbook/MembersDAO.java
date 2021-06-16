@@ -25,9 +25,10 @@ public class MembersDAO {
 		try {
 			String sql = "SELECT * from members where email=? AND password=?";
 			st = con.prepareStatement(sql);
-			rs = st.executeQuery();
 			st.setString(1, email);
 			st.setString(2, password);
+			rs = st.executeQuery();
+
 
 			if(rs.next()) {
 				int id = rs.getInt("id");
@@ -37,14 +38,12 @@ public class MembersDAO {
 			    String address = rs.getString("address");
 			    String tel = rs.getString("tel");
 			    String emails = rs.getString("email");
-			    String year = rs.getString("year");
-			    String month = rs.getString("month");
-			    String day = rs.getString("day");
+			    String birthday = rs.getString("birthday");
 			    String pass = rs.getString("password");
 
-				MembersBean bean = new MembersBean(id, last_name, first_name, postal, address, tel, emails, year, month, day, pass);
+				MembersBean bean = new MembersBean(id, last_name, first_name, postal, address, tel, emails, birthday, pass);
 				return bean;
-			}else {
+			} else {
 				return null;
 			}
 		} catch (SQLException e){
@@ -150,7 +149,7 @@ public class MembersDAO {
 		PreparedStatement st = null;
 
 		try {
-			String sql = "UPDATE members SET last_name=?, first_name=?, postal=?, adderss=?, tel=?, email=?, birthday=?, password=? where id = ?)";
+			String sql = "UPDATE members SET last_name=?, first_name=?, postal=?, address=?, tel=?, email=?, birthday=?, password=? where id = ?";
 			st = con.prepareStatement(sql);
 			st.setString(1, members.getLast_name());
 			st.setString(2, members.getFirst_name());
@@ -164,6 +163,7 @@ public class MembersDAO {
 			int rows = st.executeUpdate();
 			return rows;
 		} catch (SQLException e){
+			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました");
 		} finally {
 			try {

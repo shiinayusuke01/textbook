@@ -23,7 +23,7 @@
 <body>
 
 <h1>新規会員登録</h1>
-<form action="/textbook/MembersServlet?" method="post">
+<form action="/textbook/MembersServlet" method="post">
 氏:<input type="text" name="last_name">
 名:<input type="text" name="first_name">
 <br>
