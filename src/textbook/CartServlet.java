@@ -43,7 +43,7 @@ public class CartServlet extends HttpServlet {
 					session.setAttribute("cart", cart);
 			}
 				ItemDAO dao = new ItemDAO();
-				ItemBean bean = dao.findByPrimaryKey(code);
+				ItemBean bean = (ItemBean) dao.findByPrimarykey(code);
 				cart.addCart(bean, quantity);
 				gotoPage(request, response, "/cart.jsp");
 			}else if(action.equals("delete")){
@@ -71,6 +71,11 @@ public class CartServlet extends HttpServlet {
 			request.setAttribute("message", "内部エラーが発生しました。");
 			gotoPage(request, response, "/errInternal.jsp");
 		}
+	}
+
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String string) {
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -25,7 +25,7 @@ public List<CategoryBean> findAllCategory() throws DAOException{
 	try{
 		String sql ="SELECT *FROM category ORDER BY code";
 
-		st=con.PrepareStatement(sql);
+		st=con.prepareStatement(sql);
 		rs=st.executeQuery();
 		List<CategoryBean>list=new ArrayList<CategoryBean>();
 		while(rs.next()) {
@@ -88,7 +88,7 @@ public List<ItemBean>findByCategory(int categoryCode)
 
 }
 }
-public List<ItemBean>findByPrimarykey(int key)
+public ItemBean findByPrimarykey(int key)
 		throws DAOException{
 	if(con == null)
 		getConnection();
@@ -102,15 +102,15 @@ public List<ItemBean>findByPrimarykey(int key)
 		st.setInt(1, key);
 
 		rs=st.executeQuery();
-		List<CategoryBean>list=new ArrayList<ItemBean>();
 		if(rs.next()) {
 			int code=rs.getInt("code");
 			String name=rs.getString("name");
 			int price=rs.getInt("price");
 			ItemBean bean=new ItemBean(code,name,price);
 			return bean;
+		}else {
+			return null;
 		}
-		return null;
 	}catch(Exception e){
 	e.printStackTrace();
 	throw new DAOException("レコードの取得に失敗しました");
