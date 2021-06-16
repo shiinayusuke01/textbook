@@ -12,17 +12,16 @@
 
 <h2>会員専用メイン画面</h2>
 <br>
-<a herf="">新規教科書登録</a>
+<a href="">新規教科書登録</a>
 <br>
-<a herf="">教科書情報変更・削除</a>
+<a href="">教科書情報変更・削除</a>
 <br>
-<a herf="">会員情報変更</a>
+<a href="/mem-info-change.jsp">会員情報変更</a>
 <br>
-<a herf="">退会</a>
+<a href="/taikai.jsp">退会</a>
 <br>
-<a herf="">ログアウト</a>
+<a href="">ログアウト</a>
 <br>
-
 検索（教科書タイトルを入力してください）
 <br>
 <form action="/textbook/MainPageServlet" method="post">
