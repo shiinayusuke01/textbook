@@ -29,14 +29,13 @@ public class RegistTextbook extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = 1;
+		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		int category = Integer.parseInt(request.getParameter("category"));
 		String status = request.getParameter("status");
-		System.out.print(status);
 		int price = Integer.parseInt(request.getParameter("price"));
 		String info = request.getParameter("info");
-		//String userId = request.getParameter("user_id");
 
 
 		PrintWriter out = response.getWriter();
@@ -48,10 +47,6 @@ public class RegistTextbook extends HttpServlet {
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
-
-
-
-
 	}
 
 	/**
