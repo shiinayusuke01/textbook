@@ -43,7 +43,7 @@ public class RegistTextbook extends HttpServlet {
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
-			dao.addTextbook(title, author, category, status, price, info, userId );
+			dao.newTextbook(title, author, category, status, price, info, userId );
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
