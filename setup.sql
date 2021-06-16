@@ -9,7 +9,7 @@ postal Char(7) Not null,
 address Varchar(100) Not null,
 tel Varchar(20) Not null,
 email Varchar(100) Unique Not null,
-birthday date Not null,
+birthday Varchar(10) Not null,
 password Varchar(12) Not Null
  );
 
@@ -20,7 +20,7 @@ password Varchar(12) Not Null
  category Integer not null,
  status Varchar(20) not null,
  price Integer not null,
- info text,
+ info Varchar(2000),
  user_id Integer not null REFERENCES members
  );
 
