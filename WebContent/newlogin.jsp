@@ -23,7 +23,7 @@
 <body>
 
 <h1>新規会員登録</h1>
-<form action="/textbook/MembersServlet?action=setinfo" method="post">
+<form action="/textbook/MembersServlet?" method="post">
 氏:<input type="text" name="last_name">
 名:<input type="text" name="first_name">
 <br>
@@ -53,6 +53,7 @@ Email:<input type="email" name="email">
 <br>
 パスワードの確認:<input type="password" name="passadd">
 <br>
+<input type="hidden" name="action" value="setinfo">
 <input type="submit" value="登録">
 </form>
 </body>
