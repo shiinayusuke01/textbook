@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,46 +17,47 @@ public class textDAO {
 	public textDAO() throws DAOException {
 		getConnection();
 	}
-
-	public int addTextbook(int id, String title, String author, int category, String status,
-											int price, String info ) throws DAOException{
+	public List<TextbookBean> findAllTextbook() throws DAOException {
 		if (con == null)
-			getConnection();
+		getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		try {
-			// SQL文の作成
-			String sql = "INSERT INTO textbooks(id, title, author, category, status, price, info, user_id) "
-					+ "VALUES(?, ?, ?, ?, ?)";
-			st = con.prepareStatement(sql);
 
-			st.setString(1, title);
-			st.setInt(2, category);
-			st.setInt(3, price);
-			st.setString(4, status);
-			st.setString(5, info);
+	try {
+		String sql ="select * from TextBook where title like ?";
+		st=con.prepareStatement(sql);
+		st.setString(1, "%" + title +"%");
+		rs = st.executeQuery();
 
+		List<TextbookBean> list = new ArrayList<TextbookBean>();
+		while (rs.next()) {
+			    String title = rs.getString("title");
+			    String author = rs.getString("author");
+			    String category = rs.getString("category");
+			    String price = rs.getString("price");
+			    String status = rs.getString("status");
+			    String info = rs.getString("info");
 
-			// SQLの実行
-			int rows = st.executeUpdate();
-
-			// カテゴリ一覧をListとして返す
-			return rows;
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DAOException("レコードの取得に失敗しました。");
-		} finally {
-			try {
-				// リソースの開放
-				if(rs != null) rs.close();
-				if(st != null) st.close();
-				close();
-			} catch (Exception e) {
-				throw new DAOException("リソースの開放に失敗しました。");
-			}
+			    TextbookBean bean = new TextbookBean(title, author,category,price,status,info);
+			    list.add(bean);
 		}
-	}
-
+		return list;
+	} catch (SQLException e){
+		throw new DAOException("レコードの取得に失敗しました");
+	} finally {
+		try {
+			if (st != null) {
+				st.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+			close();
+		} catch (SQLException e) {
+			throw new DAOException("リソースの開放に失敗しました");
+		}
+	  }
+}
 	private void getConnection() throws DAOException {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -74,36 +76,11 @@ public class textDAO {
 		}
 	}
 
-	//部分一致するタイトルを検索
-		private void close() throws SQLException {
-			try {
-
-				PreparedStatement st = null;
-				ResultSet rs = null;
-
-				Class.forName("org.postgresql.Driver");
-
-			String url = "jdbc:postgresql:sample";
-			String user = "student";
-			String pass = "himitu";
-			con=DriverManager.getConnection(url, user, pass);
-
-
-				String sql ="select * from TextBook where title like ?";
-				st=con.prepareStatement(sql);
-				st.setString(1, "%" + title +"%");
-				st=con.prepareStatement(sql);
-				while(rs_.next())
-
-					if (con != null) {
-						con.close();
-						con = null;
-					}
-				}
-			}
-
-		public List<TextbookBean> findAll() {
-			// TODO 自動生成されたメソッド・スタブ
-			return null;
+	private void close() throws SQLException {
+		if (con != null) {
+			con.close();
+			con = null;
 		}
 	}
+
+}
