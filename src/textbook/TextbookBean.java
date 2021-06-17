@@ -82,10 +82,6 @@ public class TextbookBean implements Serializable {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-//	@Override
-//	public String toString(){
-//		return new StringBuilder().append(thi)
-//	}
 
 
 }
