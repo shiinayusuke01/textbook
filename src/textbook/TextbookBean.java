@@ -5,19 +5,20 @@ import java.io.Serializable;
 public class TextbookBean implements Serializable {
 	private String title;
 	private String autor;
-	private String category;
-	private String price;
+	private int category;
 	private String status;
+	private int price;
 	private String info;
+	private int userId;
 
-	public TextbookBean(String title, String author, String category, String price, String status, String info) {
+	public TextbookBean(String title, String author, int category, String status, int price,  String info, int userId) {
 		this.title = title;
-		this.title = author;
+		this.autor = author;
 		this.category = category;
-		this.price = price;
 		this.status = status;
+		this.price = price;
 		this.info = info;
-
+		this.userId = userId;
 	}
 
 	public String getTitle() {
@@ -36,20 +37,12 @@ public class TextbookBean implements Serializable {
 		this.autor = autor;
 	}
 
-	public String getCategory() {
+	public int getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(int category) {
 		this.category = category;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
 	}
 
 	public String getStatus() {
@@ -60,10 +53,29 @@ public class TextbookBean implements Serializable {
 		this.status = status;
 	}
 
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	public String getInfo() {
 		return info;
 	}
 
 	public void setInfo(String info) {
 		this.info = info;
-	}}
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+
+}
