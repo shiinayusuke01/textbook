@@ -97,6 +97,10 @@ public class ChangeTextbookServlet extends HttpServlet {
 
 				}
 
+			} else if (action.equals("textchange")) {
+				TextbookBean bean = dao.findMyTextbook();
+				request.setAttribute("textbook", bean);
+				gotoPage(request, response, "/textbook/regist-textbooko.jsp");
 			} else if (action.equals("delete")) {
 				    session = request.getSession(false);
 				    TextbookBean bean = (TextbookBean) session.getAttribute("txtbean");
