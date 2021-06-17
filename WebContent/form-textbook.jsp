@@ -22,7 +22,10 @@
 <option value="全体的に状態が悪い">全体的に状態が悪い</option>
 </select>
 <p><label>備考：<input type="text" name="info" size="40"></label></p>
-<p><input type="submit" value="登録する"></p><p><input type="submit" value="変更する"></p>
+<input type="hidden" name="action" value="reg">
+<p><input type="submit" value="登録"></p>
+<input type="hidden" name="action" value="change">
+<p><input type="submit" value="変更"></p>
 
 </form>
 
