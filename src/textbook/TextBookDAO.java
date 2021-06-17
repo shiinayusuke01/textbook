@@ -223,6 +223,7 @@ public class TextBookDAO {
 
      		List<TextbookBean> list = new ArrayList<TextbookBean>();
      		while(rs.next()) {
+     			int id = rs.getInt("id");
 				String title = rs.getString("title");
 				String author = rs.getString("author");
 				int category = rs.getInt("category");
@@ -235,7 +236,7 @@ public class TextBookDAO {
 				System.out.println(category);
 				System.out.println(status);
 
-				TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userId);
+				TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
 				list.add(bean);
      		}
      		return list;
