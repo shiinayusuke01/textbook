@@ -139,6 +139,14 @@ public class MembersServlet extends HttpServlet {
 					request.setAttribute("message", "退会しました。<br>ご利用ありがとうございました。");
 					gotoPage(request, response, "/newmembermessage.html");
 
+			} else if (action.equals("logout")) {
+				session = request.getSession(false);
+				if (session != null) {
+					session.invalidate();
+					request.setAttribute("message", "ログアウトしました。");
+					gotoPage(request, response, "/newmembermessage.html");
+				}
+
 			} else {
 				request.setAttribute("message", "正しく操作してください。");
 				gotoPage(request, response, "/errInternal.jsp");
