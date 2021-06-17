@@ -42,12 +42,12 @@ public class AdMainPageServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			if (action == null || action.length() == 0) {
 				gotoPage(request, response, "/newlogin.jsp");
-			} else if (action.equals("search")) {
+			} else if (action.equals("memsearch")) {
 				String searchname = request.getParameter("searchname");
 				List<MembersBean> list = dao.findAllMembers(searchname);
 				request.setAttribute("show", list);
 				gotoPage(request, response, "/ad-main-input.jsp");
-			} else if (action.equals("delete")) {
+			} else if (action.equals("memdelete")) {
 				int mem_id = Integer.parseInt(request.getParameter("mem_id"));
 				dao.deleteMembers(mem_id);
 				gotoPage(request, response, "/ad-main-input.jsp");
