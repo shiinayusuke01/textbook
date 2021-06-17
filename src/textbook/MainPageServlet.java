@@ -1,6 +1,7 @@
 package textbook;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -32,21 +33,33 @@ public class MainPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
+			String action = request.getParameter("action");
+			if (action == null || action.length() == 0) {
+				gotoPage(request, response, "/newlogin.jsp");
+			} else if (action.equals("search")) {
+			String title = request.getParameter("title");
+			List<TextbookBean> list = new ArrayList<TextbookBean>();
 			textDAO dao = new textDAO();
-			List<TextbookBean> list = dao.findAll();
+			list = dao.findAll(title);
 			//リストをJSPに送る
-			request.setAttribute("textbook", list);
+			request.setAttribute("list",  list);
 			RequestDispatcher rd = request.getRequestDispatcher("/main-input.jsp");
 			rd.forward(request,  response);
+			}
 		}catch(DAOException e) {
 			e.printStackTrace();
 			request.setAttribute(" message", " 正しいタイトルを入力してください");
-			RequestDispatcher rd = request.getRequestDispatcher("/errInput.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/errInternal.jsp");
 			rd.forward(request,  response);
 		}
 	}
 
 
+
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String string) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

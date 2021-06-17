@@ -13,11 +13,12 @@ public class textDAO {
 	private Connection con;
 	private String title;
 	private ResultSet rs;
+	private TextbookBean TextbookBean;
 
 	public textDAO() throws DAOException {
 		getConnection();
 	}
-	public List<TextbookBean> findAll() throws DAOException {
+	public List<TextbookBean> findAll(String search) throws DAOException {
 		if (con == null)
 		getConnection();
 		PreparedStatement st = null;
@@ -26,19 +27,20 @@ public class textDAO {
 	try {
 		String sql ="select * from textbooks where title like ?";
 		st=con.prepareStatement(sql);
-		st.setString(1, "%" + title +"%");
+		st.setString(1, "%" + search +"%");
 		rs = st.executeQuery();
 
 		List<TextbookBean> list = new ArrayList<TextbookBean>();
 		while (rs.next()) {
 			    String title = rs.getString("title");
 			    String author = rs.getString("author");
-			    String category = rs.getString("category");
-			    String price = rs.getString("price");
+			    int category = rs.getInt("category");
 			    String status = rs.getString("status");
+			    int price = rs.getInt("price");
 			    String info = rs.getString("info");
+			    int userId=rs.getInt("userId");
 
-			    TextbookBean bean = new TextbookBean(title, author,category,price,status,info);
+			    TextbookBean bean = new TextbookBean(title, author,category,status,price, info, userId);
 			    list.add(bean);
 		}
 		return list;
