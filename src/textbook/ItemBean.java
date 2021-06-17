@@ -3,34 +3,30 @@ package textbook;
 import java.io.Serializable;
 
 public class ItemBean implements Serializable {
-	private int code;
-	private String name;
+	private String title;
+	private String author;
 	private int price;
-	private int quantity;
+	private String status;
+	private String quantity;
 
-public ItemBean(int code, String name, int price) {
-	this.code=code;
-	this.name=name;
+public ItemBean(String title, String author, int price,String status,String quantity) {
+	this.title=title;
+	this.author=author;
 	this.price=price;
-
-}
-public ItemBean(int code,String name,int price, int quantity) {
-	this.code=code;
-	this.name=name;
-	this.price=price;
+	this.status=status;
 	this.quantity=quantity;
 }
-	public int getCode() {
-		return code;
+	public String gettitle() {
+		return title;
 	}
-	public void setCode(int code) {
-		this.code = code;
+	public void title(String title) {
+		this.title = title;
 	}
-	public String getName() {
-		return name;
+	public String getauthor() {
+		return author;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setautor(String author) {
+		this.author = author;
 	}
 	public int getPrice() {
 		return price;
@@ -38,12 +34,19 @@ public ItemBean(int code,String name,int price, int quantity) {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getQuantity() {
+	public String getstatus() {
+		return status;
+	}
+	public void setstayuss(String status) {
+		this.status = status;
+	}
+	public String getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(int quantity) {
+	public void setQuantity(String quantity) {
 		this.quantity = quantity;
 	}
+
 
 
 }
