@@ -69,14 +69,16 @@ public class MembersServlet extends HttpServlet {
 				String day = request.getParameter("day");
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
-				List<String> list = dao.email(email);
+				List<String> list = dao.email();
+				String judge = dao.emailcheck(email, list);
+
 
 				if (last_name == null || first_name == null || postal == null || address == null || tel == null || email == null || password == null) {
 					request.setAttribute("message", "登録情報はすべて入力してください");
 					gotoPage(request, response, "/errInternal.jsp");
-				} else if (email.equals(list)) {
-					request.setAttribute("message", "このemailアドレスはすでに使用されています");
-					gotoPage(request, response, "/errInternal.jsp");
+				} else if (judge.equals("out")) {
+					request.setAttribute("message", "入力されたメールアドレスはすでに使用されています。<br>他のメールアドレスを使用してください");
+					gotoPage(request, response, "/newmembermessage.jsp");
 				} else {
 					if (passadd.equals(password)) {
 						MembersBean bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);

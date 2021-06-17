@@ -61,7 +61,19 @@ public class MembersDAO {
 		  }
 	}
 
-	public List<String> email(String email) throws DAOException {
+	public String emailcheck(String email, List<String> list) {
+		String judge = "";
+		for (String mail : list) {
+			if (mail.equals(email)) {
+				judge = "out";
+			} else {
+				judge = "safe";
+			}
+		}
+		return judge;
+	}
+
+	public List<String> email() throws DAOException {
 		if (con == null)
 			getConnection();
 
@@ -71,16 +83,13 @@ public class MembersDAO {
 		try {
 			String sql = "SELECT email from members";
 			st = con.prepareStatement(sql);
-			st.setString(1, email);
 			rs = st.executeQuery();
 			List<String> list = new ArrayList<String>();
-			if(rs.next()) {
+			while (rs.next()) {
 			    String emails = rs.getString("email");
 			    list.add(emails);
-				return list;
-			} else {
-				return null;
 			}
+				return list;
 		} catch (SQLException e){
 			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました");
