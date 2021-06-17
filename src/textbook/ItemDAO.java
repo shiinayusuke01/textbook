@@ -27,6 +27,7 @@ public List<CategoryBean> findAllCategory() throws DAOException{
 
 		st=con.prepareStatement(sql);
 		rs=st.executeQuery();
+
 		List<CategoryBean>list=new ArrayList<CategoryBean>();
 		while(rs.next()) {
 			int code=rs.getInt("code");
