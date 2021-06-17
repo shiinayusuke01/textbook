@@ -40,6 +40,16 @@ public class MembersBean implements Serializable {
 	}
 
 
+
+
+	public MembersBean(int id, String last_name, String first_name, String email) {
+		super();
+		this.id = id;
+		this.last_name = last_name;
+		this.first_name = first_name;
+		this.email = email;
+	}
+
 	public MembersBean(String last_name, String first_name, String postal, String address, String tel, String email,
 			String year, String month, String day, String password) {
 		super();
