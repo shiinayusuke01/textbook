@@ -21,6 +21,12 @@ public class TextbookBean implements Serializable {
 		this.userId = userId;
 	}
 
+
+	public TextbookBean() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
+
+
 	public String getTitle() {
 		return title;
 	}
