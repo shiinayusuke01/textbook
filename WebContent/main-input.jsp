@@ -12,9 +12,9 @@
 
 <h2>会員専用メイン画面</h2>
 <br>
-<a href="">新規教科書登録</a>
+<a href="/textbook/form-textbook.jsp">新規教科書登録</a>
 <br>
-<a href="">教科書情報変更・削除</a>
+<a href="/textbook/my-textbook.jsp">教科書情報変更・削除</a>
 <br>
 <a href="/textbook/mem-info-change.jsp">会員情報変更</a>
 <br>
@@ -22,7 +22,13 @@
 <br>
 <a href="">ログアウト</a>
 <br>
+
+
 検索（教科書タイトルを入力してください）
+<br>
+<br>
+<a href="/textbook/cart.jsp">カート/購入</a>
+<br>
 <br>
 <form action="/textbook/MainPageServlet" method="post">
 <input type="text" value="">
@@ -54,6 +60,8 @@
   </tr>
 </c:forEach>
 </table>
+
+
 <br/>
 
 

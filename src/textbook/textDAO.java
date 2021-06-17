@@ -12,19 +12,19 @@ import java.util.List;
 public class textDAO {
 	private Connection con;
 	private String title;
-	private ResultSet rs_;
+	private ResultSet rs;
 
 	public textDAO() throws DAOException {
 		getConnection();
 	}
-	public List<TextbookBean> findAllTextbook() throws DAOException {
+	public List<TextbookBean> findAll() throws DAOException {
 		if (con == null)
 		getConnection();
 		PreparedStatement st = null;
 		ResultSet rs = null;
 
 	try {
-		String sql ="select * from TextBook where title like ?";
+		String sql ="select * from textbooks where title like ?";
 		st=con.prepareStatement(sql);
 		st.setString(1, "%" + title +"%");
 		rs = st.executeQuery();
