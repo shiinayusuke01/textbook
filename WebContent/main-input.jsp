@@ -20,7 +20,7 @@
 <br>
 <a href="/textbook/taikai.jsp">退会</a>
 <br>
-<a href="">ログアウト</a>
+<a href="/textbook/MembersServlet?action=logout">ログアウト</a>
 <br>
 
 
