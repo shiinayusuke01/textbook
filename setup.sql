@@ -26,7 +26,7 @@ password Varchar(12) Not Null
 
 
 INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthday, password)
-VALUES(1, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
+VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
 
 INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
 VALUES(1, 'AAAtitleAA', 'akutagawa', 1, '—Ç‚¢', 2300, 'very good', 1);
