@@ -45,6 +45,8 @@
 </form>
 </c:if>
 <br>
+<a href="/textbook/main-input.jsp"></a>
+<br>	
 <input type="submit" value="トップページへ戻る">
 
 </body>
