@@ -32,15 +32,18 @@ public class ShowMyTextbook extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MembersBean bean = (MembersBean) session.getAttribute("membean");
-		int userId = bean.getId();
-
-		TextBookDAO dao = new TextBookDAO();
-		List<TextbookBean>  = dao.selectByUserId(userId);
-		
+		//int userId = bean.getId();
+		int userId = 1;
 
 
-
-
+		try {
+			TextBookDAO dao = new TextBookDAO();
+			List<TextbookBean> list = dao.selectByUserId(userId);
+			request.setAttribute("textbooks", list);
+		}catch (DAOException e) {
+			e.printStackTrace();
+		}
+		gotoPage(request, response, "my-textbook.jsp");
 	}
 	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)throws ServletException, IOException{
 		RequestDispatcher rd = request.getRequestDispatcher(page);

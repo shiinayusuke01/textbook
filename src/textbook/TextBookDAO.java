@@ -146,7 +146,7 @@ public class TextBookDAO {
 	     			 int code = rs.getInt("code");
 	     			 String name = rs.getString("name");
 	     			 int price = rs.getInt("price");
-	     			 String quantity = rs.getString("quantity")
+	     			 String quantity = rs.getString("quantity");
 	     			 ItemBean bean = new ItemBean(code, name, price);
 	     			return bean;
 	     		}else {
@@ -209,45 +209,47 @@ public class TextBookDAO {
 	}
 
 	public List<TextbookBean> selectByUserId(int userId)throws DAOException{
+		if(con == null)
+    		getConnection();
+
+    	PreparedStatement st = null;
+    	ResultSet rs = null;
 		try {
-			if(con == null)
-	    		getConnection();
+     		String sql = "SELECT * FROM textbooks WHERE user_id = ?";
+     		st = con.prepareStatement(sql);
+     		st.setInt(1, userId);
+     		rs = st.executeQuery();
 
-	    	PreparedStatement st = null;
-	    	ResultSet rs = null;
-			try {
-	     		String sql = "SELECT * FROM textbooks WHERE user_id = ?";
-	     		st = con.prepareStatement(sql);
-	     		st.setInt(1, userId);
-	     		rs = st.executeQuery();
 
-	     		if(rs.next()) {
-	     			 String title = rs.getString("title");
-	     			 String author = rs.getString("author");
-	     			 int category = rs.getInt("category");
-	     			 int status = rs.getInt("status");
-	     			 int price = rs.getInt("price");
-	     			 String info = rs.getString("info");
+     		List<TextbookBean> list = new ArrayList<TextbookBean>();
+     		while(rs.next()) {
+				String title = rs.getString("title");
+				String author = rs.getString("author");
+				int category = rs.getInt("category");
+				String status = rs.getString("status");
+				int price = rs.getInt("price");
+				String info = rs.getString("info");
 
-	     			 TextbookBean bean = new TextbookBean(quantity, quantity, quantity, sql, name, quantity);
-	     			return list;
-	     		}else {
-	     			return null;
-	     		}
-	     	} catch (Exception e) {
-	 			throw new DAOException("レコードの取得に失敗しました。");
-	     	} finally {
-	     		try {
-	     		if (rs != null) rs.close();
-	     		if (st != null) st.close();
-	     			close();
-	     		}catch(Exception e) {
-	     		throw new DAOException("リソースの開放に失敗しました。");
-	     	}
-	     }
-		}catch (DAOException e) {
+				System.out.println(title);
+				System.out.println(author);
+				System.out.println(category);
+				System.out.println(status);
 
-		}
+				TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userId);
+				list.add(bean);
+     		}
+     		return list;
+     	} catch (Exception e) {
+ 			throw new DAOException("レコードの取得に失敗しました。");
+     	} finally {
+     		try {
+     		if (rs != null) rs.close();
+     		if (st != null) st.close();
+     			close();
+     		}catch(Exception e) {
+     			throw new DAOException("リソースの開放に失敗しました。");
+     		}
+     	}
 	}
 
 	private void getConnection() throws DAOException {
