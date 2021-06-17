@@ -69,15 +69,20 @@ public class MembersServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
 
-				if (passadd.equals(password)) {
-					MembersBean bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);
-					dao = new MembersDAO();
-					dao.newMembers(bean);
-					request.setAttribute("message", "登録できました!");
-					gotoPage(request, response, "/newmembermessage.jsp");
-				} else {
-					request.setAttribute("message", "入力されたパスワードが確認用パスワードと異なります");
+				if (last_name == null || first_name == null || postal == null || address == null || tel == null || email == null || password == null) {
+					request.setAttribute("message", "登録情報はすべて入力してください");
 					gotoPage(request, response, "/errInternal.jsp");
+				} else {
+					if (passadd.equals(password)) {
+						MembersBean bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);
+						dao = new MembersDAO();
+						dao.newMembers(bean);
+						request.setAttribute("message", "登録できました!");
+						gotoPage(request, response, "/newmembermessage.jsp");
+					} else {
+						request.setAttribute("message", "入力されたパスワードが確認用パスワードと異なります");
+						gotoPage(request, response, "/errInternal.jsp");
+					}
 				}
 
 			} else if (action.equals("change")) {
@@ -94,30 +99,35 @@ public class MembersServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
 
-				if (year.equals("1900") && month.equals("1") && day.equals("1")) {
-					request.setAttribute("message", "生年月日がデフォルトのまま変更されていません。");
+				if (last_name == null || first_name == null || postal == null || address == null || tel == null || email == null || password == null) {
+					request.setAttribute("message", "登録情報はすべて入力してください");
 					gotoPage(request, response, "/errInternal.jsp");
 				} else {
-					if (passadd.equals(password)) {
-					    MembersBean bean = (MembersBean) session.getAttribute("membean");
-					    bean.setLast_name(last_name);
-					    bean.setFirst_name(first_name);
-					    bean.setPostal(postal);
-					    bean.setAddress(address);
-					    bean.setTel(tel);
-					    bean.setEmail(email);
-					    bean.setYear(year);
-					    bean.setMonth(month);
-					    bean.setDay(day);
-					    bean.setPassword(password);
-
-					    dao = new MembersDAO();
-						dao.changeMembers(bean);
-						request.setAttribute("message", "変更できました!");
-						gotoPage(request, response, "/memch-message.jsp");
-					} else {
-						request.setAttribute("message", "入力されたパスワードが確認用パスワードと異なります");
+					if (year.equals("1900") && month.equals("1") && day.equals("1")) {
+						request.setAttribute("message", "生年月日がデフォルトのまま変更されていません。");
 						gotoPage(request, response, "/errInternal.jsp");
+					} else {
+						if (passadd.equals(password)) {
+						    MembersBean bean = (MembersBean) session.getAttribute("membean");
+						    bean.setLast_name(last_name);
+						    bean.setFirst_name(first_name);
+						    bean.setPostal(postal);
+						    bean.setAddress(address);
+						    bean.setTel(tel);
+						    bean.setEmail(email);
+						    bean.setYear(year);
+						    bean.setMonth(month);
+						    bean.setDay(day);
+						    bean.setPassword(password);
+
+						    dao = new MembersDAO();
+							dao.changeMembers(bean);
+							request.setAttribute("message", "変更できました!");
+							gotoPage(request, response, "/memch-message.jsp");
+						} else {
+							request.setAttribute("message", "入力されたパスワードが確認用パスワードと異なります");
+							gotoPage(request, response, "/errInternal.jsp");
+						}
 					}
 				}
 
@@ -127,7 +137,7 @@ public class MembersServlet extends HttpServlet {
 					dao = new MembersDAO();
 					dao.deleteMembers(bean);
 					request.setAttribute("message", "退会しました。<br>ご利用ありがとうございました。");
-					gotoPage(request, response, "/Login.html");
+					gotoPage(request, response, "/newmembermessage.html");
 
 			} else {
 				request.setAttribute("message", "正しく操作してください。");
