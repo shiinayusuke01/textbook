@@ -49,10 +49,17 @@ public class MembersServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				MembersBean bean = dao.loginMember(email, password);
 				if (bean != null) {
-					session = request.getSession();
-					session.setAttribute("isLogin", "true");
-					session.setAttribute("membean", bean);
-					gotoPage(request, response, "/main-input.jsp");
+					if (bean.getId() == 0) {
+						session = request.getSession();
+						session.setAttribute("isLogin", "true");
+						session.setAttribute("membean", bean);
+						gotoPage(request, response, "/ad-main-input.jsp");
+					} else {
+						session = request.getSession();
+						session.setAttribute("isLogin", "true");
+						session.setAttribute("membean", bean);
+						gotoPage(request, response, "/main-input.jsp");
+					}
 				} else {
 					request.setAttribute("message", "会員情報が登録されていないか、入力された情報が異なります。");
 					gotoPage(request, response, "/errInternal.jsp");
