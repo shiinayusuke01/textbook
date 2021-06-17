@@ -21,9 +21,9 @@
 <option value="傷や汚れあり">傷や汚れあり</option>
 <option value="全体的に状態が悪い">全体的に状態が悪い</option>
 </select>
-
 <p><label>備考：<input type="text" name="info" size="40"></label></p>
-<p><input type="submit" value="変更する"></p>
+<p><input type="submit" value="登録する"></p><p><input type="submit" value="変更する"></p>
+
 </form>
 
 </body>
