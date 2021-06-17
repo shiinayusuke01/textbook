@@ -1,11 +1,11 @@
-DROP TABLE textbooks;
-DROP TABLE members;
+DROP TABLE textbooks CASCADE;
+DROP TABLE members CASCADE;
 
 CREATE TABLE members (
 id SERIAL Not Null Primary Key,
 last_name Varchar(30) Not Null,
 first_name Varchar(30) Not null,
-postal Char(7) Not null,
+postal Char(10) Not null,
 address Varchar(100) Not null,
 tel Varchar(20) Not null,
 email Varchar(100) Unique Not null,
