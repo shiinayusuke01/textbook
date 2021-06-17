@@ -8,12 +8,17 @@
 <title>登録した教科書一覧</title>
 </head>
 <body>
-<c:forEach items="${textbooks}" var="textbook">
-<input type="hidden" name="">
-${textbook.title}
-${textbook.autor}
-${textbook.autor}
-
-</c:forEach>
+	<c:forEach items="${textbooks}" var="textbook">
+		<form action="/textbook/form-textbook.jsp">
+			<input type="hidden" name="textbook_id" value="${textbook.id}">
+				タイトル${textbook.title}<br />
+				著者名${textbook.autor}<br />
+				状態${textbook.status}<br />
+				値段${textbook.price}<br />
+				備考${textbook.info}<br />
+			<input type="submit" value="削除">
+		</form>
+		<br />
+	</c:forEach>
 </body>
 </html>
