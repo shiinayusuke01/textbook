@@ -13,6 +13,7 @@ public class TextbookBean implements Serializable {
 	private int userId;
 
 	public TextbookBean(int id, String title, String author, int category, String status, int price,  String info, int userId) {
+		this.id = id;
 		this.title = title;
 		this.autor = author;
 		this.category = category;
