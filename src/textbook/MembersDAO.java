@@ -61,6 +61,41 @@ public class MembersDAO {
 		  }
 	}
 
+	public List<String> email(String email) throws DAOException {
+		if (con == null)
+			getConnection();
+
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT email from members";
+			st = con.prepareStatement(sql);
+			st.setString(1, email);
+			rs = st.executeQuery();
+			List<String> list = new ArrayList<String>();
+			if(rs.next()) {
+			    String emails = rs.getString("email");
+			    list.add(emails);
+				return list;
+			} else {
+				return null;
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} finally {
+			try {
+				if (st != null) {
+					st.close();
+				}
+				close();
+			} catch (SQLException e) {
+				throw new DAOException("リソースの開放に失敗しました");
+			}
+		  }
+	}
+
 	public List<MembersBean> findAllMembers() throws DAOException {
 		if (con == null)
 			getConnection();

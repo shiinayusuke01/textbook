@@ -1,6 +1,7 @@
 package textbook;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,9 +69,13 @@ public class MembersServlet extends HttpServlet {
 				String day = request.getParameter("day");
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
+				List<String> list = dao.email(email);
 
 				if (last_name == null || first_name == null || postal == null || address == null || tel == null || email == null || password == null) {
 					request.setAttribute("message", "登録情報はすべて入力してください");
+					gotoPage(request, response, "/errInternal.jsp");
+				} else if (email.equals(list)) {
+					request.setAttribute("message", "このemailアドレスはすでに使用されています");
 					gotoPage(request, response, "/errInternal.jsp");
 				} else {
 					if (passadd.equals(password)) {
@@ -137,14 +142,14 @@ public class MembersServlet extends HttpServlet {
 					dao = new MembersDAO();
 					dao.deleteMembers(bean);
 					request.setAttribute("message", "退会しました。<br>ご利用ありがとうございました。");
-					gotoPage(request, response, "/newmembermessage.html");
+					gotoPage(request, response, "/newmembermessage.jsp");
 
 			} else if (action.equals("logout")) {
 				session = request.getSession(false);
 				if (session != null) {
 					session.invalidate();
 					request.setAttribute("message", "ログアウトしました。");
-					gotoPage(request, response, "/newmembermessage.html");
+					gotoPage(request, response, "/newmembermessage.jsp");
 				}
 
 			} else {
