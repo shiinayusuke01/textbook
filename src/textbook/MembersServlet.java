@@ -149,7 +149,7 @@ public class MembersServlet extends HttpServlet {
 				    session = request.getSession(false);
 				    MembersBean bean = (MembersBean) session.getAttribute("membean");
 					dao = new MembersDAO();
-					dao.deleteMembers(bean);
+					dao.deleteMembers(bean.getId());
 					request.setAttribute("message", "退会しました。<br>ご利用ありがとうございました。");
 					gotoPage(request, response, "/newmembermessage.jsp");
 

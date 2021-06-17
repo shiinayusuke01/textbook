@@ -105,7 +105,7 @@ public class MembersDAO {
 		  }
 	}
 
-	public List<MembersBean> findAllMembers() throws DAOException {
+	public List<MembersBean> findAllMembers(String name) throws DAOException {
 		if (con == null)
 			getConnection();
 
@@ -113,24 +113,18 @@ public class MembersDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql = "SELECT * FROM members";
+			String sql = "SELECT * FROM members where last_name like ?";
 			st = con.prepareStatement(sql);
+			st.setString(1, "%" + name + "%");
 			rs = st.executeQuery();
 			List<MembersBean> list = new ArrayList<MembersBean>();
 			while (rs.next()) {
 				int id = rs.getInt("id");
 			    String last_name = rs.getString("last_name");
 			    String first_name = rs.getString("first_name");
-			    String postal = rs.getString("postal");
-			    String address = rs.getString("address");
-			    String tel = rs.getString("tel");
 			    String email = rs.getString("email");
-			    String year = rs.getString("year");
-			    String month = rs.getString("month");
-			    String day = rs.getString("day");
-			    String password = rs.getString("password");
 
-			    MembersBean bean = new MembersBean(id, last_name, first_name, postal, address, tel, email, year, month, day, password);
+			    MembersBean bean = new MembersBean(id, last_name, first_name, email);
 			    list.add(bean);
 			}
 			return list;
@@ -221,7 +215,7 @@ public class MembersDAO {
 		  }
 	}
 
-	public int deleteMembers(MembersBean members) throws DAOException {
+	public int deleteMembers(int id) throws DAOException {
 		if (con == null)
 			getConnection();
 
@@ -230,10 +224,11 @@ public class MembersDAO {
 		try {
 			String sql = "DELETE FROM members Where id = ?";
 			st = con.prepareStatement(sql);
-			st.setInt(1, members.getId());
+			st.setInt(1, id);
 			int rows = st.executeUpdate();
 			return rows;
 		} catch (SQLException e){
+			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました");
 		} finally {
 			try {

@@ -3,16 +3,21 @@ package textbook;
 import java.io.Serializable;
 
 public class TextbookBean implements Serializable {
+	private int id;
 	private String title;
 	private String autor;
 	private int category;
+<<<<<<< HEAD
 	private String author;
+=======
+>>>>>>> ca68ac322e28ca2e85eae1d366b877eed1dccd54
 	private String status;
 	private int price;
 	private String info;
 	private int userId;
 
-	public TextbookBean(String title, String author, int category, String status, int price,  String info, int userId) {
+	public TextbookBean(int id, String title, String author, int category, String status, int price,  String info, int userId) {
+		this.id = id;
 		this.title = title;
 		this.autor = author;
 		this.category = category;
