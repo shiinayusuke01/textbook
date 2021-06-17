@@ -4,14 +4,9 @@ import java.io.Serializable;
 
 public class TextbookBean implements Serializable {
 	private String title;
-<<<<<<< HEAD
 	private String autor;
 	private int category;
-=======
 	private String author;
-	private String category;
-	private String price;
->>>>>>> 3dc0214 (20210617)
 	private String status;
 	private int price;
 	private String info;
@@ -75,7 +70,6 @@ public class TextbookBean implements Serializable {
 		this.info = info;
 	}
 
-<<<<<<< HEAD
 	public int getUserId() {
 		return userId;
 	}
@@ -89,11 +83,8 @@ public class TextbookBean implements Serializable {
 //	}
 
 
-}
-=======
 	public void setUserId(String userId) {
 		// TODO 自動生成されたメソッド・スタブ
 
 	}
 	}
->>>>>>> 3dc0214 (20210617)

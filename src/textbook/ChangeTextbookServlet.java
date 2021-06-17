@@ -66,13 +66,13 @@ public class ChangeTextbookServlet extends HttpServlet {
 				session = request.getSession(false);
 				String title = request.getParameter("title");
 				String author = request.getParameter("author");
-				String category = request.getParameter("category");
-			    String price = request.getParameter("price");
+				int category = Integer.parseInt(request.getParameter("category"));
+			    int price = Integer.parseInt(request.getParameter("price"));
 				String info = request.getParameter("info");
 				String status = request.getParameter("status");
-				String userId = request.getParameter("userId");
+				int userId = Integer.parseInt(request.getParameter("userId"));
 
-				if (title == null || author == null || category == null || price == null || info == null || status == null || userId == null) {
+				if (title == null || author == null || category == 0 || price == 0 || info == null || status == null || userId == 0) {
 					request.setAttribute("message", "変更情報はすべて入力してください。");
 					gotoPage(request, response, "/errInternal.jsp");
 				} else {

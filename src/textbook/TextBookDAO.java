@@ -112,7 +112,7 @@ public class TextBookDAO {
 	     			 String name = rs.getString("name");
 	     			 int price = rs.getInt("price");
 	     			 String quantity = rs.getString("quantity");
-	     			 ItemBean bean = new ItemBean(code, name, price);
+	     			 TextbookBean bean = new TextbookBean(quantity, quantity, code, name, price, quantity, price);
 	     			 list.add(bean);
 	     		 }
 	     		 return list;
@@ -147,7 +147,14 @@ public class TextBookDAO {
 	     			 String name = rs.getString("name");
 	     			 int price = rs.getInt("price");
 	     			 String quantity = rs.getString("quantity");
-	     			 ItemBean bean = new ItemBean(code, name, price);
+	     			 int userId = Integer.parseInt(rs.getString("quantity"));
+					 String title = rs.getString("title");
+					 String author = rs.getString("author");
+					 int category =Integer.parseInt(rs.getString("category"));
+					 String info = rs.getString("info");
+					 String status = rs.getString("status");
+					 TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userId);
+	     			 list.add(bean);
 	     			return bean;
 	     		}else {
 	     			return null;
@@ -315,5 +322,15 @@ public class TextBookDAO {
 			con.close();
 			con = null;
 		}
+	}
+
+	public void deletetextbook(TextbookBean bean) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	public void changeTextbook(TextbookBean bean) {
+		// TODO 自動生成されたメソッド・スタブ
+
 	}
 }
