@@ -12,10 +12,22 @@ ${textbook.author}
 <form action="/textbook/RegistTextbook" method="post">
 	<p><label>タイトル：<input type="text" name="title" size="40"></label></p>
 	<p><label>著者名：<input type="text" name="author" size="40"></label></p>
-	<p><label>分類：<input type="text" name="category" size="40"></label></p>
-	<p><label>売値：<input type="text" name="price" size="40"></label></p>
+	分類：<select name="category" size="1">
+		<option value="0">文学部系</option>
+		<option value="1">教育学部系</option>
+		<option value="2">法学部系</option>
+		<option value="3">社会学部系</option>
+		<option value="4">経済学部系</option>
+		<option value="5">理学部系</option>
+		<option value="6">医学部系</option>
+		<option value="7">歯学部系</option>
+		<option value="8">薬学部系</option>
+		<option value="9">工学部系</option>
+		<option value="10">農学部系</option></p></option></select>
 
-	<select name="status" size="5">
+	<p><label>売値：<input type="text" name="price" size="20"></label>円</p>
+
+	商品状態:<select name="status" size="1">
 		<option value="新品、未使用">新品、未使用</option>
 		<option value="未使用に近い">未使用に近い</option>
 		<option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
