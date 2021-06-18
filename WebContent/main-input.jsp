@@ -6,32 +6,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>会員メイン</title>
+<title>会員ホーム</title>
 </head>
 <body>
-<h1>会員メイン</h1>
+<h1>会員トップページ</h1>
 <br>
-<a href="/textbook/form-textbook.jsp">登録</a>
+<form action="/textbook/form-textbook.jsp" method="post">
+<input type="submit" value="新規教科書登録">
+</form>
 <br>
-<a href="/textbook/my-textbook.jsp">変更</a>
+<form action="/textbook/my-textbook.jsp" method="post">
+<input type="submit" value="登録済み教科書情報変更・削除">
+</form>
 <br>
-<a href="/textbook/mem-info-change.jsp">会員情報変更</a>
+<form action="/textbook/mem-info-change.jsp" method="post">
+<input type="submit" value="会員情報変更">
+</form>
 <br>
-<a href="/textbook/taikai.jsp">退会</a>
+<form action="/textbook/taikai.jsp" method="post">
+<input type="submit" value="退会">
+</form>
 <br>
-<a href="/textbook/MembersServlet?action=logout">ログアウト</a>
-<br>
+<form action="/textbook/MembersServlet?action=logout" method="post">
+<input type="submit" value="ログアウト">
+</form>
+
 
 <br>
-<a href="/textbook/cart.jsp">カート/購入</a>
+<a href="/textbook/cart.jsp">カート/購入ぺーじへ</a>
 <br>
 <br>
 
 
-
-
-
-<h5>会員メイン画面</h5>
 <form action="/textbook/MainPageServlet" method="post">
 <input type="text" name="searchname">
 <input type="hidden" name="action" value="search">
@@ -58,6 +64,31 @@
 <td>
 <form action="/Textbook/MainPageServlet?action=textadd" method="post">
 <input type="hidden" name="Textbook_id" value="${Textbook.id}">
+<input type="submit" value="カートに追加する">
+</form></td></tr>
+
+</c:forEach>
+
+</table>
+<table border=1>
+<tr>
+    <td>title</td>
+    <td>author</td>
+    <td>category</td>
+    <td>price</td>
+    <td>status</td>
+    <td>info</td>
+    <td>userId</td>
+    <td>カートに追加</td>
+  </tr>
+<c:forEach items="${showall}" var="Text">
+<tr><td>${Text.title}</td><td>${Text.author}</td>
+<td>${Text.category}</td><td>${Text.price}</td>
+<td>${Text.status}</td><td>${Text.info}</td>
+<td>${Text.userId}</td>
+<td>
+<form action="/Textbook/MainPageServlet?action=textadd" method="post">
+<input type="hidden" name="Textbook_id" value="${Text.id}">
 <input type="submit" value="カートに追加する">
 </form></td></tr>
 
