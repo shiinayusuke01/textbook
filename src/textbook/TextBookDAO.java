@@ -92,6 +92,46 @@ public class TextBookDAO {
 	    }
 	  }
 
+	  public TextbookBean findByPrimaryKey(int code) throws DAOException{
+	    	if (con == null)
+	    		getConnection();
+
+	    	PreparedStatement st = null;
+	    	ResultSet rs = null;
+	    	try {
+
+	    		String sql = "SELECT * FROM textbooks where id = ?";
+	    		st = con.prepareStatement(sql);
+	    		st.setInt(1, code);
+	    		rs = st.executeQuery();
+
+	    		if (rs.next()) {
+	    		 String title = rs.getString("title");
+				 String author = rs.getString("author");
+				 int category =Integer.parseInt(rs.getString("category"));
+				 int price =Integer.parseInt(rs.getString("price"));
+				 String info = rs.getString("info");
+				 String status = rs.getString("status");
+				 int userid = rs.getInt("user_id");
+				 TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userid);
+	    		 return bean;
+	    		} else {
+	    			return null;
+	    		}
+	    	} catch (Exception e) {
+	    		e.printStackTrace();
+				throw new DAOException("レコードの取得にに失敗しました。");
+	    } finally {
+	    	try {
+	    		if (rs != null) rs.close();
+	    		if (st != null) st.close();
+	    			close();
+	    	}catch(Exception e) {
+	    		throw new DAOException("リソースの開放に失敗しました。");
+	    	}
+	    }
+	  }
+
 
 	    public List<TextbookBean> findMyTextbook(MembersBean beans) throws DAOException{
 	    	if(con == null)
