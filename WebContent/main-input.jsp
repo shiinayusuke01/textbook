@@ -79,7 +79,7 @@
 </c:forEach>
 
 <h2>販売中教科書一覧</h2>
-<br>
+
 </table>
 <table border=1>
 <tr>
@@ -98,8 +98,8 @@
 <td>${Text.status}</td><td>${Text.info}</td>
 <td>${Text.userId}</td>
 <td>
-<form action="/textbook/CartServlet?action=add" method="post">
-<input type="hidden" name="text-id" value="${Textbook.id}">
+<form action="/textbook/CartServlet?action=addtext" method="post">
+<input type="hidden" name="textid" value="${Text.id}">
 <input type="submit" value="カートに追加する">
 </form></td></tr>
 </c:forEach>
