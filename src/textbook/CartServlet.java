@@ -2,6 +2,7 @@ package textbook;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +34,7 @@ public class CartServlet extends HttpServlet {
 			if (action == null || action.length() == 0 || action.equals("show")) {
 				gotoPage(request, response, "/cart.jsp");
 			} else if(action.equals("add")) {
-				int code = Integer.parseInt(request.getParameter("item_code"));
-				int quantity = Integer.parseInt(request.getParameter("quantity"));
+				int id = Integer.parseInt(request.getParameter("text-id"));
 				HttpSession session = request.getSession(true);
 				CartBean cart = (CartBean) session.getAttribute("cart");
 
@@ -42,9 +42,9 @@ public class CartServlet extends HttpServlet {
 					cart = new CartBean();
 					session.setAttribute("cart", cart);
 			}
-				ItemDAO dao = new ItemDAO();
-				ItemBean bean = (ItemBean) dao.findByPrimarykey(code);
-				cart.addCart(bean, quantity);
+				TextBookDAO dao = new TextBookDAO();
+				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
+				cart.addCart(bean);
 				gotoPage(request, response, "/cart.jsp");
 			}else if(action.equals("delete")){
 				HttpSession session = request.getSession(false);
@@ -59,8 +59,8 @@ public class CartServlet extends HttpServlet {
 					gotoPage(request, response, "/errInternal.jsp");
 					return;
 				}
-				int code = Integer.parseInt(request.getParameter("item_code"));
-				cart.deleteCart(code);
+				int id = Integer.parseInt(request.getParameter("text-id"));
+				cart.deleteCart(id);
 				gotoPage(request, response, "/cart.jsp");
 			    }else{
 			    	request.setAttribute("message", "正しく操作してください。");
@@ -73,9 +73,10 @@ public class CartServlet extends HttpServlet {
 		}
 	}
 
-	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String string) {
-		// TODO 自動生成されたメソッド・スタブ
-
+	private void gotoPage(HttpServletRequest request,
+			HttpServletResponse response, String page) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(page);
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -31,12 +31,10 @@
 <input type="submit" value="ログアウト">
 </form>
 
-
-<br>
-<a href="/textbook/cart.jsp">カート/購入ページへ</a>
 <br>
 <br>
 
+<h2>教科書検索</h2>
 
 <form action="/textbook/MainPageServlet" method="post">
 <input type="text" name="searchname">
@@ -46,6 +44,11 @@
 <br>
 <br>
 
+
+<br>
+<a href="/textbook/cart.jsp">カート/購入ページへ</a>
+<br>
+<br>
 
 <br>
 <table border=1>
