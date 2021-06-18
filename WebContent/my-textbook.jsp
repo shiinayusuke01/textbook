@@ -9,8 +9,8 @@
 </head>
 <body>
 	<c:forEach items="${textbooks}" var="textbook">
-		<form action="/textbook/form-textbook.jsp">
-			<input type="hidden" name="textbook_id" value="aaaa">
+		<form action="/textbook/DeleteTextbookServlet">
+			<input type="hidden" name="textbook_id" value="${textbook.id}">
 				タイトル${textbook.title}<br />
 				著者名${textbook.author}<br />
 				状態${textbook.status}<br />

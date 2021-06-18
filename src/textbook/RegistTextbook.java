@@ -3,6 +3,7 @@ package textbook;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,7 @@ public class RegistTextbook extends HttpServlet {
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
+		gotoPage(request, response, "form-textbook.jsp");
 	}
 
 	/**
@@ -55,6 +57,10 @@ public class RegistTextbook extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)throws ServletException, IOException{
+		RequestDispatcher rd = request.getRequestDispatcher(page);
+		rd.forward(request, response);
 	}
 
 }

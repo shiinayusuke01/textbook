@@ -1,15 +1,13 @@
-package test;
+package textbook;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import textbook.DAOException;
-import textbook.TextBookDAO;
 
 /**
  * Servlet implementation class DeleteTextbookServlet
@@ -30,7 +28,7 @@ public class DeleteTextbookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String idStr = request.getParameter("user_id");
+		String idStr = request.getParameter("textbook_id");
 		int id = Integer.parseInt(idStr);
 
 		try {
@@ -40,7 +38,7 @@ public class DeleteTextbookServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-
+		gotoPage(request, response, "ShowMyTextbook");
 	}
 
 	/**
@@ -49,6 +47,11 @@ public class DeleteTextbookServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+
+	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)throws ServletException, IOException{
+		RequestDispatcher rd = request.getRequestDispatcher(page);
+		rd.forward(request, response);
 	}
 
 }

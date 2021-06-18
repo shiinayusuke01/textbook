@@ -178,7 +178,7 @@ public class TextBookDAO {
 		  }
 	   }
 
-	    public TextbookBean showAllTextbooks() throws DAOException{
+	    public List<TextbookBean> showAllTextbooks() throws DAOException{
 	    	if(con == null)
 	    		getConnection();
 
@@ -189,6 +189,7 @@ public class TextBookDAO {
 	     		String sql = "SELECT * FROM textbooks";
 	     		st = con.prepareStatement(sql);
 	     		rs = st.executeQuery();
+	     		List<TextbookBean> list = new ArrayList<TextbookBean>();
 	     		while (rs.next()) {
 					 String title = rs.getString("title");
 					 String author = rs.getString("author");
@@ -199,8 +200,9 @@ public class TextBookDAO {
 					 int userid = rs.getInt("user_id");
 
 					 bean = new TextbookBean(title, author, category, status, price, info, userid);
+					 list.add(bean);
 	     		}
-	     			return bean;
+	     			return list;
 	     	} catch (Exception e) {
 	 			throw new DAOException("レコードの取得に失敗しました。");
 	     	} finally {
