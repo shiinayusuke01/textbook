@@ -31,6 +31,7 @@ public class MembersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MembersDAO dao = null;
+		TextBookDAO tdao = null;
 		HttpSession session = null;
 
 		try {
@@ -58,6 +59,9 @@ public class MembersServlet extends HttpServlet {
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
 						session.setAttribute("membean", bean);
+						tdao = new TextBookDAO();
+						List<TextbookBean> list = tdao.showAllTextbooks();
+						request.setAttribute("showall", list);
 						gotoPage(request, response, "/main-input.jsp");
 					}
 				} else {
