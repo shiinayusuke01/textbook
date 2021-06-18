@@ -8,11 +8,10 @@
 <title>注文完了</title>
 </head>
 <body>
-
-<h3>ご注文ありがとうございました。</h3>
-お客様の注文番号は
-<h3><font color="red">${orderNumber}</font></h3>
-になります。
+<h1>ご注文ありがとうございました。</h1>
+<h2>またのご利用をお待ちしております。</h2>
+<br>
+<a href="/textbook/main-input.jsp">トップページに戻る</a>
 
 </body>
 </html>

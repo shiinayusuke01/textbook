@@ -23,20 +23,22 @@
 		<td align="right">${item.value.status}</td>
 		<td align="right">${item.value.info}</td>
 		<td>
-	<form action="/textbook/CartServlet?action=delete" method="post">
-	<a>支払い方法を選択してください</a>
-	<input type="radio" name="pay" value="card"> クレジットカード
-	<input type="radio" name="pay" value="debit"> デビットカード
-	<input type="radio" name="pay" value="cash"> 現金
-	</form>
-
-		</td>
-		</tr>
+<form action="/textbook/CartServlet?action=delete" method="post">
+	<input type="hidden" name="text-id" value="${item.value.id}">
+	<input type="submit" value="削除">
+</form>
+</td>
+</tr>
 </c:forEach>
 		<tr><td align="right" colspan="6">支払金額：${cart.total}円</td></tr>
 	</table>
+<form action="/textbook/OrderServlet?action=pay" method="post">
+<h3>支払い方法を選択してください</h3>
+	<input type="radio" name="pay" value="card" checked> クレジットカード
+	<input type="radio" name="pay" value="debit"> デビットカード
+	<input type="radio" name="pay" value="cash"> 現金
+</form>
 <h3>お客様情報</h3>
-<form action="/textbook/CartServlet?action=delete" method="post"></form>
 	<table border="1">
 	<tr><td>氏</td><td>${member.last_name}</td>
 	</tr>
@@ -53,7 +55,7 @@
 	<tr><td>e-mail</td><td>${member.email}</td>
 	</tr>
 	</table><br>
-	<form>
+	<form action="/textbook/Order.jsp">
 	<input type="submit" value="この注文内容で注文">
 	</form>
 
