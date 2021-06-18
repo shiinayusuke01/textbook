@@ -7,7 +7,8 @@
 <title>登録教科書の変更</title>
 </head>
 <body>
-
+${textbook.title}
+${textbook.author}
 <form action="/textbook/RegistTextbook" method="post">
 	<p><label>タイトル：<input type="text" name="title" size="40"></label></p>
 	<p><label>著者名：<input type="text" name="author" size="40"></label></p>

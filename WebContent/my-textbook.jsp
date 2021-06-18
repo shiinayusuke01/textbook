@@ -16,7 +16,7 @@
 				状態${textbook.status}<br />
 				値段${textbook.price}<br />
 				備考${textbook.info}<br />
-			<input type="submit" value="削除" formaction="/textbook/DeleteTextbookServlet" />^M
+			<input type="submit" value="削除" formaction="/textbook/DeleteTextbookServlet" />
 			<input type="submit" value="変更" formaction="/textbook/InputFormServlet" />
 		</form>
 		<br />
