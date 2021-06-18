@@ -68,9 +68,9 @@ public class OrderDAO {
 			sql = "INSERT INTO ordered_detail VALUES(?, ?, ?)";
 			st = con.prepareStatement(sql);
 
-			Map<Integer, ItemBean> items = cart.getItems();
-			Collection<ItemBean> list =items.values();
-			for(ItemBean item : list) {
+			Map<Integer, TextbookBean> items = cart.getItems();
+			Collection<TextbookBean> list =items.values();
+			for(TextbookBean item:list) {
 				st.setInt(1, orderNumber);
 				st.setInt(2, item.getPrice());
 				st.setInt(3, item.getQuantity());
