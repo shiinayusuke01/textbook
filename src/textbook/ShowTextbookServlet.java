@@ -22,7 +22,7 @@ public class ShowTextbookServlet extends HttpServlet {
 	try {
 		ItemDAO dao=new ItemDAO();
 		List<ItemBean>list=dao.findAll();
-	  request.setAttribute("cart.items", list);
+	  request.setAttribute("items", list);
 	  RequestDispatcher rd=request.getRequestDispatcher("/cart.jsp");
 	  rd.forward(request,response);
 	}catch(DAOException e) {
