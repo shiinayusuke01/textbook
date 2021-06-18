@@ -30,7 +30,7 @@
 	<td align="right">${item.value.info}</td>
 <td>
 <form action="/textbook/CartServlet?action=delete" method="post">
-	<input type="hidden" name="id" value="${item.value.id}">
+	<input type="hidden" name="text-id" value="${item.value.id}">
 	<input type="submit" value="削除">
 </form>
 </td>
