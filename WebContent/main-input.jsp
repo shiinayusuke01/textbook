@@ -78,7 +78,7 @@
 
 </c:forEach>
 
-<h2>販売中教科書一覧</h2>
+  <h2>検索結果表示</h2>
 
 </table>
 <table border=1>
@@ -92,12 +92,14 @@
     <td>userId</td>
     <td>カートに追加</td>
   </tr>
+  <h2>販売中教科書一覧</h2>
 <c:forEach items="${showall}" var="Text">
 <tr><td>${Text.title}</td><td>${Text.author}</td>
 <td>${Text.category}</td><td>${Text.price}</td>
 <td>${Text.status}</td><td>${Text.info}</td>
 <td>${Text.userId}</td>
 <td>
+
 <form action="/textbook/CartServlet?action=addtext" method="post">
 <input type="hidden" name="textid" value="${Text.id}">
 <input type="submit" value="カートに追加する">
