@@ -50,7 +50,7 @@
 <td>${text.price}</td><td>${text.info}</td>
 <td>
 <form action="/textbook/AdMainPageServlet?action=textdelete" method="post">
-<input type="hidden" name="mem_id" value="${member.id}">
+<input type="hidden" name="text_id" value="${text.id}">
 <input type="submit" value="削除">
 </form></td></tr>
 

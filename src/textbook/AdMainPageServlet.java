@@ -51,7 +51,16 @@ public class AdMainPageServlet extends HttpServlet {
 				int mem_id = Integer.parseInt(request.getParameter("mem_id"));
 				dao.deleteMembers(mem_id);
 				gotoPage(request, response, "/ad-main-input.jsp");
-				}
+			}else if (action.equals("textsearch")) {
+				String searchtitle = request.getParameter("searchtitle");
+				List<MembersBean> list = tdao.findAllTextbooks(searchtitle);
+				request.setAttribute("show", list);
+				gotoPage(request, response, "/ad-main-input.jsp");
+			} else if (action.equals("textdelete")) {
+				int text_id = Integer.parseInt(request.getParameter("text_id"));
+				tdao.deleteTextbooks(text_id);
+				gotoPage(request, response, "/ad-main-input.jsp");
+			}
 		} catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
