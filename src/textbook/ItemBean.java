@@ -7,7 +7,7 @@ public class ItemBean implements Serializable {
 	private String author;
 	private int price;
 	private String status;
-	private String quantity;
+	private int quantity;
 
 public ItemBean(String title, String author, int price,String status,String quantity) {
 	this.title=title;
@@ -43,8 +43,8 @@ public ItemBean(String title, String author, int price,String status,String quan
 	public String getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setQuantity(int nums) {
+		this.quantity = nums;
 	}
 
 
