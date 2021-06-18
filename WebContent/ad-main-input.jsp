@@ -21,7 +21,7 @@
 <table border=1>
 <tr><td>id</td><td>氏</td><td>名</td><td>email</td><td>削除</td></tr>
 
-<c:forEach items="${show}" var="member">
+<c:forEach items="${showmem}" var="member">
 <tr><td>${member.id}</td><td>${member.last_name}</td>
 <td>${member.first_name}</td><td>${member.email}</td>
 <td>
@@ -42,12 +42,12 @@
 </form>
 
 <table border=1>
-<tr><td>id</td><td>タイトル</td><td>著者名</td><td>分類</td><td>状態</td><td>売値</td><td>備考</td><td>削除</td></tr>
+<tr><td>id</td><td>タイトル</td><td>著者名</td><td>状態</td><td>分類</td><td>売値</td><td>備考</td><td>登録者</td><td>削除</td></tr>
 
-<c:forEach items="${textbooks}" var="text">
-<tr><td>${text.id}</td><td>${text.title}</td>
-<td>${text.category}</td><td>${text.status}</td>
-<td>${text.price}</td><td>${text.info}</td>
+<c:forEach items="${showtext}" var="text">
+<tr><td>${text.id}</td><td>${text.title}</td><td>${text.author}</td>
+<td>${text.status}</td><td>${text.category}</td>
+<td>${text.price}</td><td>${text.info}</td><td>${text.userId}</td>
 <td>
 <form action="/textbook/AdMainPageServlet?action=textdelete" method="post">
 <input type="hidden" name="text_id" value="${text.id}">
