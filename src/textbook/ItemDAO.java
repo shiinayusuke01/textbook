@@ -33,7 +33,7 @@ public List<ItemBean> findAll() throws DAOException{
 			String author=rs.getString("author");
 			int price=rs.getInt("price");
 			String status=rs.getString("status");
-			String quantity=rs.getString("quantity");
+			int quantity=rs.getInt("quantity");
 			ItemBean bean=new ItemBean(title,author, price, status, quantity);
 			list.add(bean);
 		}
