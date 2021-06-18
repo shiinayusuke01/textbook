@@ -1,7 +1,10 @@
 package textbook;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +31,7 @@ public class ChangeTextbookServlet extends HttpServlet {
 	 * @param change
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response, Object change) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TextBookDAO dao = null;
 		HttpSession session = null;
 
@@ -40,8 +43,8 @@ public class ChangeTextbookServlet extends HttpServlet {
 
 		try {
 			String action =request.getParameter("action");
-			if (action == null || action.length() == 0 || action.equals("top")) {
-				gotoPage(request, response, "/main-input.jsp");
+			if (action == null || action.length() == 0) {
+				gotoPage(request, response, "/regist-textbook.jsp");
 			} else if(action.equals("reg")) {
 				String title = request.getParameter("title");
 				String author = request.getParameter("author");
@@ -56,7 +59,7 @@ public class ChangeTextbookServlet extends HttpServlet {
 					session = request.getSession();
 					session.setAttribute("isLogin", "true");
 					session.setAttribute("tetbeen", bean);
-					gotoPage(request, response, "/form-textbook.jsp");
+					gotoPage(request, response, "/newreg-meesage.jsp");
 			    } else {
 					request.setAttribute("message", "教科書が正しく登録されていません。");
 					gotoPage(request, response, "/errInternal.jsp");
@@ -90,9 +93,12 @@ public class ChangeTextbookServlet extends HttpServlet {
 					}
 
 			} else if (action.equals("textchange")) {
-				TextbookBean bean = dao.findMyTextbook();
-				request.setAttribute("textbook", bean);
-				gotoPage(request, response, "/textbook/regist-textbooko.jsp");
+				session = request.getSession(false);
+				MembersBean beans = (MembersBean) session.getAttribute("membean");
+				List<TextbookBean> list = new ArrayList<TextbookBean>();
+				list = dao.findMyTextbook(beans);
+				request.setAttribute("textbook", list);
+				gotoPage(request, response, "/regist-textbook.jsp");
 			} else if (action.equals("delete")) {
 				    session = request.getSession(false);
 				    TextbookBean bean = (TextbookBean) session.getAttribute("txtbean");
@@ -100,7 +106,6 @@ public class ChangeTextbookServlet extends HttpServlet {
 					dao.deletetextbook(bean.getId());
 					request.setAttribute("message", "登録教科書を削除しました。");
 					gotoPage(request, response, "/delete-message.jsp");
-
 			} else {
 				request.setAttribute("message", "正しく操作してください。");
 				gotoPage(request, response, "/errInternal.jsp");
@@ -112,9 +117,11 @@ public class ChangeTextbookServlet extends HttpServlet {
 			gotoPage(request, response, "/errInternal.jsp");
 		}
 	}
-	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String string) {
-		// TODO 自動生成されたメソッド・スタブ
 
+	private void gotoPage(HttpServletRequest request,
+			HttpServletResponse response, String page) throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(page);
+		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
