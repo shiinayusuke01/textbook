@@ -144,19 +144,21 @@ public class TextBookDAO {
 
 			List<TextbookBean> list = new ArrayList<TextbookBean>();
 			while (rs.next()) {
-				    title = rs.getString("title");
-				    String author = rs.getString("author");
-				    int category = rs.getInt("category");
-				    String status = rs.getString("status");
-				    int price = rs.getInt("price");
-				    String info = rs.getString("info");
-				    int userId=rs.getInt("userId");
+				int id = rs.getInt("id");
+				title = rs.getString("title");
+				String author = rs.getString("author");
+				int category = rs.getInt("category");
+				String status = rs.getString("status");
+				int price = rs.getInt("price");
+				String info = rs.getString("info");
+				int userId=rs.getInt("user_id");
 
-				    TextbookBean bean = new TextbookBean(title, author,category,status,price, info, userId);
+				    TextbookBean bean = new TextbookBean(id, title, author,category,status,price, info, userId);
 				    list.add(bean);
 			}
 			return list;
 		} catch (SQLException e){
+			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました");
 		} finally {
 			try {
