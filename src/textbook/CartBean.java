@@ -16,18 +16,18 @@ public class CartBean {
 		}
 
 		public void addCart(ItemBean bean, int nums) {
-			ItemBean item = (ItemBean) items.get(Integer.valueOf(bean.getCode()));
+			ItemBean item = (ItemBean) items.get(Integer.valueOf(bean.gettitle()));
 			if (item == null) {
 				bean.setQuantity(nums);
-				items.put(Integer.valueOf(bean.getCode()), bean);
+				items.put(Integer.valueOf(bean.gettitle()), bean);
 			} else {
 				item.setQuantity(nums + item.getQuantity());
 			}
 			recalcTotal();
 		}
 
-		public void deleteCart(int itemCode) {
-			items.remove(Integer.valueOf(itemCode));
+		public void deleteCart(int itemＩｄ) {
+			items.remove(Integer.valueOf(itemＩｄ));
 			recalcTotal();
 		}
 
