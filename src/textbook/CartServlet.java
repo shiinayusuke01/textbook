@@ -1,6 +1,8 @@
 package textbook;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,30 +31,51 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<TextbookBean> list = new ArrayList<TextbookBean>();
+
+
 		try {
 			String action =request.getParameter("action");
-			if (action == null || action.length() == 0 || action.equals("show")) {
+			if (action == null || action.length() == 0) {
 				gotoPage(request, response, "/cart.jsp");
 			} else if(action.equals("add")) {
 				int id = Integer.parseInt(request.getParameter("text-id"));
-				HttpSession session = request.getSession(true);
+				HttpSession session = request.getSession(false);
 				CartBean cart = (CartBean) session.getAttribute("cart");
 
 				if(cart == null) {
 					cart = new CartBean();
 					session.setAttribute("cart", cart);
-			}
+				}
+
 				TextBookDAO dao = new TextBookDAO();
 				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
-				cart.addCart(bean);
+				list.add(bean);
+				session.setAttribute("cart", list);
 				gotoPage(request, response, "/cart.jsp");
-			}else if(action.equals("delete")){
+
+			} else if(action.equals("addtext")) {
+					int id = Integer.parseInt(request.getParameter("textid"));
+					HttpSession session = request.getSession(false);
+					CartBean cart = (CartBean) session.getAttribute("cart");
+
+					if(cart == null) {
+						cart = new CartBean();
+						session.setAttribute("cart", cart);
+					}
+
+					TextBookDAO dao = new TextBookDAO();
+					TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
+					list.add(bean);
+					session.setAttribute("cart", bean);
+					gotoPage(request, response, "/cart.jsp");
+			} else if(action.equals("delete")){
 				HttpSession session = request.getSession(false);
 				if(session == null) {
 					request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
 					gotoPage(request, response, "/errInternal.jsp");
 					return;
-			}
+				}
 				CartBean cart = (CartBean) session.getAttribute("cart");
 				if(cart == null) {
 					request.setAttribute("message", "正しく操作してください。");
@@ -77,6 +100,14 @@ public class CartServlet extends HttpServlet {
 			HttpServletResponse response, String page) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
+	}
+
+	public int recalcTotal(List<TextbookBean> list) {
+		int total = 0;
+		for (TextbookBean a : list) {
+			total += a.getPrice();
+		}
+		return total;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
