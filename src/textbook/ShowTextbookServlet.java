@@ -10,19 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import textbook.ItemBean;
-import textbook.ItemDAO;
-import textbook.DAOException;
-
 @WebServlet("/ShowTextbookServlet")
 public class ShowTextbookServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	try {
+		String action=request.getParameter("action");
 		ItemDAO dao=new ItemDAO();
 		List<ItemBean>list=dao.findAll();
-	  request.setAttribute("items", list);
+	  request.setAttribute("cart.items", list);
 	  RequestDispatcher rd=request.getRequestDispatcher("/cart.jsp");
 	  rd.forward(request,response);
 	}catch(DAOException e) {
