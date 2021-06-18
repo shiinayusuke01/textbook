@@ -6,16 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>会員メイン</title>
 </head>
 <body>
-
-
-<h2>会員専用メイン画面</h2>
+<h1>会員メイン</h1>
 <br>
-<a href="/textbook/form-textbook.jsp">新規教科書登録</a>
+<a href="/textbook/form-textbook.jsp">登録</a>
 <br>
-<a href="/textbook/regist-textbook.jsp">教科書情報変更・削除</a>
+<a href="/textbook/my-textbook.jsp">変更</a>
 <br>
 <a href="/textbook/mem-info-change.jsp">会員情報変更</a>
 <br>
@@ -29,23 +27,19 @@
 <br>
 <br>
 
-<h3>検索</h3>（教科書タイトルを入力してください）
 
-<br>
-<br>
+
+
+
+<h5>会員メイン画面</h5>
 <form action="/textbook/MainPageServlet" method="post">
-<input type="text" name="title">
+<input type="text" name="searchname">
 <input type="hidden" name="action" value="search">
 <input type="submit" value="検索">
 </form>
 
-<br>
-<br>
-
-<h2>検索結果</h2>
-
-<table border="1">
-  <tr>
+<table border=1>
+<tr>
     <td>title</td>
     <td>author</td>
     <td>category</td>
@@ -53,32 +47,22 @@
     <td>status</td>
     <td>info</td>
     <td>userId</td>
-  </tr>
-<c:forEach items="${list}" var="TextbookBean">
-  <tr>
-    <td>${TextbookBean.title}</td>
-    <td>${TextbookBean.author}</td>
-    <td>${TextbookBean.category}</td>
-    <td>${TextbookBean.price}</td>
-    <td>${TextbookBean.status}</td>
-    <td>${TextbookBean.info}</td>
-    <td>${TextbookBean.userId}</td>
-
- <td>
- <form action="/textbook/cart.jsp" method="post">
-  <input type="hidden" name="action" value="add">
-  <input type="submit" value="カートに追加"></form>
-  </td>
+    <td>カートに追加</td>
   </tr>
 
+<c:forEach items="${show}" var="Textbook">
+<tr><td>${Textbook.title}</td><td>${Textbook.author}</td>
+<td>${Textbook.category}</td><td>${Textbook.price}</td>
+<td>${Textbook.status}</td><td>${Textbook.info}</td>
+<td>${Textbook.userId}</td>
+<td>
+<form action="/Textbook/MainPageServlet?action=textadd" method="post">
+<input type="hidden" name="Textbook_id" value="${Textbook.id}">
+<input type="submit" value="カートに追加する">
+</form></td></tr>
 
 </c:forEach>
+
 </table>
-
-
-<br/>
-
-
 </body>
 </html>
-
