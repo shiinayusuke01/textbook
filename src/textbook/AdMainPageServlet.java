@@ -30,9 +30,11 @@ public class AdMainPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MembersDAO dao = null;
+		TextBookDAO tdao = null;
 
 		try {
 			dao = new MembersDAO();
+			tdao = new TextBookDAO();
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +60,7 @@ public class AdMainPageServlet extends HttpServlet {
 				gotoPage(request, response, "/ad-main-input.jsp");
 			} else if (action.equals("textdelete")) {
 				int text_id = Integer.parseInt(request.getParameter("text_id"));
-				tdao.deleteTextbooks(text_id);
+				tdao.deletetextbook(text_id);
 				gotoPage(request, response, "/ad-main-input.jsp");
 			}
 		} catch (DAOException e) {
