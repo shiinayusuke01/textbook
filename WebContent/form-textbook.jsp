@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録教科書の変更</title>
+<title>登録教科書の登録</title>
 </head>
 <body>
 ${textbook.title}
