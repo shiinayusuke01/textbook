@@ -70,13 +70,11 @@ public class ChangeTextbookServlet extends HttpServlet {
 			    int price = Integer.parseInt(request.getParameter("price"));
 				String info = request.getParameter("info");
 				String status = request.getParameter("status");
-				int userId = Integer.parseInt(request.getParameter("userId"));
 
-				if (title == null || author == null || category == 0 || price == 0 || info == null || status == null || userId == 0) {
+				if (title == null || author == null || category == 0 || price == 0 || info == null || status == null) {
 					request.setAttribute("message", "変更情報はすべて入力してください。");
 					gotoPage(request, response, "/errInternal.jsp");
 				} else {
-					if (change.equals(change)) {
 						TextbookBean bean = (TextbookBean) session.getAttribute("txtbean");
 						bean.setTitle(title);
 						bean.setAuthor(author);
@@ -84,18 +82,12 @@ public class ChangeTextbookServlet extends HttpServlet {
 						bean.setPrice(price);
 						bean.setInfo(info);
 						bean.setStatus(status);
-						bean.setUserId(userId);
 
 						dao = new TextBookDAO();
 					    dao.changeTextbook(bean);
 						request.setAttribute("message", "変更できました!");
 						gotoPage(request, response, "/memch-message.jsp");
-					} else {
-						request.setAttribute("message", "入力された値は使用できません。");
-						gotoPage(request, response, "/errInternal.jsp");
 					}
-
-				}
 
 			} else if (action.equals("textchange")) {
 				TextbookBean bean = dao.findMyTextbook();
@@ -105,7 +97,7 @@ public class ChangeTextbookServlet extends HttpServlet {
 				    session = request.getSession(false);
 				    TextbookBean bean = (TextbookBean) session.getAttribute("txtbean");
 					dao = new TextBookDAO();
-					dao.deletetextbook(bean);
+					dao.deletetextbook(bean.getId());
 					request.setAttribute("message", "登録教科書を削除しました。");
 					gotoPage(request, response, "/delete-message.jsp");
 

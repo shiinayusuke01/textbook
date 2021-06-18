@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class TextbookBean implements Serializable {
 	private int id;
 	private String title;
-	private String autor;
 	private int category;
 	private String author;
 	private String status;
@@ -16,7 +15,7 @@ public class TextbookBean implements Serializable {
 	public TextbookBean(int id, String title, String author, int category, String status, int price,  String info, int userId) {
 		this.id = id;
 		this.title = title;
-		this.autor = author;
+		this.author = author;
 		this.category = category;
 		this.status = status;
 		this.price = price;
@@ -32,6 +31,19 @@ public class TextbookBean implements Serializable {
 		this.status = status;
 		this.price = price;
 		this.info = info;
+	}
+
+
+
+	public TextbookBean(String title, String author, int category, String status, int price, String info, int userId) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
 	}
 
 	public TextbookBean() {
@@ -93,14 +105,24 @@ public class TextbookBean implements Serializable {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+
 //	@Override
 //	public String toString(){
 //		return new StringBuilder().append(thi)
 //	}
 
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setUserId(String userId) {
 		// TODO 自動生成されたメソッド・スタブ
 
 	}
-	}
+}

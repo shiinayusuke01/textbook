@@ -17,12 +17,17 @@
 		<tr><td>タイトル</td><td>著者名</td><td>分類</td><td>値段</td></tr>
 		<c:forEach items="${textbook}" var="text">
 
-			<form action="/textbook/ChangeTextbookServlet" method="get">
-				<tr><td>${text.title}</td><td>${text.author}</td><td>${text.category}</td><td>${text.price}</td></tr>
+			<tr>
+				<td>${text.title}</td><td>${text.author}</td><td>${text.category}</td>
+				<td>${text.price}</td>
+				<td>
+			<form action="/textbook/ChangeTextbookServlet?action=change" method="get">
+		    	<input type="submit" value="変更"></form></td>
+		    	<td>
+		    <form action="/textbook/ChangeTextbookServlet?action=delete" method="get">
+		    	<input type="submit" value="削除"></form></td>
 
-		    	<input type="submit" value="変更">
-		    	<input type="submit" value="削除">
-	   		</form>
+	   		</tr>
       	</c:forEach>
 	</table>
 

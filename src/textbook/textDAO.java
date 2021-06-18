@@ -11,9 +11,6 @@ import java.util.List;
 
 public class textDAO {
 	private Connection con;
-	private String title;
-	private ResultSet rs;
-	private TextbookBean TextbookBean;
 
 	public textDAO() throws DAOException {
 		getConnection();

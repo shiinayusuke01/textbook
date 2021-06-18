@@ -91,44 +91,7 @@ public class TextBookDAO {
 	    	}
 	    }
 	  }
-	     public List<ItemBean> findByCategory(int categoryCode)
 
-	    throws DAOException {
-	    	 if (con == null)
-	     		getConnection();
-
-	    	 PreparedStatement st = null;
-	     	ResultSet rs = null;
-	     	try {
-
-	     		String sql = "SELECT * FROM item WHERE category_code = ? ORDER BY code";
-	     		st = con.prepareStatement(sql);
-	     		st.setInt(1, categoryCode);
-	     		rs = st.executeQuery();
-
-	     		 List<TextbookBeann> list =new ArrayList<TextbookBean>();
-	     		 while(rs.next()) {
-	     			 int code = rs.getInt("code");
-	     			 String name = rs.getString("name");
-	     			 int price = rs.getInt("price");
-	     			 String quantity = rs.getString("quantity");
-	     			 TextbookBean bean = new TextbookBean(code, name, price, quantity);
-	     			 list.add(bean);
-	     		 }
-	     		 return list;
-	     	} catch (Exception e) {
-	     		e.printStackTrace();
-	 			throw new DAOException("レコードの取得に失敗しました。");
-	     } finally {
-	     	try {
-	     		if (rs != null) rs.close();
-	     		if (st != null) st.close();
-	     			close();
-	     	}catch(Exception e) {
-	     		throw new DAOException("リソースの開放に失敗しました。");
-	     	}
-	     }
-	   }
 
 	    public TextbookBean findMyTextbook() throws DAOException{
 	    	if(con == null)
@@ -167,7 +130,86 @@ public class TextBookDAO {
 	     }
 	   }
 
-	public int changeTextbook(String title, String author, int category, String status, int price, String info, int userId )
+	    public List<TextbookBean> findAll(String title) throws DAOException {
+			if (con == null)
+			getConnection();
+			PreparedStatement st = null;
+			ResultSet rs = null;
+
+		try {
+			String sql ="select * from textbooks where title like ?";
+			st=con.prepareStatement(sql);
+			st.setString(1, "%" + title +"%");
+			rs = st.executeQuery();
+
+			List<TextbookBean> list = new ArrayList<TextbookBean>();
+			while (rs.next()) {
+				    title = rs.getString("title");
+				    String author = rs.getString("author");
+				    int category = rs.getInt("category");
+				    String status = rs.getString("status");
+				    int price = rs.getInt("price");
+				    String info = rs.getString("info");
+				    int userId=rs.getInt("userId");
+
+				    TextbookBean bean = new TextbookBean(title, author,category,status,price, info, userId);
+				    list.add(bean);
+			}
+			return list;
+		} catch (SQLException e){
+			throw new DAOException("レコードの取得に失敗しました");
+		} finally {
+			try {
+				if (st != null) {
+					st.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+				close();
+			} catch (SQLException e) {
+				throw new DAOException("リソースの開放に失敗しました");
+			}
+		  }
+	   }
+
+	    public TextbookBean showAllTextbooks() throws DAOException{
+	    	if(con == null)
+	    		getConnection();
+
+	    	PreparedStatement st = null;
+	    	ResultSet rs = null;
+	    	TextbookBean bean = new TextbookBean();
+			try {
+	     		String sql = "SELECT * FROM textbooks";
+	     		st = con.prepareStatement(sql);
+	     		rs = st.executeQuery();
+	     		while (rs.next()) {
+					 String title = rs.getString("title");
+					 String author = rs.getString("author");
+					 int category =rs.getInt("category");
+					 int price =rs.getInt("price");
+					 String info = rs.getString("info");
+					 String status = rs.getString("status");
+					 int userid = rs.getInt("user_id");
+
+					 bean = new TextbookBean(title, author, category, status, price, info, userid);
+	     		}
+	     			return bean;
+	     	} catch (Exception e) {
+	 			throw new DAOException("レコードの取得に失敗しました。");
+	     	} finally {
+	     		try {
+	     		if (rs != null) rs.close();
+	     		if (st != null) st.close();
+	     			close();
+	     		}catch(Exception e) {
+	     		throw new DAOException("リソースの開放に失敗しました。");
+	     	}
+	     }
+	   }
+
+	public int changeTextbook(TextbookBean bean)
 	throws DAOException{
 		if (con == null)
 			getConnection();
@@ -177,18 +219,15 @@ public class TextBookDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "UPDATE textbooks SET(?, ?, ?, ?, ?, ?, ?)";
+			String sql = "UPDATE textbooks SET title=?, author=?, category=?, status=?, price=?, info=?";
 			st = con.prepareStatement(sql);
 
-			st.setString(1, title);
-			st.setString(2, author);
-			st.setInt(3, category);
-			st.setString(4, status);
-			st.setInt(5, price);
-			st.setString(6, info);
-			st.setInt(7, userId);
-
-
+			st.setString(1, bean.getTitle());
+			st.setString(2, bean.getAuthor());
+			st.setInt(3, bean.getCategory());
+			st.setString(4, bean.getStatus());
+			st.setInt(5, bean.getPrice());
+			st.setString(6, bean.getInfo());
 
 			// SQLの実行
 			int rows = st.executeUpdate();
@@ -210,52 +249,8 @@ public class TextBookDAO {
 		}
 	}
 
-	public List<TextbookBean> selectByUserId(int userId)throws DAOException{
-		if(con == null)
-    		getConnection();
 
-    	PreparedStatement st = null;
-    	ResultSet rs = null;
-		try {
-     		String sql = "SELECT * FROM textbooks WHERE user_id = ?";
-     		st = con.prepareStatement(sql);
-     		st.setInt(1, userId);
-     		rs = st.executeQuery();
-
-
-     		List<TextbookBean> list = new ArrayList<TextbookBean>();
-     		while(rs.next()) {
-				String title = rs.getString("title");
-				String author = rs.getString("author");
-				int category = rs.getInt("category");
-				String status = rs.getString("status");
-				int price = rs.getInt("price");
-				String info = rs.getString("info");
-
-				System.out.println(title);
-				System.out.println(author);
-				System.out.println(category);
-				System.out.println(status);
-
-				TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userId);
-				list.add(bean);
-     		}
-     		return list;
-     	} catch (Exception e) {
- 			throw new DAOException("レコードの取得に失敗しました。");
-     	} finally {
-     		try {
-     		if (rs != null) rs.close();
-     		if (st != null) st.close();
-     			close();
-     		}catch(Exception e) {
-     			throw new DAOException("リソースの開放に失敗しました。");
-     		}
-     	}
-	}
-	public int deletetextbook(String title, String author, int category, String status, int price, String info, int userId ) throws DAOException{
-
-		System.out.println(status);
+	public int deletetextbook(int id) throws DAOException{
 
 		if (con == null)
 			getConnection();
@@ -265,19 +260,12 @@ public class TextBookDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "DELETE FROM textbooks WHERE(?, ?, ?, ?, ?, ?, ?)";
+			String sql = "DELETE FROM textbooks WHERE id = ?";
 			st = con.prepareStatement(sql);
-			st.setString(1, title);
-			st.setString(2, author);
-			st.setInt(3, category);
-			st.setString(4, status);
-			st.setInt(5, price);
-			st.setString(6, info);
-			st.setInt(7, userId);
+			st.setInt(1, id);
 
 			// SQLの実行
 			int rows = st.executeUpdate();
-
 			// カテゴリ一覧をListとして返す
 			return rows;
 		} catch (Exception e) {
@@ -294,6 +282,7 @@ public class TextBookDAO {
 			}
 		}
 	}
+
 	private void getConnection() throws DAOException {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -319,13 +308,4 @@ public class TextBookDAO {
 		}
 	}
 
-	public void deletetextbook(TextbookBean bean) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	public void changeTextbook(TextbookBean bean) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
 }
