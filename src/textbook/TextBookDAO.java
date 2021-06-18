@@ -147,19 +147,21 @@ public class TextBookDAO {
 
 			List<TextbookBean> list = new ArrayList<TextbookBean>();
 			while (rs.next()) {
-				    title = rs.getString("title");
-				    String author = rs.getString("author");
-				    int category = rs.getInt("category");
-				    String status = rs.getString("status");
-				    int price = rs.getInt("price");
-				    String info = rs.getString("info");
-				    int userId=rs.getInt("userId");
+				int id = rs.getInt("id");
+				title = rs.getString("title");
+				String author = rs.getString("author");
+				int category = rs.getInt("category");
+				String status = rs.getString("status");
+				int price = rs.getInt("price");
+				String info = rs.getString("info");
+				int userId=rs.getInt("user_id");
 
-				    TextbookBean bean = new TextbookBean(title, author,category,status,price, info, userId);
+				    TextbookBean bean = new TextbookBean(id, title, author,category,status,price, info, userId);
 				    list.add(bean);
 			}
 			return list;
 		} catch (SQLException e){
+			e.printStackTrace();
 			throw new DAOException("レコードの取得に失敗しました");
 		} finally {
 			try {
@@ -253,7 +255,7 @@ public class TextBookDAO {
 	}
 
 
-	public int deletetextbook(int id) throws DAOException{
+	public int deleteTextbook(int id) throws DAOException{
 
 		if (con == null)
 			getConnection();
@@ -303,6 +305,46 @@ public class TextBookDAO {
 			throw new DAOException("接続に失敗しました。");
 		}
 	}
+    public List<TextbookBean> selectByUserId(int userId)throws DAOException{
+        if(con == null)
+        getConnection();
+
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+        String sql = "SELECT * FROM textbooks WHERE user_id = ?";
+        st = con.prepareStatement(sql);
+        st.setInt(1, userId);
+        rs = st.executeQuery();
+
+
+        List<TextbookBean> list = new ArrayList<TextbookBean>();
+        while(rs.next()) {
+        		int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                int category = rs.getInt("category");
+                String status = rs.getString("status");
+                int price = rs.getInt("price");
+                String info = rs.getString("info");
+
+                TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
+                list.add(bean);
+        }
+        return list;
+        } catch (Exception e) {
+                throw new DAOException("レコードの取得に失敗しました。");
+        } finally {
+        try {
+	        if (rs != null) rs.close();
+	        if (st != null) st.close();
+	                close();
+        	}catch(Exception e) {
+                throw new DAOException("リソースの開放に失敗しました。");
+        	}
+        }
+	}
+
 
 	private void close() throws SQLException {
 		if (con != null) {

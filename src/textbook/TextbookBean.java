@@ -49,7 +49,6 @@ public class TextbookBean implements Serializable {
 	public TextbookBean() {
 		super();
 	}
-
 	public String getTitle() {
 		return title;
 	}

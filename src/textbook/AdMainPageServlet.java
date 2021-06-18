@@ -46,8 +46,8 @@ public class AdMainPageServlet extends HttpServlet {
 				gotoPage(request, response, "/newlogin.jsp");
 			} else if (action.equals("memsearch")) {
 				String searchname = request.getParameter("searchname");
-				List<MembersBean> list = dao.findAllMembers(searchname);
-				request.setAttribute("show", list);
+				List<MembersBean> memlist = dao.findAllMembers(searchname);
+				request.setAttribute("showmem", memlist);
 				gotoPage(request, response, "/ad-main-input.jsp");
 			} else if (action.equals("memdelete")) {
 				int mem_id = Integer.parseInt(request.getParameter("mem_id"));
@@ -55,8 +55,8 @@ public class AdMainPageServlet extends HttpServlet {
 				gotoPage(request, response, "/ad-main-input.jsp");
 			}else if (action.equals("textsearch")) {
 				String searchtitle = request.getParameter("searchtitle");
-				List<MembersBean> list = tdao.findAllTextbooks(searchtitle);
-				request.setAttribute("show", list);
+				List<TextbookBean> textlist = tdao.findAll(searchtitle);
+				request.setAttribute("showtext", textlist);
 				gotoPage(request, response, "/ad-main-input.jsp");
 			} else if (action.equals("textdelete")) {
 				int text_id = Integer.parseInt(request.getParameter("text_id"));

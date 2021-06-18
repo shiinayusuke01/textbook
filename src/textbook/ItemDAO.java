@@ -20,13 +20,13 @@ public List<ItemBean> findAll() throws DAOException{
 	if(con == null)
 		getConnection();
 
-	PreparedStatement st=null;
+	PreparedStatement st = null;
 	ResultSet rs=null;
 	try{
-		String sql ="SELECT *FROM textbooks";
+		String sql ="SELECT * FROM textbooks";
 
-		st.con.prepareStatement(sql);
-		rs=st.executeQuery();
+		st = con.prepareStatement(sql);
+		rs = st.executeQuery();
 		List<ItemBean>list=new ArrayList<ItemBean>();
 		while(rs.next()) {
 			String title=rs.getString("title");
@@ -57,16 +57,20 @@ public List<ItemBean> findAll() throws DAOException{
 private void getConnection()throws DAOException{
 	try {
 		Class.forName("org.postgresql.Driver");
-
-		String url="jdbc:postgresql:sample student";
-		String user="student";
-		String pass="humitu";
-				con=DriverManager.getConnection(url,user,pass);
-	}catch(Exception e) {
-		e.printStackTrace();
-		throw new DAOException("接続できません。");
-		}
+	} catch (ClassNotFoundException e) {
+		throw new DAOException("接続に失敗しました。");
 	}
+
+	String url = "jdbc:postgresql:sample";
+	String user = "student";
+	String pass = "himitu";
+
+	try {
+		con = DriverManager.getConnection(url, user, pass);
+	} catch (SQLException e) {
+		throw new DAOException("接続に失敗しました。");
+	}
+}
 private void close() throws SQLException{
 	if(con !=null) {
 		con.close();
