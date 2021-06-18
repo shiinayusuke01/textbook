@@ -15,7 +15,7 @@
 <input type="submit" value="新規教科書登録">
 </form>
 <br>
-<form action="/textbook/my-textbook.jsp" method="post">
+<form action="/textbook/showMyTextbook" method="post">
 <input type="submit" value="登録済み教科書情報変更・削除">
 </form>
 <br>
@@ -69,7 +69,7 @@
 
 
 <form action="/Textbook/CartServlet?action=add" method="post">
-<input type="hidden" name="Textbook_id" value="${Textbook.id}">
+<input type="hidden" name="Text-id" value="${Textbook.id}">
 <input type="submit" value="カートに追加する">
 </form></td></tr>
 
@@ -95,11 +95,10 @@
 <td>${Text.status}</td><td>${Text.info}</td>
 <td>${Text.userId}</td>
 <td>
-<form action="/Textbook/MainPageServlet?action=textadd" method="post">
-<input type="hidden" name="Textbook_id" value="${Text.id}">
+<form action="/Textbook/CartServlet?action=add" method="post">
+<input type="hidden" name="Text-id" value="${Textbook.id}">
 <input type="submit" value="カートに追加する">
 </form></td></tr>
-
 </c:forEach>
 
 </table>
