@@ -5,22 +5,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>購入手続き</title>
+<title>最終確認</title>
 </head>
 <body>
-<a>支払い方法を選択してください</a>
-<form action="PurchaseServlet">
+<h3>下記の内容で注文を行いますか？</h3>
+<h3>教科書情報</h3>
+<c:if test="${not empty cart.items}">
+	<table border="1">
+	<tr><td>タイトル</td><td>著者名</td><td>値段</td><td>状態</td><td>備考</td>
+    <td>削除</td>
+
+<c:forEach items="${cart.items}" var="item">
+		<tr>
+		<td align="center">${item.value.title}</td>
+		<td align="center">${item.value.author}</td>
+		<td align="right">${item.value.price}円</td>
+		<td align="right">${item.value.status}</td>
+		<td align="right">${item.value.info}</td>
+		<td>
+	<form action="/textbook/CartServlet?action=delete" method="post">
+	<a>支払い方法を選択してください</a>
 	<input type="radio" name="pay" value="card"> クレジットカード
 	<input type="radio" name="pay" value="debit"> デビットカード
 	<input type="radio" name="pay" value="cash"> 現金
-</form>
+	</form>
 
-<a>最終確認</a>
+		</td>
+		</tr>
+</c:forEach>
+		<tr><td align="right" colspan="6">支払金額：${cart.total}円</td></tr>
+	</table>
+<h3>お客様情報</h3>
+<form action="/textbook/CartServlet?action=delete" method="post"></form>
+	<table border="1">
+	<tr><td>氏</td><td>${member.last_name}</td>
+	</tr>
+	<tr>
+	<tr><td>名</td><td>${member.first_name}</td>
+	</tr>
+	<tr>
+	<td>発送先住所</td><td>${member.address}</td>
+	</tr>
+	<tr>
+	<tr><td>電話番号</td><td>${member.tel}</td>
+	</tr>
+	<tr>
+	<tr><td>e-mail</td><td>${member.email}</td>
+	</tr>
+	</table><br>
+	<form>
+	<input type="submit" value="この注文内容で注文">
+	</form>
 
-<a>支払金額</a>
-<a>教科書情報</a>
-<a>名前</a>
-<a>発送先住所</a>
-<a>電話番号</a>
+	</c:if>
 </body>
 </html>

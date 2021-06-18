@@ -124,4 +124,9 @@ public class TextbookBean implements Serializable {
 		// TODO 自動生成されたメソッド・スタブ
 
 	}
+
+	public int getQuantity() {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
 }
