@@ -33,7 +33,7 @@
 
 
 <br>
-<a href="/textbook/cart.jsp">カート/購入ぺーじへ</a>
+<a href="/textbook/cart.jsp">カート/購入ページへ</a>
 <br>
 <br>
 
@@ -43,7 +43,11 @@
 <input type="hidden" name="action" value="search">
 <input type="submit" value="検索">
 </form>
+<br>
+<br>
 
+
+<br>
 <table border=1>
 <tr>
     <td>title</td>
@@ -62,12 +66,16 @@
 <td>${Textbook.status}</td><td>${Textbook.info}</td>
 <td>${Textbook.userId}</td>
 <td>
-<form action="/Textbook/MainPageServlet?action=textadd" method="post">
+
+
+<form action="/Textbook/CartServlet?action=add" method="post">
 <input type="hidden" name="Textbook_id" value="${Textbook.id}">
 <input type="submit" value="カートに追加する">
 </form></td></tr>
 
 </c:forEach>
+
+<h2>販売中教科書一覧</h2>
 
 </table>
 <table border=1>
