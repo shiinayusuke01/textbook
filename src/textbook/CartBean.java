@@ -5,29 +5,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CartBean {
-	private Map<Integer, ItemBean> items = new HashMap<Integer, ItemBean>();
+	private Map<Integer, TextbookBean> items = new HashMap<Integer, TextbookBean>();
 	private int total;
 
 		public CartBean(){
 		}
 
-		public Map<Integer, ItemBean> getItems(){
+		public Map<Integer, TextbookBean> getItems(){
 			return items;
 		}
 
-		public void addCart(ItemBean bean, int nums) {
-			ItemBean item = (ItemBean) items.get(Integer.valueOf(bean.gettitle()));
+		public void addCart(TextbookBean bean) {
+			TextbookBean item = (TextbookBean) items.get(Integer.valueOf(bean.getId()));
 			if (item == null) {
-				bean.setQuantity(nums);
-				items.put(Integer.valueOf(bean.gettitle()), bean);
-			} else {
-				item.setQuantity(nums + item.getQuantity());
+				items.put(Integer.valueOf(bean.getId()), bean);
 			}
 			recalcTotal();
 		}
 
-		public void deleteCart(int itemＩｄ) {
-			items.remove(Integer.valueOf(itemＩｄ));
+		public void deleteCart(int textId) {
+			items.remove(Integer.valueOf(textId));
 			recalcTotal();
 		}
 
@@ -37,9 +34,9 @@ public class CartBean {
 
 		private void recalcTotal() {
 			total=0;
-			Collection<ItemBean> list = items.values();
-			for (ItemBean item : list) {
-				total += item.getPrice() * item.getQuantity();
+			Collection<TextbookBean> list = items.values();
+			for (TextbookBean item : list) {
+				total += item.getPrice();
 			}
 		}
 }
