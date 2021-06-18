@@ -106,13 +106,13 @@ public class TextBookDAO {
 	     		st.setInt(1, categoryCode);
 	     		rs = st.executeQuery();
 
-	     		 List<ItemBean> list =new ArrayList<ItemBean>();
+	     		 List<TextbookBeann> list =new ArrayList<TextbookBean>();
 	     		 while(rs.next()) {
 	     			 int code = rs.getInt("code");
 	     			 String name = rs.getString("name");
 	     			 int price = rs.getInt("price");
 	     			 String quantity = rs.getString("quantity");
-	     			 TextbookBean bean = new TextbookBean(quantity, quantity, code, name, price, quantity, price);
+	     			 TextbookBean bean = new TextbookBean(code, name, price, quantity);
 	     			 list.add(bean);
 	     		 }
 	     		 return list;
@@ -130,35 +130,30 @@ public class TextBookDAO {
 	     }
 	   }
 
-	    public ItemBean findByPrimaryKey(int key) throws DAOException{
+	    public TextbookBean findMyTextbook() throws DAOException{
 	    	if(con == null)
 	    		getConnection();
 
 	    	PreparedStatement st = null;
 	    	ResultSet rs = null;
+	    	TextbookBean bean = new TextbookBean();
+	    	MembersBean beans = new MembersBean();
 			try {
-	     		String sql = "SELECT * FROM item WHERE code = ?";
+	     		String sql = "SELECT * FROM textbooks WHERE user_id = ?";
 	     		st = con.prepareStatement(sql);
-	     		st.setInt(1, key);
+	     		st.setInt(1, beans.getId());
 	     		rs = st.executeQuery();
-
-	     		if(rs.next()) {
-	     			 int code = rs.getInt("code");
-	     			 String name = rs.getString("name");
-	     			 int price = rs.getInt("price");
-	     			 String quantity = rs.getString("quantity");
-	     			 int userId = Integer.parseInt(rs.getString("quantity"));
+	     		while (rs.next()) {
 					 String title = rs.getString("title");
 					 String author = rs.getString("author");
 					 int category =Integer.parseInt(rs.getString("category"));
+					 int price =Integer.parseInt(rs.getString("price"));
 					 String info = rs.getString("info");
 					 String status = rs.getString("status");
-					 TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userId);
-	     			 list.add(bean);
-	     			return bean;
-	     		}else {
-	     			return null;
+
+					 bean = new TextbookBean(title, author, category, status, price, info);
 	     		}
+	     			return bean;
 	     	} catch (Exception e) {
 	 			throw new DAOException("レコードの取得に失敗しました。");
 	     	} finally {
@@ -230,7 +225,6 @@ public class TextBookDAO {
 
      		List<TextbookBean> list = new ArrayList<TextbookBean>();
      		while(rs.next()) {
-     			int id = rs.getInt("id");
 				String title = rs.getString("title");
 				String author = rs.getString("author");
 				int category = rs.getInt("category");
@@ -243,7 +237,7 @@ public class TextBookDAO {
 				System.out.println(category);
 				System.out.println(status);
 
-				TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
+				TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userId);
 				list.add(bean);
      		}
      		return list;

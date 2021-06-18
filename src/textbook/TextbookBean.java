@@ -7,10 +7,7 @@ public class TextbookBean implements Serializable {
 	private String title;
 	private String autor;
 	private int category;
-<<<<<<< HEAD
 	private String author;
-=======
->>>>>>> ca68ac322e28ca2e85eae1d366b877eed1dccd54
 	private String status;
 	private int price;
 	private String info;
@@ -25,6 +22,20 @@ public class TextbookBean implements Serializable {
 		this.price = price;
 		this.info = info;
 		this.userId = userId;
+	}
+
+	public TextbookBean(String title, String author, int category, String status, int price, String info) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+	}
+
+	public TextbookBean() {
+		super();
 	}
 
 	public String getTitle() {

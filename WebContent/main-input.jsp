@@ -15,7 +15,7 @@
 <br>
 <a href="/textbook/form-textbook.jsp">新規教科書登録</a>
 <br>
-<a href="/textbook/my-textbook.jsp">教科書情報変更・削除</a>
+<a href="/textbook/my-textbook.jsp?action=textchange">教科書情報変更・削除</a>
 <br>
 <a href="/textbook/mem-info-change.jsp">会員情報変更</a>
 <br>
