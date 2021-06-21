@@ -1,0 +1,12 @@
+@charset "UTF-8";
+header {
+
+	width:80%;
+	height:50px;
+	padding:5px 0;
+	text-align:center;
+	background-image:url("textbook.png") ;
+	background-position:center bottom;
+	background-size: cover;
+
+}

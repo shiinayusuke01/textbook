@@ -12,11 +12,11 @@
 <h1>会員トップページ</h1>
 <h3>${membean.last_name}さんようこそ！</h3>
 <br>
-<form action="/textbook/form-textbook.jsp" method="post">
+<form action="/textbook/regist-textbook.jsp" method="post">
 <input type="submit" value="新規教科書登録">
 </form>
 <br>
-<form action="/textbook/showTextbook" method="post">
+<form action="/textbook/ShowMyTextbook" method="post">
 <input type="submit" value="登録済み教科書情報変更・削除">
 </form>
 <br>
