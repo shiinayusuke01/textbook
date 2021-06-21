@@ -82,9 +82,7 @@ public class MembersServlet extends HttpServlet {
 				String passadd = request.getParameter("passadd");
 				List<String> list = dao.email();
 				String judge = dao.emailcheck(email, list);
-
-
-				if (last_name == null || first_name == null || postal == null || address == null || tel == null || email == null || password == null) {
+				if (last_name == null || last_name.length() <= 0 || first_name == null || first_name.length() <= 0 || postal == null || postal.length() <= 0|| address == null || address.length() <= 0|| tel == null || tel.length() <= 0 || email == null || email.length() <= 0|| password == null || password.length() <= 0) {
 					request.setAttribute("message", "登録情報はすべて入力してください");
 					gotoPage(request, response, "/errInternal.jsp");
 				} else if (judge.equals("out")) {
@@ -117,7 +115,7 @@ public class MembersServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
 
-				if (last_name == null || first_name == null || postal == null || address == null || tel == null || email == null || password == null) {
+				if (last_name == null || last_name.length() <= 0 || first_name == null || first_name.length() <= 0 || postal == null || postal.length() <= 0|| address == null || address.length() <= 0|| tel == null || tel.length() <= 0 || email == null || email.length() <= 0|| password == null || password.length() <= 0) {
 					request.setAttribute("message", "登録情報はすべて入力してください");
 					gotoPage(request, response, "/errInternal.jsp");
 				} else {
