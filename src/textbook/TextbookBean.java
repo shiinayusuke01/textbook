@@ -46,6 +46,15 @@ public class TextbookBean implements Serializable {
 		this.userId = userId;
 	}
 
+
+	public TextbookBean(String title, String author, String status, String info) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.status = status;
+		this.info = info;
+	}
+
 	public TextbookBean() {
 		super();
 	}
@@ -128,5 +137,10 @@ public class TextbookBean implements Serializable {
 	public int getQuantity() {
 		// TODO 自動生成されたメソッド・スタブ
 		return 0;
+	}
+
+	public String replaceAll(String a, String b) {
+		a = b;
+		return a;
 	}
 }

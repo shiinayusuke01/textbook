@@ -79,6 +79,20 @@ public class MembersBean implements Serializable {
 		this.birthday = birthday;
 	}
 
+
+
+	public MembersBean(String last_name, String first_name, String postal, String address, String tel, String email,
+			String password) {
+		super();
+		this.last_name = last_name;
+		this.first_name = first_name;
+		this.postal = postal;
+		this.address = address;
+		this.tel = tel;
+		this.email = email;
+		this.password = password;
+	}
+
 	public MembersBean(String email, String password) {
 		super();
 		this.email = email;
@@ -164,6 +178,11 @@ public class MembersBean implements Serializable {
 
 	public void setDay(String day) {
 		this.day = day;
+	}
+
+	public String replaceAll(String a, String b) {
+		a = b;
+		return a;
 	}
 
 

@@ -43,19 +43,33 @@ public class RegistTextbook extends HttpServlet {
 		int price = Integer.parseInt(request.getParameter("price"));
 		String info = request.getParameter("info");
 
+		String ti = escapeHTML(title);
+		String au = escapeHTML(author);
+		String st = escapeHTML(status);
+		String in = escapeHTML(info);
 
 		PrintWriter out = response.getWriter();
 		out.print(title + category);
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
-			dao.newTextbook(title, author, category, status, price, info, userId );
+			dao.newTextbook(ti, au, category, st, price, in, userId );
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
 
 		gotoPage(request, response, "ShowMyTextbook");
 	}
+
+	public static String escapeHTML(String a) {
+		   if (a == null) return "";
+		   a = a.replaceAll("&", "");
+		   a = a.replaceAll("<", "");
+		   a = a.replaceAll(">", "");
+		   a = a.replaceAll("\"", "");
+		   a = a.replaceAll("'", "");
+		   return a;
+	 }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

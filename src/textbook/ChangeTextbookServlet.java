@@ -52,9 +52,13 @@ public class ChangeTextbookServlet extends HttpServlet {
 		int price = Integer.parseInt(request.getParameter("price"));
 		String info = request.getParameter("info");
 
-		System.out.println(info);
+		String ti = escapeHTML(title);
+		String au = escapeHTML(author);
+		String st = escapeHTML(status);
+		String in = escapeHTML(info);
+		TextbookBean bean = new TextbookBean(ti, au, st, in);
 
-		TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
+		bean = new TextbookBean(id, ti, au, category, st, price, in, userId);
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			dao.changeTextbook(bean);
@@ -63,6 +67,17 @@ public class ChangeTextbookServlet extends HttpServlet {
 		}
 		gotoPage(request, response, "ShowMyTextbook");
 	}
+
+	 public static String escapeHTML(String a) {
+		   if (a == null) return "";
+		   a = a.replaceAll("&", "");
+		   a = a.replaceAll("<", "");
+		   a = a.replaceAll(">", "");
+		   a = a.replaceAll("\"", "");
+		   a = a.replaceAll("'", "");
+		   return a;
+	 }
+
 	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)throws ServletException, IOException{
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);

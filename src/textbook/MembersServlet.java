@@ -49,6 +49,14 @@ public class MembersServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				MembersBean bean = dao.loginMember(email, password);
 				if (bean != null) {
+					String la = escapeHTML(bean.getLast_name());
+					String fi = escapeHTML(bean.getFirst_name());
+					String po = escapeHTML(bean.getPostal());
+					String ad = escapeHTML(bean.getAddress());
+					String te = escapeHTML(bean.getTel());
+					String em = escapeHTML(bean.getEmail());
+					String pa = escapeHTML(bean.getPassword());
+					bean = new MembersBean(la, fi, po, ad, te, em, pa);
 					if (bean.getId() == 0) {
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
@@ -59,7 +67,6 @@ public class MembersServlet extends HttpServlet {
 						session.setAttribute("isLogin", "true");
 						session.setAttribute("membean", bean);
 						gotoPage(request, response, "/MainPageServlet?action=list");
-
 					}
 				} else {
 					request.setAttribute("message", "会員情報が登録されていないか、入力された情報が異なります。");
@@ -88,7 +95,16 @@ public class MembersServlet extends HttpServlet {
 					gotoPage(request, response, "/newmembermessage.jsp");
 				} else {
 					if (passadd.equals(password)) {
-						MembersBean bean = new MembersBean(last_name, first_name, postal, address, tel, email, year, month, day, password);
+						String la = escapeHTML(last_name);
+						String fi = escapeHTML(first_name);
+						String po = escapeHTML(postal);
+						String ad = escapeHTML(address);
+						String te = escapeHTML(tel);
+						String em = escapeHTML(email);
+						String pa = escapeHTML(password);
+						MembersBean bean = new MembersBean(la, fi, po, ad, te, em, pa);
+
+						bean = new MembersBean(la, fi, po, ad, te, em, year, month, day, pa);
 						dao = new MembersDAO();
 						dao.newMembers(bean);
 						request.setAttribute("message", "登録できました!");
@@ -134,6 +150,16 @@ public class MembersServlet extends HttpServlet {
 						    bean.setDay(day);
 						    bean.setPassword(password);
 
+						    String la = escapeHTML(bean.getLast_name());
+							String fi = escapeHTML(bean.getFirst_name());
+							String po = escapeHTML(bean.getPostal());
+							String ad = escapeHTML(bean.getAddress());
+							String te = escapeHTML(bean.getTel());
+							String em = escapeHTML(bean.getEmail());
+							String pa = escapeHTML(bean.getPassword());
+							bean = new MembersBean(la, fi, po, ad, te, em, year, month, day, pa);
+
+
 						    dao = new MembersDAO();
 							dao.changeMembers(bean);
 							request.setAttribute("message", "変更できました!");
@@ -172,6 +198,16 @@ public class MembersServlet extends HttpServlet {
 			gotoPage(request, response, "/errInternal.jsp");
 		}
 	}
+
+	 public static String escapeHTML(String a) {
+		   if (a == null) return "";
+		   a = a.replaceAll("&", "");
+		   a = a.replaceAll("<", "");
+		   a = a.replaceAll(">", "");
+		   a = a.replaceAll("\"", "");
+		   a = a.replaceAll("'", "");
+		   return a;
+		 }
 
 	private void gotoPage(HttpServletRequest request,
 			HttpServletResponse response, String page) throws ServletException, IOException {

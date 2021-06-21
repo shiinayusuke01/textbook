@@ -51,6 +51,7 @@ public class OrderServlet extends HttpServlet {
 			} else if(action.equals("order")) {
 				list = (List<TextbookBean>) session.getAttribute("cart");
 				MembersBean member = (MembersBean)session.getAttribute("membean");
+
 				if(member == null) {
 					request.setAttribute("message", "正しく操作してください。");
 					gotoPage(request, response, "/errInternal.jsp");
@@ -86,6 +87,8 @@ public class OrderServlet extends HttpServlet {
 			gotoPage(request, response, "/errInternal.jsp");
 		}
 	}
+
+
 
 
 	private void gotoPage(HttpServletRequest request,
