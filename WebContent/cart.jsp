@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome shopping!</title>
+<link rel="stylesheet" href="header.css">
 </head>
 <body>
-
+<header>ヘッダー</header>
 <h3>現在のカートの中身</h3>
 
 <c:if test="${empty cart.items}">
