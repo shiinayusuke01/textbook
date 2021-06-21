@@ -29,12 +29,10 @@ public class RegistTextbook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-		System.out.println(action);
-
-		int userId = 1;
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+
+		int userId = 1;
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		int category = Integer.parseInt(request.getParameter("category"));
