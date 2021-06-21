@@ -21,7 +21,7 @@ password Varchar(12) Not Null
  status Varchar(20) not null,
  price Integer not null,
  info Varchar(2000),
- user_id Integer not null REFERENCES members
+ user_id Integer not null
  );
 
 
@@ -29,7 +29,7 @@ INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthda
 VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
 
 INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
-VALUES(1, 'AAAtitleAA', 'akutagawa', 1, '—Ç‚¢', 2300, 'very good', 1);
+VALUES(1, 'AAAtitleAA', 'akutagawa', 1, '新品', 2300, 'very good', 1);
 
 INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
 VALUES(4, 'AAdaasaAA', 'dazai', 3, '—da‚¢', 1800, 'good', 4);
@@ -42,4 +42,3 @@ VALUES(5, 'ryokou', 'matsui',2 , '—Ç‚¢', 1200, 'very good', 1);
 
 INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
 VALUES(1119, 'AA', 'yokohama', 4, '—a‚¢', 1100, 'good', 1119);
-

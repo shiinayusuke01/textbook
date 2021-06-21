@@ -58,39 +58,7 @@ public class TextBookDAO {
 			}
 		}
 	}
-	  public List<CategoryBean> findAllCategory() throws DAOException{
-	    	if (con == null)
-	    		getConnection();
 
-	    	PreparedStatement st = null;
-	    	ResultSet rs = null;
-	    	try {
-
-	    		String sql = "SELECT * FROM category ORDER BY code";
-	    		st = con.prepareStatement(sql);
-	    		rs = st.executeQuery();
-
-	    		 List<CategoryBean> list =new ArrayList<CategoryBean>();
-	    		 while(rs.next()) {
-	    			 int code = rs.getInt("code");
-	    			 String name = rs.getString("name");
-	    			 CategoryBean bean = new CategoryBean(code, name);
-	    			 list.add(bean);
-	    		 }
-	    		 return list;
-	    	} catch (Exception e) {
-	    		e.printStackTrace();
-				throw new DAOException("レコードの取得にに失敗しました。");
-	    } finally {
-	    	try {
-	    		if (rs != null) rs.close();
-	    		if (st != null) st.close();
-	    			close();
-	    	}catch(Exception e) {
-	    		throw new DAOException("リソースの開放に失敗しました。");
-	    	}
-	    }
-	  }
 
 	  public TextbookBean findByPrimaryKey(int code) throws DAOException{
 	    	if (con == null)
