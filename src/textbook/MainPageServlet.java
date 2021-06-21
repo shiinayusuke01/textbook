@@ -33,19 +33,24 @@ public class MainPageServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			TextBookDAO	dao = new TextBookDAO();
+			TextBookDAO tdao = null;
+			tdao = new TextBookDAO();
+			List<TextbookBean> list = tdao.showAllTextbooks();
+			request.setAttribute("showall", list);
+
+
 			String action = request.getParameter("action");
 			if (action == null || action.length() == 0) {
 				gotoPage(request, response, "/main-input.jsp");
 			} else if (action.equals("search")){
 					String searchname = request.getParameter("searchname");
-					List<TextbookBean> list = dao.findAll(searchname);
-					request.setAttribute("show", list);
+					List<TextbookBean> lists = dao.findAll(searchname);
+					request.setAttribute("show", lists);
 					gotoPage(request, response, "/main-input.jsp");
 				}
 		} catch (DAOException e) {
 			e.printStackTrace();
-			e.printStackTrace();
-			request.setAttribute("message", " �������^�C�g������͂��Ă�������");
+			request.setAttribute("message", "内部エラーが発生しました");
 			gotoPage(request, response, "/errInternal.jsp");
 		}
 

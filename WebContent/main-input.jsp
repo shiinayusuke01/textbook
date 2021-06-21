@@ -50,6 +50,10 @@
 <br>
 <br>
 
+
+
+<h2>検索結果表示</h2>
+
 <br>
 <table border=1>
 <tr>
@@ -77,10 +81,12 @@
 </form></td></tr>
 
 </c:forEach>
-
-  <h2>検索結果表示</h2>
-
 </table>
+
+
+<h2>販売中教科書一覧</h2>
+</form>
+<br>
 <table border=1>
 <tr>
     <td>title</td>
@@ -92,7 +98,6 @@
     <td>userId</td>
     <td>カートに追加</td>
   </tr>
-  <h2>販売中教科書一覧</h2>
 <c:forEach items="${showall}" var="Text">
 <tr><td>${Text.title}</td><td>${Text.author}</td>
 <td>${Text.category}</td><td>${Text.price}</td>

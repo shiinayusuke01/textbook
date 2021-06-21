@@ -31,7 +31,6 @@ public class MembersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MembersDAO dao = null;
-		TextBookDAO tdao = null;
 		HttpSession session = null;
 
 		try {
@@ -59,15 +58,13 @@ public class MembersServlet extends HttpServlet {
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
 						session.setAttribute("membean", bean);
-						tdao = new TextBookDAO();
-						List<TextbookBean> list = tdao.showAllTextbooks();
-						request.setAttribute("showall", list);
 						gotoPage(request, response, "/main-input.jsp");
 					}
 				} else {
 					request.setAttribute("message", "会員情報が登録されていないか、入力された情報が異なります。");
 					gotoPage(request, response, "/errInternal.jsp");
 				}
+
 			}else if (action.equals("setinfo")) {
 				String last_name = request.getParameter("last_name");
 				String first_name = request.getParameter("first_name");

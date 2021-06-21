@@ -31,8 +31,15 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<TextbookBean> list = new ArrayList<TextbookBean>();
+		TextBookDAO dao = null;
+		List<TextbookBean> list;
 
+		try {
+			dao = new TextBookDAO();
+		} catch (DAOException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
 
 		try {
 			String action =request.getParameter("action");
@@ -41,34 +48,27 @@ public class CartServlet extends HttpServlet {
 			} else if(action.equals("add")) {
 				int id = Integer.parseInt(request.getParameter("text-id"));
 				HttpSession session = request.getSession(false);
-				CartBean cart = (CartBean) session.getAttribute("cart");
-
-				if(cart == null) {
-					cart = new CartBean();
-					session.setAttribute("cart", cart);
+				list = (List<TextbookBean>) session.getAttribute("cart");
+				if (list == null) {
+					list = new ArrayList<TextbookBean>();
 				}
-
-				TextBookDAO dao = new TextBookDAO();
 				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
 				list.add(bean);
 				session.setAttribute("cart", list);
 				gotoPage(request, response, "/cart.jsp");
 
 			} else if(action.equals("addtext")) {
-					int id = Integer.parseInt(request.getParameter("textid"));
-					HttpSession session = request.getSession(false);
-					CartBean cart = (CartBean) session.getAttribute("cart");
+				int id = Integer.parseInt(request.getParameter("textid"));
+				HttpSession session = request.getSession(false);
+				list = (List<TextbookBean>) session.getAttribute("cart");
+				if (list == null) {
+					list = new ArrayList<TextbookBean>();
+				}
+				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
+				list.add(bean);
+				session.setAttribute("cart", list);
+				gotoPage(request, response, "/cart.jsp");
 
-					if(cart == null) {
-						cart = new CartBean();
-						session.setAttribute("cart", cart);
-					}
-
-					TextBookDAO dao = new TextBookDAO();
-					TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
-					list.add(bean);
-					session.setAttribute("cart", bean);
-					gotoPage(request, response, "/cart.jsp");
 			} else if(action.equals("delete")){
 				HttpSession session = request.getSession(false);
 				if(session == null) {
@@ -76,15 +76,11 @@ public class CartServlet extends HttpServlet {
 					gotoPage(request, response, "/errInternal.jsp");
 					return;
 				}
-				CartBean cart = (CartBean) session.getAttribute("cart");
-				if(cart == null) {
-					request.setAttribute("message", "正しく操作してください。");
-					gotoPage(request, response, "/errInternal.jsp");
-					return;
-				}
-				int id = Integer.parseInt(request.getParameter("text-id"));
-				cart.deleteCart(id);
-				gotoPage(request, response, "/cart.jsp");
+				int id = Integer.parseInt(request.getParameter("textsid"));
+				list = (List<TextbookBean>) session.getAttribute("cart");
+				list.remove(id);
+				session.setAttribute("cart", list);
+				gotoPage(request, response, "/main-input.jsp");
 			    }else{
 			    	request.setAttribute("message", "正しく操作してください。");
 					gotoPage(request, response, "/errInternal.jsp");
@@ -102,13 +98,6 @@ public class CartServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	public int recalcTotal(List<TextbookBean> list) {
-		int total = 0;
-		for (TextbookBean a : list) {
-			total += a.getPrice();
-		}
-		return total;
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
