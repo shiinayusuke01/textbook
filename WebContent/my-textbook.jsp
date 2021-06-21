@@ -8,6 +8,7 @@
 <title>登録した教科書一覧</title>
 </head>
 <body>
+	<h3>登録した教科書一覧</h3>
 	<c:forEach items="${textbooks}" var="textbook">
 		<form method="POST">
 			<input type="hidden" name="textbook_id" value="${textbook.id}">

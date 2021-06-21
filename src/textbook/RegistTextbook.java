@@ -50,7 +50,7 @@ public class RegistTextbook extends HttpServlet {
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
-		gotoPage(request, response, "form-textbook.jsp");
+		gotoPage(request, response, "ShowMyTextbook");
 	}
 
 	/**

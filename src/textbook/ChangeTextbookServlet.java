@@ -58,7 +58,7 @@ public class ChangeTextbookServlet extends HttpServlet {
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
-		gotoPage(request, response, "form-textbook.jsp");
+		gotoPage(request, response, "ShowMyTextbook");
 	}
 	private void gotoPage(HttpServletRequest request, HttpServletResponse response, String page)throws ServletException, IOException{
 		RequestDispatcher rd = request.getRequestDispatcher(page);

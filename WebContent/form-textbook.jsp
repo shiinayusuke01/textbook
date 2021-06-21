@@ -7,6 +7,7 @@
 <title>登録教科書の登録</title>
 </head>
 <body>
+<h3>教科書を登録してください</h3>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">
 	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}"></label></p>
