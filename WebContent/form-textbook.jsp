@@ -7,7 +7,8 @@
 <title>登録教科書の登録</title>
 </head>
 <body>
-<form action="/textbook/RegistTextbook" method="post">
+<form method="POST">
+	<input type="hidden" name="id" value="${textbook.id}">
 	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}"></label></p>
 	<p><label>著者名：<input type="text" name="author" size="40" value="${textbook.author}"></label></p>
 
@@ -34,10 +35,8 @@
 		<option value="全体的に状態が悪い">全体的に状態が悪い</option>
 	</select>
 	<p><label>備考：<input type="text" name="info" size="40" value="${textbook.info}"></label></p>
-	<input type="hidden" name="action" value="reg">
-	<p><input type="submit" value="登録"></p>
-	<input type="hidden" name="action" value="change">
-	<p><input type="submit" value="変更"></p>
+	<p><input type="submit" value="登録" formaction="/textbook/RegistTextbook"></p>
+	<p><input type="submit" value="変更" formaction="/textbook/ChangeTextbookServlet"></p>
 </form>
 
 </body>
