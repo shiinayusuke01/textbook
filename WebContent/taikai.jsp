@@ -9,7 +9,7 @@
 <title>メンバーからの退会</title>
 </head>
 <body>
-	<a href="/textbook/main-input">トップページに戻る</a>
+	<a href="/textbook/main-input.jsp">トップページに戻る</a>
     <h1>マイページ／会員情報表示</h1>
 
 <table border="1">
