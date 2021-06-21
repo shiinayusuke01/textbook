@@ -199,6 +199,7 @@ public class TextBookDAO {
 	     		rs = st.executeQuery();
 	     		List<TextbookBean> list = new ArrayList<TextbookBean>();
 	     		while (rs.next()) {
+					 int id = rs.getInt("id");
 					 String title = rs.getString("title");
 					 String author = rs.getString("author");
 					 int category =rs.getInt("category");
@@ -207,7 +208,7 @@ public class TextBookDAO {
 					 String status = rs.getString("status");
 					 int userid = rs.getInt("user_id");
 
-					 bean = new TextbookBean(title, author, category, status, price, info, userid);
+					 bean = new TextbookBean(id, title, author, category, status, price, info, userid);
 					 list.add(bean);
 	     		}
 	     			return list;

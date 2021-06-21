@@ -1,6 +1,7 @@
 package textbook;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +31,7 @@ public class OrderServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		List<TextbookBean> list;
 		HttpSession session = request.getSession(false);
 		String pay = request.getParameter("pay");
 
@@ -58,8 +60,8 @@ public class OrderServlet extends HttpServlet {
 			return;
 		}
 
-		CartBean cart = (CartBean) session.getAttribute("cart");
-		if(cart == null) {
+		list = (List<TextbookBean>) session.getAttribute("cart");
+		if(list == null) {
 			request.setAttribute("message", "正しく操作してください。");
 			gotoPage(request, response, "/errInternal.jsp");
 			return;
@@ -83,7 +85,7 @@ public class OrderServlet extends HttpServlet {
 				}
 
 			OrderDAO order = new OrderDAO();
-			int orderNumber = order.saveOrder(member, cart);
+			int orderNumber = order.saveOrder(member, list);
 			session.removeAttribute("cart");
 			session.removeAttribute("members");
 			request.setAttribute("orderNumber", Integer.valueOf(orderNumber));

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 public class OrderDAO {
@@ -15,7 +16,7 @@ public class OrderDAO {
 		getConnection();
 	}
 
-	public int saveOrder(MembersBean member, CartBean cart) throws DAOException {
+	public int saveOrder(MembersBean member, List<TextbookBean> list) throws DAOException {
 		if (con == null)
 			getConnection();
 
@@ -68,8 +69,8 @@ public class OrderDAO {
 			sql = "INSERT INTO ordered_detail VALUES(?, ?, ?)";
 			st = con.prepareStatement(sql);
 
-			Map<Integer, TextbookBean> items = cart.getItems();
-			Collection<TextbookBean> list =items.values();
+			Map<Integer, TextbookBean> items = list.getItems();
+			Collection<TextbookBean> lists =items.values();
 			for(TextbookBean item:list) {
 				st.setInt(1, orderNumber);
 				st.setInt(2, item.getPrice());

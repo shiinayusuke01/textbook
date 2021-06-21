@@ -58,7 +58,8 @@ public class MembersServlet extends HttpServlet {
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
 						session.setAttribute("membean", bean);
-						gotoPage(request, response, "/main-input.jsp");
+						gotoPage(request, response, "/MainPageServlet?action=list");
+
 					}
 				} else {
 					request.setAttribute("message", "会員情報が登録されていないか、入力された情報が異なります。");

@@ -51,7 +51,7 @@ ${total}円</td></tr>
 </form>
 </c:if>
 <br>
-<form action="/textbook/main-input.jsp" method="post">
+<form action="/textbook/MainPageServlet?action=list" method="post">
 <input type="submit" value="トップページに戻る">
 </form>
 

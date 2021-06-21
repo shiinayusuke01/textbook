@@ -40,7 +40,7 @@ public class MainPageServlet extends HttpServlet {
 
 
 			String action = request.getParameter("action");
-			if (action == null || action.length() == 0) {
+			if (action == null || action.length() == 0 || action.equals("list")) {
 				gotoPage(request, response, "/main-input.jsp");
 			} else if (action.equals("search")){
 					String searchname = request.getParameter("searchname");
