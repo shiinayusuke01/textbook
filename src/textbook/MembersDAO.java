@@ -187,7 +187,7 @@ public class MembersDAO {
 		PreparedStatement st = null;
 
 		try {
-			String sql = "UPDATE members SET last_name=?, first_name=?, postal=?, address=?, tel=?, email=?, birthday=?, password=? where id = ?";
+			String sql = "UPDATE members SET last_name=?, first_name=?, postal=?, address=?, tel=?, email=?, birthday =?, password=? where id = ?";
 			st = con.prepareStatement(sql);
 			st.setString(1, members.getLast_name());
 			st.setString(2, members.getFirst_name());
@@ -195,7 +195,7 @@ public class MembersDAO {
 			st.setString(4, members.getAddress());
 			st.setString(5, members.getTel());
 			st.setString(6, members.getEmail());
-			st.setString(7, members.birthday(members.getYear(), members.getMonth(), members.getDay()));
+			st.setString(7, members.getBirthday());
 			st.setString(8, members.getPassword());
 			st.setInt(9, members.getId());
 			int rows = st.executeUpdate();

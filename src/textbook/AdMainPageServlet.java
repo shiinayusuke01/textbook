@@ -54,7 +54,8 @@ public class AdMainPageServlet extends HttpServlet {
 			} else if (action.equals("memdelete")) {
 				int mem_id = Integer.parseInt(request.getParameter("mem_id"));
 				dao.deleteMembers(mem_id);
-				gotoPage(request, response, "/ad-main-input.jsp");
+				request.setAttribute("message", "ユーザーを削除しました。");
+				gotoPage(request, response, "/ad-message.jsp");
 
 			}else if (action.equals("textsearch")) {
 				String searchtitle = request.getParameter("searchtitle");
@@ -65,7 +66,8 @@ public class AdMainPageServlet extends HttpServlet {
 			} else if (action.equals("textdelete")) {
 				int text_id = Integer.parseInt(request.getParameter("text_id"));
 				tdao.deleteTextbook(text_id);
-				gotoPage(request, response, "/ad-main-input.jsp");
+				request.setAttribute("message", "教科書を削除しました。");
+				gotoPage(request, response, "/ad-message.jsp");
 			}
 		} catch (DAOException e) {
 			e.printStackTrace();

@@ -56,9 +56,8 @@ public class ChangeTextbookServlet extends HttpServlet {
 		String au = escapeHTML(author);
 		String st = escapeHTML(status);
 		String in = escapeHTML(info);
-		TextbookBean bean = new TextbookBean(ti, au, st, in);
+		TextbookBean bean = new TextbookBean(id, ti, au, category, st, price, in, userId);
 
-		bean = new TextbookBean(id, ti, au, category, st, price, in, userId);
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			dao.changeTextbook(bean);

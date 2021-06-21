@@ -10,6 +10,10 @@
 </head>
 <body>
 <h1>管理者トップページ</h1>
+<br>
+<form action="/textbook/MembersServlet?action=logout" method="post">
+<input type="submit" value="ログアウト">
+</form>
 
 <h5>会員検索</h5>
 <form action="/textbook/AdMainPageServlet" method="post">

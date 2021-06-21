@@ -67,7 +67,7 @@ public class RegistTextbookServlet extends HttpServlet {
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
-			dao.newTextbook(ti, au, category, st, price, in, userId );
+			dao.newTextbook(ti, au, category, st, price, in, userId);
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
