@@ -1,37 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録教科書一覧</title>
-
+<title>教科書の登録</title>
 </head>
 <body>
-<form action="/textbook/ChangeTextbookServlet" method="post">
-<input type="hidden" name="action" value="textchange">
-<input type="submit" value="表示">
+<h3>教科書を登録してください</h3>
+<form method="POST">
+	<input type="hidden" name="id" value="${textbook.id}">
+	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}"></label></p>
+	<p><label>著者名：<input type="text" name="author" size="40" value="${textbook.author}"></label></p>
+
+	分類：<select name="category" size="1">
+		<option value="0">文学部系</option>
+		<option value="1">教育学部系</option>
+		<option value="2">法学部系</option>
+		<option value="3">社会学部系</option>
+		<option value="4">経済学部系</option>
+		<option value="5">理学部系</option>
+		<option value="6">医学部系</option>
+		<option value="7">歯学部系</option>
+		<option value="8">薬学部系</option>
+		<option value="9">工学部系</option>
+		<option value="10">農学部系</option></p></option></select>
+
+	<p><label>売値：<input type="text" name="price" size="40" value="${textbook.price}"></label></p>
+	商品状態:<select name="status" size="1">
+		<option value="新品、未使用">新品、未使用</option>
+		<option value="未使用に近い">未使用に近い</option>
+		<option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
+		<option value="やや傷や汚れあり">やや傷や汚れあり</option>
+		<option value="傷や汚れあり">傷や汚れあり</option>
+		<option value="全体的に状態が悪い">全体的に状態が悪い</option>
+	</select>
+	<p><label>備考：<input type="text" name="info" size="40" value="${textbook.info}"></label></p>
+	<p><input type="submit" value="登録" formaction="/textbook/RegistTextbook"></p>
 </form>
-
-	<table border="1">
-
-		<tr><td>タイトル</td><td>著者名</td><td>分類</td><td>値段</td><td>削除</td></tr>
-		<c:forEach items="${textbook}" var="text">
-
-			<tr>
-				<td>${text.title}</td><td>${text.author}</td><td>${text.category}</td>
-				<td>${text.price}</td>
-
-		    <td>
-		    <form action="/textbook/ChangeTextbookServlet" method="post">
-		    	<input type="hidden" name="action" value="delete">
-		    	<input type="submit" value="削除"></form></td>
-
-	   		</tr>
-      	</c:forEach>
-	</table>
 
 </body>
 </html>

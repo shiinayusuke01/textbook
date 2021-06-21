@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録教科書の登録</title>
+<title>教科書情報の変更</title>
 </head>
 <body>
-<h3>教科書を登録してください</h3>
+<h3>教科書情報を変更してください</h3>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">
 	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}"></label></p>
@@ -36,7 +36,6 @@
 		<option value="全体的に状態が悪い">全体的に状態が悪い</option>
 	</select>
 	<p><label>備考：<input type="text" name="info" size="40" value="${textbook.info}"></label></p>
-	<p><input type="submit" value="登録" formaction="/textbook/RegistTextbook"></p>
 	<p><input type="submit" value="変更" formaction="/textbook/ChangeTextbookServlet"></p>
 </form>
 
