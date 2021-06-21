@@ -9,18 +9,22 @@
 </head>
 <body>
 	<h3>登録した教科書一覧</h3>
+	<table  border="1">
+	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th><th> </th><th> </th></tr>
 	<c:forEach items="${textbooks}" var="textbook">
 		<form method="POST">
 			<input type="hidden" name="textbook_id" value="${textbook.id}">
-				タイトル${textbook.title}<br />
-				著者名${textbook.author}<br />
-				状態${textbook.status}<br />
-				値段${textbook.price}<br />
-				備考${textbook.info}<br />
-			<input type="submit" value="削除" formaction="/textbook/DeleteTextbookServlet" />
-			<input type="submit" value="変更" formaction="/textbook/InputFormServlet" />
+				<tr>
+					<td>${textbook.title}</td>
+					<td>${textbook.author}</td>
+					<td>${textbook.status}</td>
+					<td>${textbook.price}円</td>
+					<td>${textbook.info}</td>
+					<td><input type="submit" value="削除" formaction="/textbook/DeleteTextbookServlet" /></td>
+					<td><input type="submit" value="変更" formaction="/textbook/InputFormServlet" /></td>
+				</tr>
 		</form>
-		<br />
 	</c:forEach>
+	</table>
 </body>
 </html>
