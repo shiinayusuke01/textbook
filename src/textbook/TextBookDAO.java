@@ -199,6 +199,7 @@ public class TextBookDAO {
 	     		rs = st.executeQuery();
 	     		List<TextbookBean> list = new ArrayList<TextbookBean>();
 	     		while (rs.next()) {
+					 int id = rs.getInt("id");
 					 String title = rs.getString("title");
 					 String author = rs.getString("author");
 					 int category =rs.getInt("category");
@@ -207,7 +208,7 @@ public class TextBookDAO {
 					 String status = rs.getString("status");
 					 int userid = rs.getInt("user_id");
 
-					 bean = new TextbookBean(title, author, category, status, price, info, userid);
+					 bean = new TextbookBean(id, title, author, category, status, price, info, userid);
 					 list.add(bean);
 	     		}
 	     			return list;
@@ -224,8 +225,7 @@ public class TextBookDAO {
 	     }
 	   }
 
-	public int changeTextbook(TextbookBean bean)
-	throws DAOException{
+	public int changeTextbook(TextbookBean bean) throws DAOException{
 		if (con == null)
 			getConnection();
 
@@ -234,15 +234,17 @@ public class TextBookDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "UPDATE textbooks SET title=?, author=?, category=?, status=?, price=?, info=?";
+			String sql = "UPDATE textbooks SET title=?, category=?, author=?, status=?, price=?, info=?, user_id=? WHERE id=? ";
 			st = con.prepareStatement(sql);
 
 			st.setString(1, bean.getTitle());
-			st.setString(2, bean.getAuthor());
-			st.setInt(3, bean.getCategory());
+			st.setInt(2, bean.getCategory());
+			st.setString(3, bean.getAuthor());
 			st.setString(4, bean.getStatus());
 			st.setInt(5, bean.getPrice());
 			st.setString(6, bean.getInfo());
+			st.setInt(7, bean.getUserId());
+			st.setInt(8, bean.getId());
 
 			// SQLの実行
 			int rows = st.executeUpdate();
@@ -251,7 +253,7 @@ public class TextBookDAO {
 			return rows;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DAOException("レコードの取得に失敗しました。");
+			throw new DAOException("レコードの取得に失敗しました");
 		} finally {
 			try {
 				// リソースの開放

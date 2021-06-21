@@ -15,22 +15,28 @@
 	<tr><td>タイトル</td><td>著者名</td><td>値段</td><td>状態</td><td>備考</td>
     <td>削除</td>
 
-<c:forEach items="${cart.items}" var="item">
+<c:forEach items="${cart}" var="item">
 		<tr>
-		<td align="center">${item.value.title}</td>
-		<td align="center">${item.value.author}</td>
-		<td align="right">${item.value.price}円</td>
-		<td align="right">${item.value.status}</td>
-		<td align="right">${item.value.info}</td>
+		<td align="center">${item.title}</td>
+		<td align="center">${item.author}</td>
+		<td align="right">${item.price}円</td>
+		<td align="right">${item.status}</td>
+		<td align="right">${item.info}</td>
 		<td>
 <form action="/textbook/CartServlet?action=delete" method="post">
-	<input type="hidden" name="text-id" value="${item.value.id}">
+	<input type="hidden" name="text-id" value="${item.id}">
 	<input type="submit" value="削除">
 </form>
 </td>
 </tr>
 </c:forEach>
-		<tr><td align="right" colspan="6">支払金額：${cart.total}円</td></tr>
+<tr><td align="right" colspan="6">支払金額：
+
+<c:set value="${0}" var="total"></c:set>
+<c:forEach items="${cart}" var="text">
+<c:set var="total" value="${total + text.price}"></c:set>
+</c:forEach>
+${total}円</td></tr>
 	</table>
 <form action="/textbook/OrderServlet?action=pay" method="post">
 <h3>支払い方法を選択してください</h3>
