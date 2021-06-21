@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ChangeTextbookServlet
@@ -39,8 +40,10 @@ public class ChangeTextbookServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		int userid = 1;
 
+		HttpSession session = request.getSession();
+		MembersBean membersBean = (MembersBean) session.getAttribute("membean");
+		int userId = membersBean.getId();
 		int id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
@@ -51,7 +54,7 @@ public class ChangeTextbookServlet extends HttpServlet {
 
 		System.out.println(info);
 
-		TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userid);
+		TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			dao.changeTextbook(bean);

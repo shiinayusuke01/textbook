@@ -1,5 +1,15 @@
+<%@page import="textbook.MembersBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+MembersBean bean = (MembersBean) session.getAttribute("membean");
+if(bean == null) {
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.html");
+	rd.forward(request, response);
+}
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +17,7 @@
 <title>教科書の登録</title>
 </head>
 <body>
+<p>${membean.last_name} ${membean.first_name}さん</p>
 <h3>教科書を登録してください</h3>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">

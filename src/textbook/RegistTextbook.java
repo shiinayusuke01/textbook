@@ -33,7 +33,9 @@ public class RegistTextbook extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 
-		int userId = 1;
+		HttpSession session = request.getSession();
+		MembersBean bean = (MembersBean) session.getAttribute("membean");
+		int userId = bean.getId();
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		int category = Integer.parseInt(request.getParameter("category"));
@@ -51,8 +53,6 @@ public class RegistTextbook extends HttpServlet {
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
-
-		HttpSession session = request.getSession();
 
 		gotoPage(request, response, "ShowMyTextbook");
 	}

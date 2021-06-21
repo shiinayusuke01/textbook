@@ -32,14 +32,14 @@ public class ShowMyTextbook extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MembersBean bean = (MembersBean) session.getAttribute("membean");
-		//int userId = bean.getId();
-		int userId = 1;
-
+		String firstName = bean.getFirst_name();
+		int userId = bean.getId();
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			List<TextbookBean> list = dao.selectByUserId(userId);
 			request.setAttribute("textbooks", list);
+			request.setAttribute("first_name", firstName);
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
