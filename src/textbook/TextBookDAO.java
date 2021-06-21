@@ -74,6 +74,7 @@ public class TextBookDAO {
 	    		rs = st.executeQuery();
 
 	    		if (rs.next()) {
+	    		 int id = rs.getInt("id");
 	    		 String title = rs.getString("title");
 				 String author = rs.getString("author");
 				 int category =Integer.parseInt(rs.getString("category"));
@@ -81,7 +82,7 @@ public class TextBookDAO {
 				 String info = rs.getString("info");
 				 String status = rs.getString("status");
 				 int userid = rs.getInt("user_id");
-				 TextbookBean bean = new TextbookBean(title, author, category, status, price, info, userid);
+				 TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userid);
 	    		 return bean;
 	    		} else {
 	    			return null;

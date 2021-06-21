@@ -43,23 +43,16 @@ ${total}円</td></tr>
 	<input type="radio" name="pay" value="card" checked> クレジットカード
 	<input type="radio" name="pay" value="debit"> デビットカード
 	<input type="radio" name="pay" value="cash"> 現金
-<h3>お客様情報</h3>
-	<table border="1">
-	<tr><td>氏</td><td>${membean.last_name}</td>
-	</tr>
-	<tr>
-	<tr><td>名</td><td>${membean.first_name}</td>
-	</tr>
-	<tr>
-	<td>発送先住所</td><td>${membean.address}</td>
-	</tr>
-	<tr>
-	<tr><td>電話番号</td><td>${membean.tel}</td>
-	</tr>
-	<tr>
-	<tr><td>e-mail</td><td>${membean.email}</td>
-	</tr>
-	</table><br>
+<h3>お届け宛先</h3>
+氏:<input type="text" name="last_name" value="${membean.last_name}"><br>
+名:<input type="text" name="first_name" value="${membean.first_name}">
+<br>
+〒:<input type="text" name="postal" value="${membean.postal}">
+<br>
+住所:<input type="text" name="address" value="${membean.address}">
+<br>
+電話番号:<input type="text" name="tel" value="${membean.tel}">
+<br><br>
 </c:if>
 	<form action="/textbook/OrderServlet?action=order" method="post">
 	<input type="submit" value="この注文内容で注文">
