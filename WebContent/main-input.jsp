@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>会員トップページ</h1>
+<h3>${membean.last_name}さんようこそ！</h3>
 <br>
 <form action="/textbook/form-textbook.jsp" method="post">
 <input type="submit" value="新規教科書登録">

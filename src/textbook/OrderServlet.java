@@ -30,79 +30,63 @@ public class OrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		List<TextbookBean> list;
-		HttpSession session = request.getSession(false);
-		String pay = request.getParameter("pay");
-
-		String selectedPay;
-		if(pay == null){
-			selectedPay = "選択されていません。";
-		}else {
-			switch(pay){
-				case "card":
-					selectedPay = "クレジットカード";
-					break;
-				case "debit":
-					selectedPay = "デビットカード";
-					break;
-				case "cash":
-					selectedPay = "現金";
-					break;
-				default:
-					selectedPay = "???";
-					break;
-			}
-
-		if(session == null) {
-			request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
-			gotoPage(request, response, "/errInternal.jsp");
-			return;
-		}
-
-		list = (List<TextbookBean>) session.getAttribute("cart");
-		if(list == null) {
-			request.setAttribute("message", "正しく操作してください。");
-			gotoPage(request, response, "/errInternal.jsp");
-			return;
-		}
 
 		try {
-			String action =request.getParameter("action");
-			if (action == null || action.length() == 0 || action.equals("input_customer")) {
-				gotoPage(request, response, "/purchase-procedure.jsp");
-			}else if(action.equals("confirm")) {
-				session = request.getSession(false);
-				MembersBean bean = (MembersBean) request.getAttribute("membean");
-				session.setAttribute("member", bean);
-				gotoPage(request, response, "/purchase-procedure.jsp");
+			request.setCharacterEncoding("UTF-8");
+			List<TextbookBean> list;
+			OrderDAO order = new OrderDAO();
 
-			}else if(action.equals("order")){
-				MembersBean member = (MembersBean)session.getAttribute("members");
+			HttpSession session = request.getSession(false);
+			if(session == null) {
+				request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
+				gotoPage(request, response, "/errInternal.jsp");
+				return;
+			}
+
+			String action =request.getParameter("action");
+			if (action == null || action.length() == 0 || action.equals("purchase")) {
+				list = (List<TextbookBean>) session.getAttribute("cart");
+				MembersBean member = (MembersBean)session.getAttribute("membean");
+				gotoPage(request, response, "/purchase-procedure.jsp");
+			} else if(action.equals("order")) {
+				list = (List<TextbookBean>) session.getAttribute("cart");
+				MembersBean member = (MembersBean)session.getAttribute("membean");
 				if(member == null) {
 					request.setAttribute("message", "正しく操作してください。");
 					gotoPage(request, response, "/errInternal.jsp");
 				}
+				for (TextbookBean b : list) {
+					order.deleteordered(b.getId());
+				}
+				session.removeAttribute("cart");
+				gotoPage(request, response, "/Order.jsp");
 
-			OrderDAO order = new OrderDAO();
-			int orderNumber = order.saveOrder(member, list);
-			session.removeAttribute("cart");
-			session.removeAttribute("members");
-			request.setAttribute("orderNumber", Integer.valueOf(orderNumber));
-			gotoPage(request, response, "/Order.jsp");
+			}else if(action.equals("deletetext")){
+				session = request.getSession(false);
+				if(session == null) {
+					request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
+					gotoPage(request, response, "/errInternal.jsp");
+					return;
+				}
+				int id = Integer.parseInt(request.getParameter("dtext"));
+				list = (List<TextbookBean>) session.getAttribute("cart");
+				list.remove(id);
+				session.setAttribute("cart", list);
+				gotoPage(request, response, "/main-input.jsp");
 
 			}else{
-				 request.setAttribute("message", "正しく操作してください。");
-				 gotoPage(request, response, "/errInternal.jsp");
+				request.setAttribute("message", "正しく操作してください。");
+				gotoPage(request, response, "/errInternal.jsp");
 			}
+
+
 		} catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
 			gotoPage(request, response, "/errInternal.jsp");
+		}
 	}
-}
 
- }
 
 	private void gotoPage(HttpServletRequest request,
 		HttpServletResponse response, String page) throws ServletException,

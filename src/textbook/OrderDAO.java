@@ -5,9 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 public class OrderDAO {
 	private Connection con;
@@ -16,85 +13,37 @@ public class OrderDAO {
 		getConnection();
 	}
 
-	public int saveOrder(MembersBean member, List<TextbookBean> list) throws DAOException {
+	public int deleteordered(int id) throws DAOException{
+
 		if (con == null)
 			getConnection();
 
 		PreparedStatement st = null;
 		ResultSet rs = null;
-
 		try {
-			int user_Id = 0;
-			String sql = "SELECT nextval('ordered_code_seq')";
+
+			// SQL文の作成
+			String sql = "DELETE FROM textbooks WHERE id = ?";
 			st = con.prepareStatement(sql);
-			rs = st.executeQuery();
-			if(rs.next()) {
-			user_Id = rs.getInt(1);
+			st.setInt(1, id);
+
+			// SQLの実行
+			int rows = st.executeUpdate();
+			// カテゴリ一覧をListとして返す
+			return rows;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+		} finally {
+			try {
+				// リソースの開放
+				if(rs != null) rs.close();
+				if(st != null) st.close();
+				close();
+			} catch (Exception e) {
+				throw new DAOException("リソースの開放に失敗しました。");
 			}
-			rs.close();
-			st.close();
-
-			sql = "INSERT INTO ordered VALUES('ordered_code_seq')";
-			st = con.prepareStatement(sql);
-			rs = st.executeQuery();
-			if(rs.next()) {
-			user_Id = rs.getInt(1);
-			}
-
-			rs.close();
-			st.close();
-
-			sql = "INSERT INTO members VALUES(?, ?, ?, ?, ?)";
-			st = con.prepareStatement(sql);
-
-			st.setString(1, member.getLast_name());
-			st.setString(2, member.getFirst_name());
-			st.setString(3, member.getAddress());
-			st.setString(4, member.getTel());
-			st.setString(5, member.getEmail());
-
-			st.executeUpdate();
-			st.close();
-
-			int orderNumber = 0;
-			sql = "SELECT nextval('ordered_code_seq')";
-			st = con.prepareStatement(sql);
-			rs = st.executeQuery();
-			if(rs.next()) {
-				orderNumber = rs.getInt(1);
-			}
-			rs.close();
-			st.close();
-
-			sql = "INSERT INTO ordered_detail VALUES(?, ?, ?)";
-			st = con.prepareStatement(sql);
-
-			Map<Integer, TextbookBean> items = list.getItems();
-			Collection<TextbookBean> lists =items.values();
-			for(TextbookBean item:list) {
-				st.setInt(1, orderNumber);
-				st.setInt(2, item.getPrice());
-				st.setInt(3, item.getQuantity());
-				st.executeUpdate();
-			}
-			st.close();
-			return orderNumber;
-			} catch (SQLException e){
-				throw new DAOException("レコードの取得に失敗しました");
-			} finally {
-				try {
-					if (st != null) {
-						st.close();
-					}
-					if (rs != null) {
-						rs.close();
-					}
-					close();
-				} catch (SQLException e) {
-					throw new DAOException("リソースの開放に失敗しました");
-				}
-			  }
-
+		}
 	}
 
 

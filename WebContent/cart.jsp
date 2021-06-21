@@ -45,8 +45,8 @@
 ${total}円</td></tr>
 </table>
 
-<form action="/textbook/OrderServlet?action=input_customer" method="post">
-	<input type="submit" value="購入する">
+<form action="/textbook/OrderServlet?action=purchase" method="post">
+<input type="submit" value="購入する">
 
 </form>
 </c:if>
