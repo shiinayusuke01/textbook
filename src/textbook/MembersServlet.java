@@ -99,6 +99,7 @@ public class MembersServlet extends HttpServlet {
 					gotoPage(request, response, "/newmembermessage.jsp");
 				} else {
 					if (passadd.equals(password)) {
+						MembersBean bean = null;
 						String la = escapeHTML(last_name);
 						String fi = escapeHTML(first_name);
 						String po = escapeHTML(postal);
@@ -106,7 +107,6 @@ public class MembersServlet extends HttpServlet {
 						String te = escapeHTML(tel);
 						String em = escapeHTML(email);
 						String pa = escapeHTML(password);
-						MembersBean bean = new MembersBean(la, fi, po, ad, te, em, pa);
 
 						bean = new MembersBean(la, fi, po, ad, te, em, year, month, day, pa);
 						dao = new MembersDAO();
