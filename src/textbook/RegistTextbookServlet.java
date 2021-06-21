@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class RegistTextbook
+ * Servlet implementation class RegistTextbookServlet
  */
-@WebServlet("/RegistTextbook")
-public class RegistTextbook extends HttpServlet {
+@WebServlet("/RegistTextbookServlet")
+public class RegistTextbookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistTextbook() {
+    public RegistTextbookServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,8 +40,22 @@ public class RegistTextbook extends HttpServlet {
 		String author = request.getParameter("author");
 		int category = Integer.parseInt(request.getParameter("category"));
 		String status = request.getParameter("status");
-		int price = Integer.parseInt(request.getParameter("price"));
+		int price = 0;
+		try {
+			price = Integer.parseInt(request.getParameter("price"));
+		}catch (NumberFormatException e) {
+			request.setAttribute("errmsg", "売値は半角数字で入力してください");
+			gotoPage(request, response, "regist-textbook.jsp");
+		}
+
+
 		String info = request.getParameter("info");
+//		System.out.println(userId);
+//		System.out.println(title);
+//		System.out.println(author);
+//		System.out.println(category);
+//		System.out.println(status);
+//		System.out.println(info);
 
 		String ti = escapeHTML(title);
 		String au = escapeHTML(author);

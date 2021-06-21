@@ -17,7 +17,7 @@ if(bean == null) {
 <title>教科書の登録</title>
 </head>
 <body>
-<p>${membean.last_name} ${membean.first_name}さん</p>
+<h3>${membean.last_name} ${membean.first_name}様</h3>
 <h3>教科書を登録してください</h3>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">
@@ -37,7 +37,7 @@ if(bean == null) {
 		<option value="9">工学部系</option>
 		<option value="10">農学部系</option></p></option></select>
 
-	<p><label>売値：<input type="text" name="price" size="40" value="${textbook.price}"></label></p>
+	<p><label>売値：<input type="text" name="price" value="${textbook.price}"></label></p>
 	商品状態:<select name="status" size="1">
 		<option value="新品、未使用">新品、未使用</option>
 		<option value="未使用に近い">未使用に近い</option>
@@ -47,8 +47,9 @@ if(bean == null) {
 		<option value="全体的に状態が悪い">全体的に状態が悪い</option>
 	</select>
 	<p><label>備考：<input type="text" name="info" size="40" value="${textbook.info}"></label></p>
-	<p><input type="submit" value="登録" formaction="/textbook/RegistTextbook"></p>
+	<p><input type="submit" value="登録" formaction="/textbook/RegistTextbookServlet"></p>
 </form>
+<p style="color: red;"> ${errmsg}</p>
 
 </body>
 </html>

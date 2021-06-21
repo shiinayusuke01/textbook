@@ -8,7 +8,7 @@
 <title>登録した教科書一覧</title>
 </head>
 <body>
-	<h3>${membean.last_name} ${membean.first_name}さんが登録した教科書一覧</h3>
+	<h3>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h3>
 	<table  border="1">
 	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th><th> </th><th> </th></tr>
 	<c:forEach items="${textbooks}" var="textbook">
