@@ -11,7 +11,7 @@
 <body>
 <h1>会員トップページ</h1>
 <br>
-<form action="/textbook/form-textbook.jsp" method="post">
+<form action="/textbook/regist-textbook.jsp" method="post">
 <input type="submit" value="新規教科書登録">
 </form>
 <br>
