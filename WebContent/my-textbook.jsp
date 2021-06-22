@@ -50,24 +50,46 @@ if(insertedTitle != null){
 
 	<table  class="brwsr2">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th><th class="data">削除</th><th class="data">変更</th></tr>
-	<c:forEach items="${textbooks}" var="textbook">
-		<form method="POST">
-			<input type="hidden" name="textbook_id" value="${textbook.id}">
+		<c:forEach items="${textbooks}" var="textbook">
+		    <c:if test="${textbook.stock eq 1}">
+		      <form method="POST">
+			  <input type="hidden" name="textbook_id" value="${textbook.id}">
 				<tr>
 					<th>${textbook.title}</th>
 					<td class="data fst">${textbook.author}</td>
 					<td class="data">${textbook.status}</td>
 					<td class="data">${textbook.price}円</td>
 					<td class="data">${textbook.info}</td>
-					<td class="data">
-					<c:if test="${textbook.stock eq 0}">売却済</c:if>
-					<c:if test="${textbook.stock eq 1}">販売中</c:if>
-					</td>
+					<td class="data">販売中</td>
 					<td><input type="submit" value="削除" formaction="/textbook/DeleteTextbookServlet"  class="btn btn-flat"/></td>
 					<td><input type="submit" value="変更" formaction="/textbook/InputFormServlet"  class="btn btn-flat"/></td>
 				</tr>
-		</form>
-	</c:forEach>
+		      </form>
+		    </c:if>
+		</c:forEach>
+	</table>
+<br><br>
+    <table  class="brwsr2">
+	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th></tr>
+		<c:set value="${0}" var="total"></c:set>
+		<c:forEach items="${textbooks}" var="textbook">
+		    <c:if test="${textbook.stock eq 0}">
+		      <form method="POST">
+			  <input type="hidden" name="textbook_id" value="${textbook.id}">
+				<tr>
+					<th>${textbook.title}</th>
+					<td class="data fst">${textbook.author}</td>
+					<td class="data">${textbook.status}</td>
+					<td class="data">${textbook.price}円</td>
+					<td class="data">${textbook.info}</td>
+					<td class="data">売却済</td>
+				</tr>
+		      </form>
+		<c:set var="total" value="${total + textbook.price}"></c:set>
+		    </c:if>
+		</c:forEach>
+		<tr><td align="right" colspan="6">合計売上金額：
+		${total}円</td></tr>
 	</table>
 
 	<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
