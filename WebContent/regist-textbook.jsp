@@ -30,17 +30,17 @@ if(bean == null) {
 	<p><label>著者名：<input type="text" name="author" size="40" value="${textbook.author}" class="m-form-text"></label></p>
 
 	分類：<select name="category" size="1">
-		<option value="0">文学部系</option>
-		<option value="1">教育学部系</option>
-		<option value="2">法学部系</option>
-		<option value="3">社会学部系</option>
-		<option value="4">経済学部系</option>
-		<option value="5">理学部系</option>
-		<option value="6">医学部系</option>
-		<option value="7">歯学部系</option>
-		<option value="8">薬学部系</option>
-		<option value="9">工学部系</option>
-		<option value="10">農学部系</option></p></option></select>
+		<option value="0">0:文学部系</option>
+		<option value="1">1:教育学部系</option>
+		<option value="2">2:法学部系</option>
+		<option value="3">3:社会学部系</option>
+		<option value="4">4:経済学部系</option>
+		<option value="5">5:理学部系</option>
+		<option value="6">6:医学部系</option>
+		<option value="7">7:歯学部系</option>
+		<option value="8">8:薬学部系</option>
+		<option value="9">9:工学部系</option>
+		<option value="10">10:農学部系</option></select>
 
 	<p><label>売値：<input type="text" name="price" value="${textbook.price}" class="m-form-text"></label>円</p>
 	商品状態:<select name="status" size="1">
