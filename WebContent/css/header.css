@@ -30,14 +30,28 @@ h2{
 }
 
 .btn,
+ /* other styles */
 a.btn,
 button.btn {
-  font-size: 1.6rem;
-  font-weight: 50;
+   display: block;
+    width: 100px;
+    padding: 0.5em;
+    text-align: center;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    background: #f2f2f2;
+    margin: 0.5em auto;
+    line-height: 1.5;
+}
+
+/* a.btn,
+button.btn {
+  font-size: 10px;
+  font-weight: 20;
   line-height: 1.5;
   position: relative;
   display: inline-block;
-  padding: 1rem 4rem;
+  padding: 0.5rem;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -52,9 +66,9 @@ button.btn {
   color: #212529;
   border-radius: 0.5rem;
 }
-
+*/
 a.btn-border-shadow--radius {
-  border-radius: 100vh;
+  border-radius: 50vh;
 }
 a.btn-border-shadow {
   padding: calc(1.5rem - 12px) 3rem 1.5rem;
@@ -93,8 +107,8 @@ a.btn-border-shadow:hover:before {
 
 .cp_iptxt {
 	position: relative;
-	width: 80%;
-	margin: 40px 3%;
+	width: 100%;
+	margin: 0px 3%;
 }
 .cp_iptxt input[type=text] {
 	font: 15px/24px sans-serif;
@@ -111,7 +125,7 @@ a.btn-border-shadow:hover:before {
 	border-color: #da3c41;
 }
 .cp_iptxt input[type=text] {
-	padding-left: 40px;
+	padding-left: 50px;
 }
 .cp_iptxt i {
 	position: absolute;
