@@ -27,18 +27,3 @@ password Varchar(12) Not Null
 
 INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthday, password)
 VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
-
-INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
-VALUES(1, 'AAAtitleAA', 'akutagawa', 1, '新品', 2300, 'very good', 1);
-
-INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
-VALUES(4, 'AAdaasaAA', 'dazai', 3, '—da‚¢', 1800, 'good', 4);
-
-INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
-VALUES(7, 'shuya', 'yamada', 1, '—g‚¢', 1000, 'bad', 7);
-
-INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
-VALUES(5, 'ryokou', 'matsui',2 , '—Ç‚¢', 1200, 'very good', 1);
-
-INSERT INTO textbooks(id, title, author, category, status, price, info, user_id)
-VALUES(1119, 'AA', 'yokohama', 4, '—a‚¢', 1100, 'good', 1119);
