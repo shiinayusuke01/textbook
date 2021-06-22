@@ -18,6 +18,7 @@ if(bean == null) {
 <link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <form action="/textbook/regist-textbook.jsp" method="post">
 <input type="submit" value="新規教科書登録">
@@ -38,6 +39,10 @@ if(bean == null) {
 <form action="/textbook/MembersServlet?action=logout" method="post">
 <input type="submit" value="ログアウト">
 </form>
+=======
+<a href="/textbook/main-input.jsp">トップページ</a>
+<br />
+>>>>>>> 5cf60784147f3454449644cf15a1f57ef1ff8522
 
 <h3>${membean.last_name} ${membean.first_name}様</h3>
 <h3>教科書を登録してください</h3>
