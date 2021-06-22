@@ -48,8 +48,23 @@
 </form>
 <br>
 <br>
-
-
+<form action="/textbook/MainPageServlet" method="post">
+分類：<select name="category" size="1">
+		<option value="0">文学部系</option>
+		<option value="1">教育学部系</option>
+		<option value="2">法学部系</option>
+		<option value="3">社会学部系</option>
+		<option value="4">経済学部系</option>
+		<option value="5">理学部系</option>
+		<option value="6">医学部系</option>
+		<option value="7">歯学部系</option>
+		<option value="8">薬学部系</option>
+		<option value="9">工学部系</option>
+		<option value="10">農学部系</option></p></option></select>
+検索したい分類を入力してください<br>
+<input type="hidden" name="action" value="searchcate">
+<input type="submit" value="検索">
+</form>
 <br>
 <a href="/textbook/cart.jsp">カート/購入ページへ</a>
 <br>
