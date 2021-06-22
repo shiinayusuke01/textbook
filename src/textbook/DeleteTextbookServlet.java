@@ -33,12 +33,17 @@ public class DeleteTextbookServlet extends HttpServlet {
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
+			TextbookBean bean = dao.findByPrimaryKey(id);
+			String title = bean.getTitle();
+
 			dao.deleteTextbook(id);
+			gotoPage(request, response, "ShowMyTextbook?deleted_textbook=" + title);
+
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
 
-		gotoPage(request, response, "ShowMyTextbook");
+
 	}
 
 	/**
