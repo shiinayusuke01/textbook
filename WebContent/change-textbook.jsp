@@ -21,7 +21,7 @@ if(bean == null) {
 <a href="/textbook/MainPageServlet?action=list">トップページ</a>
 <br />
 
-<h3>教科書情報を変更してください</h3>
+<h1>教科書情報を変更してください</h1>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">
 	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}"></label></p>

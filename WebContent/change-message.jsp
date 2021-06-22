@@ -12,5 +12,6 @@
 <h1>${message}</h1>
 
 <a href="/textbook/regist-textbook.html">教科書登録に戻る</a>
+<footer></footer>
 </body>
 </html>

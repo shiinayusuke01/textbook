@@ -13,26 +13,26 @@
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>会員トップページ</h1>
-<h3>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h3>
+<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 <br>
 <form action="/textbook/regist-textbook.jsp" method="post">
-<input type="submit" value="新規教科書登録">
+<input type="submit" value="新規教科書登録" class="btn btn-flat">
 </form>
 <br>
 <form action="/textbook/ShowMyTextbook" method="post">
-<input type="submit" value="登録済み教科書情報変更・削除">
+<input type="submit" value="登録済み教科書情報変更・削除" class="btn btn-flat">
 </form>
 <br>
 <form action="/textbook/mem-info-change.jsp" method="post">
-<input type="submit" value="会員情報変更">
+<input type="submit" value="会員情報変更" class="btn btn-flat">
 </form>
 <br>
 <form action="/textbook/taikai.jsp" method="post">
-<input type="submit" value="退会">
+<input type="submit" value="退会" class="btn btn-flat">
 </form>
 <br>
 <form action="/textbook/MembersServlet?action=logout" method="post">
-<input type="submit" value="ログアウト">
+<input type="submit" value="ログアウト" class="btn btn-flat">
 </form>
 
 <br>
@@ -42,9 +42,9 @@
 
 <form action="/textbook/MainPageServlet" method="post">
 検索したいタイトルを入力してください<br>
-<input type="text" name="searchname">
+<input type="text" name="searchname" class="m-form-text" >
 <input type="hidden" name="action" value="search">
-<input type="submit" value="検索">
+<input type="submit" value="検索" class="btn btn-flat">
 </form>
 <br>
 <br>
@@ -66,7 +66,8 @@
 <input type="submit" value="検索">
 </form>
 <br>
-<a href="/textbook/cart.jsp">カート/購入ページへ</a>
+<a href="/textbook/cart.jsp"  class="btn btn-radius-solid">
+カート/購入ページへ</a>
 <br>
 <br>
 
@@ -75,19 +76,20 @@
 <h2>検索結果表示</h2>
 
 <br>
-<table border=1>
+<table class="brwsr2">
 <tr>
-    <td>タイトル</td>
-    <td>著者名</td>
-    <td>分類</td>
-    <td>価格</td>
-    <td>状態</td>
-    <td>備考</td>
-    <td>カートに追加</td>
+    <th>タイトル</th>
+    <td class="data fst">著者名</td>
+    <td class="data">分類</td>
+    <td class="data">価格</td>
+    <td class="data">状態</td>
+    <td class="data">備考</td>
+    <td class="data">登録者ID</td>
+    <td class="data">カートに追加</td>
   </tr>
 
 <c:forEach items="${show}" var="Textbook">
-<tr><td>${Textbook.title}</td><td>${Textbook.author}</td>
+<tr><th>${Textbook.title}</th><td>${Textbook.author}</td>
 <td>${Textbook.category}</td><td>${Textbook.price}</td>
 <td>${Textbook.status}</td><td>${Textbook.info}</td>
 <td>
@@ -95,7 +97,7 @@
 
 <form action="/textbook/CartServlet?action=add" method="post">
 <input type="hidden" name="text-id" value="${Textbook.id}">
-<input type="submit" value="カートに追加する">
+<input type="submit" value="カートに追加する" class="btn btn-flat">
 </form></td></tr>
 
 </c:forEach>
@@ -104,19 +106,20 @@
 
 <h2>販売中教科書一覧</h2>
 <br>
-<table border=1>
+<table class="brwsr2">
 <tr>
-    <td>タイトル</td>
-    <td>著者名</td>
-    <td>分類</td>
-    <td>価格</td>
-    <td>状態</td>
-    <td>備考</td>
-    <td>カートに追加</td>
+    <th>タイトル</th>
+    <td class="data fst">著者名</td>
+    <td class="data">分類</td>
+    <td class="data">価格</td>
+    <td class="data">状態</td>
+    <td class="data">備考</td>
+    <td class="data">登録者ID</td>
+    <td class="data">カートに追加</td>
   </tr>
 
 <c:forEach items="${showall}" var="Text">
-<tr><td>${Text.title}</td><td>${Text.author}</td>
+<tr><th>${Text.title}</th><td>${Text.author}</td>
 <td>${Text.category}</td><td>${Text.price}</td>
 <td>${Text.status}</td><td>${Text.info}</td>
 <td>
@@ -124,10 +127,12 @@
 
 <form action="/textbook/CartServlet?action=addtext" method="post">
 <input type="hidden" name="textid" value="${Text.id}">
-<input type="submit" value="カートに追加する">
+<input type="submit" value="カートに追加する" class="btn btn-flat">
 </form></td></tr>
 
 </c:forEach>
 </table>
 </body>
 </html>
+
+

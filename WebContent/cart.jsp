@@ -12,20 +12,20 @@
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 
-<h3>現在のカートの中身</h3>
+<h1>現在のカートの中身</h1>
 
 <c:if test="${empty cart}">
 現在、カートは空です。
 </c:if>
 
 <c:if test="${not empty cart}">
-<table border="1">
-<tr><td>タイトル</td><td>著者名</td><td>値段</td><td>状態</td><td>備考</td>
-    <td>削除</td>
+<table "brwsr2">
+<tr><th class="data fst">タイトル</th><td class="data">著者名</td><td class="data">値段</td><td class="data">状態</td><td class="data">備考</td>
+    <td class="data">削除</td>
 
 <c:forEach items="${cart}" var="item">
 <tr>
-	<td align="center">${item.title}</td>
+	<th align="center">${item.title}</th>
 	<td align="center">${item.author}</td>
 	<td align="right">${item.price}円</td>
 	<td align="right">${item.status}</td>
