@@ -27,16 +27,16 @@
 <h1>会員情報変更</h1>
 <br>
 <form action="/textbook/MembersServlet" method="post">
-氏:<input type="text" name="last_name" value="${membean.last_name}">
-名:<input type="text" name="first_name" value="${membean.first_name}">
+氏:<input type="text" name="last_name" value="${membean.last_name}" class="m-form-text">
+名:<input type="text" name="first_name" value="${membean.first_name}" class="m-form-text">
 <br>
-〒:<input type="text" name="postal" value="${membean.postal}">
+〒:<input type="text" name="postal" value="${membean.postal}" class="m-form-text">
 <br>
-住所:<input type="text" name="address" value="${membean.address}">
+住所:<input type="text" name="address" value="${membean.address}" class="m-form-text">
 <br>
-電話番号:<input type="text" name="tel" value="${membean.tel}">
+電話番号:<input type="text" name="tel" value="${membean.tel}" class="m-form-text">
 <br>
-Email:<input type="email" name="email" value="${membean.email}">
+Email:<input type="email" name="email" value="${membean.email}" class="m-form-text">
 <br>
 生年月日:
 年:
@@ -53,16 +53,15 @@ Email:<input type="email" name="email" value="${membean.email}">
 	</select>
 *生年月日は必ず再度ご入力ください
 <br>
-パスワード:<input type="password" name="password" value="${membean.password}">
+パスワード:<input type="password" name="password" value="${membean.password}" class="m-form-text">
 <br>
-パスワードの確認:<input type="password" name="passadd">
+パスワードの確認:<input type="password" name="passadd" class="m-form-text">
 <br>
 <input type="hidden" name="action" value="change">
-<input type="submit" value="変更">
+<input type="submit" value="変更" class="btn btn-flat">
 </form>
 <br>
-<form action="/textbook/MainPageServlet?action=list" method="post">
-<input type="submit" value="トップページに戻る">
+<footer><a href ="/textbook/MainPageServlet?action=list">トップページ</a></footer>
 </form>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-	<a href="/textbook/MainPageServlet?action=list">トップページに戻る</a>
+
     <h1>本当に退会しますか？</h1>
 
 <table border="1">
@@ -27,9 +27,9 @@
 </table>
 <form action="/textbook/MembersServlet" method="post">
 <input type="hidden" name="action" value="delete">
-<input type="submit" value="退会">
+<input type="submit" value="退会" class="btn btn-flat">
 </form>
 
-
+<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
 </body>
 </html>
