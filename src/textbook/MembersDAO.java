@@ -66,6 +66,7 @@ public class MembersDAO {
 		for (String mail : list) {
 			if (mail.equals(email)) {
 				judge = "out";
+				break;
 			} else {
 				judge = "safe";
 			}

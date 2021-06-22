@@ -75,7 +75,7 @@ public class MembersServlet extends HttpServlet {
 					gotoPage(request, response, "/errInternal.jsp");
 				}
 
-			}else if (action.equals("setinfo")) {
+			} else if (action.equals("setinfo")) {
 				String last_name = request.getParameter("last_name");
 				String first_name = request.getParameter("first_name");
 				String postal = request.getParameter("postal");
