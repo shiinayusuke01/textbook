@@ -52,6 +52,14 @@ public class CartServlet extends HttpServlet {
 				if (list == null) {
 					list = new ArrayList<TextbookBean>();
 				}
+				for (int i =0; i < list.size(); i++) {
+					if (list.get(i).getId() == id) {
+						request.setAttribute("message", "選択した教科書はすでにカートに追加されています");
+						gotoPage(request, response, "/memch-message.jsp");
+						return;
+					}
+				}
+
 				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
 				list.add(bean);
 				session.setAttribute("cart", list);
@@ -64,11 +72,17 @@ public class CartServlet extends HttpServlet {
 				if (list == null) {
 					list = new ArrayList<TextbookBean>();
 				}
+				for (int i =0; i < list.size(); i++) {
+					if (list.get(i).getId() == id) {
+						request.setAttribute("message", "選択した教科書はすでにカートに追加されています");
+						gotoPage(request, response, "/memch-message.jsp");
+						return;
+					}
+				}
 				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
 				list.add(bean);
 				session.setAttribute("cart", list);
 				gotoPage(request, response, "/cart.jsp");
-
 			} else if(action.equals("delete")){
 				HttpSession session = request.getSession(false);
 				if(session == null) {
@@ -78,7 +92,8 @@ public class CartServlet extends HttpServlet {
 				}
 				int id = Integer.parseInt(request.getParameter("textsid"));
 				list = (List<TextbookBean>) session.getAttribute("cart");
-				list.remove(id);
+				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
+				list.remove(bean);
 				session.setAttribute("cart", list);
 				gotoPage(request, response, "/main-input.jsp");
 			    }else{
