@@ -40,7 +40,7 @@ if(bean == null) {
 		<option value="7">7:歯学部系</option>
 		<option value="8">8:薬学部系</option>
 		<option value="9">9:工学部系</option>
-		<option value="10">10:農学部系</option></p></option></select>
+		<option value="10">10:農学部系</option></select>
 
 	<p><label>売値：<input type="text" name="price" value="${textbook.price}"></label>円</p>
 	商品状態:<select name="status" size="1">
