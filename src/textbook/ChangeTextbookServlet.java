@@ -49,7 +49,27 @@ public class ChangeTextbookServlet extends HttpServlet {
 		String author = request.getParameter("author");
 		int category = Integer.parseInt(request.getParameter("category"));
 		String status = request.getParameter("status");
-		int price = Integer.parseInt(request.getParameter("price"));
+
+		String errmsg = "";
+		if(title == "") {
+			errmsg += "タイトルを入力してください<br />";
+		}
+		if(author == "") {
+			errmsg += "著者名を入力してください<br />";
+		}
+		int price = 0;
+		try {
+			price = Integer.parseInt(request.getParameter("price"));
+		}catch (NumberFormatException e) {
+			errmsg += "売値を半角数字で入力してください<br />";
+		}
+
+		if(errmsg != "") {
+			request.setAttribute("errmsg", errmsg);
+			gotoPage(request, response, "regist-textbook.jsp");
+			return;
+		}
+
 		String info = request.getParameter("info");
 
 		String ti = escapeHTML(title);
@@ -61,7 +81,7 @@ public class ChangeTextbookServlet extends HttpServlet {
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			dao.changeTextbook(bean);
-			gotoPage(request, response, "ShowMyTextbook?change_textbook" + title);
+			gotoPage(request, response, "ShowMyTextbook?changed_textbook=" + ti);
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}

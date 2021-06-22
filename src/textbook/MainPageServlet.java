@@ -47,7 +47,12 @@ public class MainPageServlet extends HttpServlet {
 					List<TextbookBean> lists = dao.findAll(searchname);
 					request.setAttribute("show", lists);
 					gotoPage(request, response, "/main-input.jsp");
-				}
+			} else if (action.equals("searchcate")) {
+				int searchcategory = Integer.parseInt(request.getParameter("category"));
+				List<TextbookBean> lists = dao.findByCategory(searchcategory);
+				request.setAttribute("show", lists);
+				gotoPage(request, response, "/main-input.jsp");
+			}
 		} catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました");

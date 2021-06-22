@@ -48,8 +48,23 @@
 </form>
 <br>
 <br>
-
-
+<form action="/textbook/MainPageServlet" method="post">
+検索したい分類を選択してください<br>
+<select name="category" size="1">
+		<option value="0">文学部系</option>
+		<option value="1">教育学部系</option>
+		<option value="2">法学部系</option>
+		<option value="3">社会学部系</option>
+		<option value="4">経済学部系</option>
+		<option value="5">理学部系</option>
+		<option value="6">医学部系</option>
+		<option value="7">歯学部系</option>
+		<option value="8">薬学部系</option>
+		<option value="9">工学部系</option>
+		<option value="10">農学部系</option></p></option></select>
+<input type="hidden" name="action" value="searchcate">
+<input type="submit" value="検索">
+</form>
 <br>
 <a href="/textbook/cart.jsp"  class="btn btn-radius-solid">
 カート/購入ページへ</a>
@@ -63,6 +78,7 @@
 <br>
 <table class="brwsr2">
 <tr>
+<<<<<<< HEAD
     <th>タイトル</th>
     <td class="data fst">著者名</td>
     <td class="data">分類</td>
@@ -71,13 +87,21 @@
     <td class="data">備考</td>
     <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
+=======
+    <td>タイトル</td>
+    <td>著者名</td>
+    <td>分類</td>
+    <td>価格</td>
+    <td>状態</td>
+    <td>備考</td>
+    <td>カートに追加</td>
+>>>>>>> 9f393b8fa4fa2dfc0c00a99ea1898319db4d7c81
   </tr>
 
 <c:forEach items="${show}" var="Textbook">
 <tr><th>${Textbook.title}</th><td>${Textbook.author}</td>
 <td>${Textbook.category}</td><td>${Textbook.price}</td>
 <td>${Textbook.status}</td><td>${Textbook.info}</td>
-<td>${Textbook.userId}</td>
 <td>
 <br>
 
@@ -94,6 +118,7 @@
 <br>
 <table class="brwsr2">
 <tr>
+<<<<<<< HEAD
     <th>タイトル</th>
     <td class="data fst">著者名</td>
     <td class="data">分類</td>
@@ -102,13 +127,21 @@
     <td class="data">備考</td>
     <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
+=======
+    <td>タイトル</td>
+    <td>著者名</td>
+    <td>分類</td>
+    <td>価格</td>
+    <td>状態</td>
+    <td>備考</td>
+    <td>カートに追加</td>
+>>>>>>> 9f393b8fa4fa2dfc0c00a99ea1898319db4d7c81
   </tr>
 
 <c:forEach items="${showall}" var="Text">
 <tr><th>${Text.title}</th><td>${Text.author}</td>
 <td>${Text.category}</td><td>${Text.price}</td>
 <td>${Text.status}</td><td>${Text.info}</td>
-<td>${Text.userId}</td>
 <td>
 <br>
 

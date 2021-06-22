@@ -15,16 +15,17 @@ if(bean == null) {
 
 <%
 String deletedTitle = request.getParameter("deleted_textbook");
-String changeTitle = request.getParameter("change_textbook");
+String changedTitle = request.getParameter("changed_textbook");
 String insertedTitle = request.getParameter("inserted_textbook");
+
 String deletedMsg = "";
 String changeMsg = "";
 String insertedMsg = "";
 if(deletedTitle != null){
 	deletedMsg = deletedTitle + "を削除しました";
 }
-if(changeTitle != null){
-	changeMsg = changeTitle + "を変更しました。";
+if(changedTitle != null){
+	changeMsg = changedTitle + "を変更しました。";
 }
 if(insertedTitle != null){
 	insertedMsg = insertedTitle + "を登録しました。";
@@ -44,6 +45,7 @@ if(insertedTitle != null){
 	<h3>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h3>
 
 	<a style="color:red"><%= deletedMsg %></a>
+	<a style="color:red"><%= changeMsg %></a>
 	<a style="color:red"><%= insertedMsg %></a>
 
 	<table  border="1">
