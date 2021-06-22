@@ -13,7 +13,7 @@
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>会員トップページ</h1>
-<h3>${membean.last_name} ${membean.first_name}さんようこそ！</h3>
+<h3>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h3>
 <br>
 <form action="/textbook/regist-textbook.jsp" method="post">
 <input type="submit" value="新規教科書登録">
@@ -62,13 +62,13 @@
 <br>
 <table border=1>
 <tr>
-    <td>title</td>
-    <td>author</td>
-    <td>category</td>
-    <td>price</td>
-    <td>status</td>
-    <td>info</td>
-    <td>userId</td>
+    <td>タイトル</td>
+    <td>著者名</td>
+    <td>分類</td>
+    <td>価格</td>
+    <td>状態</td>
+    <td>備考</td>
+    <td>登録者ID</td>
     <td>カートに追加</td>
   </tr>
 
@@ -93,13 +93,13 @@
 <br>
 <table border=1>
 <tr>
-    <td>title</td>
-    <td>author</td>
-    <td>category</td>
-    <td>price</td>
-    <td>status</td>
-    <td>info</td>
-    <td>userId</td>
+    <td>タイトル</td>
+    <td>著者名</td>
+    <td>分類</td>
+    <td>価格</td>
+    <td>状態</td>
+    <td>備考</td>
+    <td>登録者ID</td>
     <td>カートに追加</td>
   </tr>
 
