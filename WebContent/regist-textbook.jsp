@@ -17,25 +17,10 @@ if(bean == null) {
 <title>教科書の登録</title>
 </head>
 <body>
-<form action="/textbook/regist-textbook.jsp" method="post">
-<input type="submit" value="新規教科書登録">
+<form action="/textbook/main-input.jsp" method="get">
+<input type="submit" value="トップページ">
 </form>
-<br>
-<form action="/textbook/ShowMyTextbook" method="post">
-<input type="submit" value="登録済み教科書情報変更・削除">
-</form>
-<br>
-<form action="/textbook/mem-info-change.jsp" method="post">
-<input type="submit" value="会員情報変更">
-</form>
-<br>
-<form action="/textbook/taikai.jsp" method="post">
-<input type="submit" value="退会">
-</form>
-<br>
-<form action="/textbook/MembersServlet?action=logout" method="post">
-<input type="submit" value="ログアウト">
-</form>
+<br />
 
 <h3>${membean.last_name} ${membean.first_name}様</h3>
 <h3>教科書を登録してください</h3>
