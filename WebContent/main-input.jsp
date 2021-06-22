@@ -78,7 +78,6 @@
 <br>
 <table class="brwsr2">
 <tr>
-<<<<<<< HEAD
     <th>タイトル</th>
     <td class="data fst">著者名</td>
     <td class="data">分類</td>
@@ -87,15 +86,6 @@
     <td class="data">備考</td>
     <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
-=======
-    <td>タイトル</td>
-    <td>著者名</td>
-    <td>分類</td>
-    <td>価格</td>
-    <td>状態</td>
-    <td>備考</td>
-    <td>カートに追加</td>
->>>>>>> 9f393b8fa4fa2dfc0c00a99ea1898319db4d7c81
   </tr>
 
 <c:forEach items="${show}" var="Textbook">
@@ -118,7 +108,6 @@
 <br>
 <table class="brwsr2">
 <tr>
-<<<<<<< HEAD
     <th>タイトル</th>
     <td class="data fst">著者名</td>
     <td class="data">分類</td>
@@ -127,15 +116,6 @@
     <td class="data">備考</td>
     <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
-=======
-    <td>タイトル</td>
-    <td>著者名</td>
-    <td>分類</td>
-    <td>価格</td>
-    <td>状態</td>
-    <td>備考</td>
-    <td>カートに追加</td>
->>>>>>> 9f393b8fa4fa2dfc0c00a99ea1898319db4d7c81
   </tr>
 
 <c:forEach items="${showall}" var="Text">
