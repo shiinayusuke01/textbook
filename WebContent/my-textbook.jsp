@@ -15,11 +15,16 @@ if(bean == null) {
 
 <%
 String deletedTitle = request.getParameter("deleted_textbook");
+String changeTitle = request.getParameter("change_textbook");
 String insertedTitle = request.getParameter("inserted_textbook");
 String deletedMsg = "";
+String changeMsg = "";
 String insertedMsg = "";
 if(deletedTitle != null){
 	deletedMsg = deletedTitle + "を削除しました";
+}
+if(changeTitle != null){
+	changeMsg = changeTitle + "を変更しました。";
 }
 if(insertedTitle != null){
 	insertedMsg = insertedTitle + "を登録しました。";

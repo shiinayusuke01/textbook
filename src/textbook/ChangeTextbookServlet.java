@@ -61,10 +61,10 @@ public class ChangeTextbookServlet extends HttpServlet {
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			dao.changeTextbook(bean);
+			gotoPage(request, response, "ShowMyTextbook?change_textbook" + title);
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
-		gotoPage(request, response, "ShowMyTextbook");
 	}
 
 	 public static String escapeHTML(String a) {
