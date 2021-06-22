@@ -41,6 +41,7 @@
 <h2>教科書検索</h2>
 
 <form action="/textbook/MainPageServlet" method="post">
+検索したいタイトルを入力してください<br>
 <input type="text" name="searchname">
 <input type="hidden" name="action" value="search">
 <input type="submit" value="検索">

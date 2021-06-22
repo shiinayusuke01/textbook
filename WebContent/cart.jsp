@@ -11,7 +11,7 @@
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-<header>ヘッダー</header>
+
 <h3>現在のカートの中身</h3>
 
 <c:if test="${empty cart}">
@@ -31,7 +31,7 @@
 	<td align="right">${item.status}</td>
 	<td align="right">${item.info}</td>
 <td>
-<form action="/textbook/CartServlet?action=delete" method="post">
+<form action="/textbook/CartServlet?action=delete1" method="post">
 	<input type="hidden" name="textsid" value="${item.id}">
 	<input type="submit" value="削除">
 </form>

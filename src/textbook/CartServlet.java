@@ -83,7 +83,7 @@ public class CartServlet extends HttpServlet {
 				list.add(bean);
 				session.setAttribute("cart", list);
 				gotoPage(request, response, "/cart.jsp");
-			} else if(action.equals("delete")){
+			} else if(action.equals("delete1")){
 				HttpSession session = request.getSession(false);
 				if(session == null) {
 					request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
@@ -99,11 +99,13 @@ public class CartServlet extends HttpServlet {
 					}
 				}
 				session.setAttribute("cart", list);
-				gotoPage(request, response, "/main-input.jsp");
-			    }else{
+				gotoPage(request, response, "/cart.jsp");
+
+			} else {
 			    	request.setAttribute("message", "正しく操作してください。");
 					gotoPage(request, response, "/errInternal.jsp");
 				}
+
 		} catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
