@@ -37,17 +37,29 @@ public class RegistTextbookServlet extends HttpServlet {
 		MembersBean bean = (MembersBean) session.getAttribute("membean");
 		int userId = bean.getId();
 		String title = request.getParameter("title");
+
 		String author = request.getParameter("author");
 		int category = Integer.parseInt(request.getParameter("category"));
 		String status = request.getParameter("status");
+		String errmsg = "";
+		if(title == "") {
+			errmsg += "タイトルを入力してください<br />";
+		}
+		if(author == "") {
+			errmsg += "著者名を入力してください<br />";
+		}
 		int price = 0;
 		try {
 			price = Integer.parseInt(request.getParameter("price"));
 		}catch (NumberFormatException e) {
-			request.setAttribute("errmsg", "売値は半角数字で入力してください");
-			gotoPage(request, response, "regist-textbook.jsp");
+			errmsg += "売値を半角数字で入力してください<br />";
 		}
 
+		if(errmsg != "") {
+			request.setAttribute("errmsg", errmsg);
+			gotoPage(request, response, "regist-textbook.jsp");
+			return;
+		}
 
 		String info = request.getParameter("info");
 //		System.out.println(userId);
