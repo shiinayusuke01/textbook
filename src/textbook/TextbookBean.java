@@ -11,6 +11,39 @@ public class TextbookBean implements Serializable {
 	private int price;
 	private String info;
 	private int userId;
+	private int stock;
+	private int buyer;
+
+
+
+	public TextbookBean(int id, String title, int category, String author, String status, int price, String info,
+			int userId, int stock, int buyer) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.stock = stock;
+		this.buyer = buyer;
+	}
+
+	public TextbookBean(int id, String title, int category, String author, String status, int price, String info,
+			int userId, int stock) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.stock = stock;
+	}
 
 	public TextbookBean(int id, String title, String author, int category, String status, int price,  String info, int userId) {
 		this.id = id;
@@ -134,9 +167,22 @@ public class TextbookBean implements Serializable {
 
 	}
 
-	public int getQuantity() {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public int getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(int buyer) {
+		this.buyer = buyer;
 	}
 
 	public String replaceAll(String a, String b) {

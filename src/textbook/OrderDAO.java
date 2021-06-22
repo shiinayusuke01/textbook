@@ -23,7 +23,7 @@ public class OrderDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "DELETE FROM textbooks WHERE id = ?";
+			String sql = "UPDATE textbooks SET stock=0 where id=?";
 			st = con.prepareStatement(sql);
 			st.setInt(1, id);
 

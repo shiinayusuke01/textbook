@@ -33,9 +33,7 @@ public class MainPageServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		try {
 			TextBookDAO	dao = new TextBookDAO();
-			TextBookDAO tdao = null;
-			tdao = new TextBookDAO();
-			List<TextbookBean> list = tdao.showAllTextbooks();
+			List<TextbookBean> list = dao.showAllTextbooks();
 			request.setAttribute("showall", list);
 
 

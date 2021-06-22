@@ -26,7 +26,7 @@ public class TextBookDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "INSERT INTO textbooks(title, author, category, status, price, info, user_id) VALUES(?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO textbooks(title, author, category, status, price, info, user_id, stock) VALUES(?, ?, ?, ?, ?, ?, ?, 1)";
 			st = con.prepareStatement(sql);
 
 			st.setString(1, title);
@@ -149,7 +149,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks where title like ?";
+			String sql ="select * from textbooks where title like ? AND stock=1";
 			st=con.prepareStatement(sql);
 			st.setString(1, "%" + title +"%");
 			rs = st.executeQuery();
@@ -164,8 +164,9 @@ public class TextBookDAO {
 				int price = rs.getInt("price");
 				String info = rs.getString("info");
 				int userId=rs.getInt("user_id");
+				int stock = rs.getInt("stock");
 
-				    TextbookBean bean = new TextbookBean(id, title, author,category,status,price, info, userId);
+				    TextbookBean bean = new TextbookBean(id, title, category,author,status,price, info, userId, stock);
 				    list.add(bean);
 			}
 			return list;
@@ -194,7 +195,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks where category=?";
+			String sql ="select * from textbooks where category=? AND stock=1";
 			st=con.prepareStatement(sql);
 			st.setInt(1, cate);
 			rs = st.executeQuery();
@@ -209,8 +210,10 @@ public class TextBookDAO {
 				int price = rs.getInt("price");
 				String info = rs.getString("info");
 				int userId=rs.getInt("user_id");
+				int stock = rs.getInt("stock");
 
-				    TextbookBean bean = new TextbookBean(id, title, author,category,status,price, info, userId);
+
+				    TextbookBean bean = new TextbookBean(id, title, category,author,status,price, info, userId, stock);
 				    list.add(bean);
 			}
 			return list;
@@ -232,44 +235,7 @@ public class TextBookDAO {
 		  }
 	   }
 
-	    public List<TextbookBean> showAllTextbooks() throws DAOException{
-	    	if(con == null)
-	    		getConnection();
 
-	    	PreparedStatement st = null;
-	    	ResultSet rs = null;
-	    	TextbookBean bean = new TextbookBean();
-			try {
-	     		String sql = "SELECT * FROM textbooks";
-	     		st = con.prepareStatement(sql);
-	     		rs = st.executeQuery();
-	     		List<TextbookBean> list = new ArrayList<TextbookBean>();
-	     		while (rs.next()) {
-					 int id = rs.getInt("id");
-					 String title = rs.getString("title");
-					 String author = rs.getString("author");
-					 int category =rs.getInt("category");
-					 int price =rs.getInt("price");
-					 String info = rs.getString("info");
-					 String status = rs.getString("status");
-					 int userid = rs.getInt("user_id");
-
-					 bean = new TextbookBean(id, title, author, category, status, price, info, userid);
-					 list.add(bean);
-	     		}
-	     			return list;
-	     	} catch (Exception e) {
-	 			throw new DAOException("レコードの取得に失敗しました。");
-	     	} finally {
-	     		try {
-	     		if (rs != null) rs.close();
-	     		if (st != null) st.close();
-	     			close();
-	     		}catch(Exception e) {
-	     		throw new DAOException("リソースの開放に失敗しました。");
-	     	}
-	     }
-	   }
 
 	public int changeTextbook(TextbookBean bean) throws DAOException{
 		if (con == null)
@@ -312,6 +278,46 @@ public class TextBookDAO {
 		}
 	}
 
+	public List<TextbookBean> showAllTextbooks() throws DAOException{
+    	if(con == null)
+    		getConnection();
+
+    	PreparedStatement st = null;
+    	ResultSet rs = null;
+    	TextbookBean bean = new TextbookBean();
+		try {
+     		String sql = "SELECT * FROM textbooks where stock=1";
+     		st = con.prepareStatement(sql);
+     		rs = st.executeQuery();
+     		List<TextbookBean> list = new ArrayList<TextbookBean>();
+     		while (rs.next()) {
+				 int id = rs.getInt("id");
+				 String title = rs.getString("title");
+				 String author = rs.getString("author");
+				 int category =rs.getInt("category");
+				 int price =rs.getInt("price");
+				 String info = rs.getString("info");
+				 String status = rs.getString("status");
+				 int userid = rs.getInt("user_id");
+				 int stock = rs.getInt("stock");
+
+				 bean = new TextbookBean(id, title, category, author, status, price, info, userid, stock);
+				 list.add(bean);
+     		}
+     			return list;
+     	} catch (Exception e) {
+ 			throw new DAOException("レコードの取得に失敗しました。");
+     	} finally {
+     		try {
+     		if (rs != null) rs.close();
+     		if (st != null) st.close();
+     			close();
+     		}catch(Exception e) {
+     		throw new DAOException("リソースの開放に失敗しました。");
+     	}
+     }
+   }
+
 
 	public int deleteTextbook(int id) throws DAOException{
 
@@ -319,11 +325,10 @@ public class TextBookDAO {
 			getConnection();
 
 		PreparedStatement st = null;
-		ResultSet rs = null;
 		try {
 
 			// SQL文の作成
-			String sql = "DELETE FROM textbooks WHERE id = ?";
+			String sql = "DELETE FROM textbooks where id=?";
 			st = con.prepareStatement(sql);
 			st.setInt(1, id);
 
@@ -337,7 +342,6 @@ public class TextBookDAO {
 		} finally {
 			try {
 				// リソースの開放
-				if(rs != null) rs.close();
 				if(st != null) st.close();
 				close();
 			} catch (Exception e) {
@@ -345,6 +349,8 @@ public class TextBookDAO {
 			}
 		}
 	}
+
+
 
 	private void getConnection() throws DAOException {
 		try {
@@ -385,8 +391,10 @@ public class TextBookDAO {
                 String status = rs.getString("status");
                 int price = rs.getInt("price");
                 String info = rs.getString("info");
+				int stock = rs.getInt("stock");
 
-                TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
+
+                TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock);
                 list.add(bean);
         }
         return list;
@@ -423,9 +431,11 @@ public class TextBookDAO {
         int price = rs.getInt("price");
         String info = rs.getString("info");
         int userId = rs.getInt("user_id");
+		int stock = rs.getInt("stock");
+
 
         System.out.println(id + " " + title + " " + author);
-        TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userId);
+        TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock);
 
 
         return bean;

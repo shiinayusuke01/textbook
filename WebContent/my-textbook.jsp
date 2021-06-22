@@ -49,7 +49,7 @@ if(insertedTitle != null){
 	<a style="color:red"><%= insertedMsg %></a>
 
 	<table  border="1">
-	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th><th> </th><th> </th></tr>
+	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th><th>販売状態</th><th> </th><th> </th></tr>
 	<c:forEach items="${textbooks}" var="textbook">
 		<form method="POST">
 			<input type="hidden" name="textbook_id" value="${textbook.id}">
@@ -59,6 +59,10 @@ if(insertedTitle != null){
 					<td>${textbook.status}</td>
 					<td>${textbook.price}円</td>
 					<td>${textbook.info}</td>
+					<td>
+					<c:if test="${textbook.stock eq 0}">売却済</c:if>
+					<c:if test="${textbook.stock eq 1}">販売中</c:if>
+					</td>
 					<td><input type="submit" value="削除" formaction="/textbook/DeleteTextbookServlet" /></td>
 					<td><input type="submit" value="変更" formaction="/textbook/InputFormServlet" /></td>
 				</tr>

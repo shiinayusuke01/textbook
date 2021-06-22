@@ -21,7 +21,9 @@ password Varchar(12) Not Null
  status Varchar(20) not null,
  price Integer not null,
  info Varchar(2000),
- user_id Integer not null
+ user_id Integer not null,
+ stock Integer not null,
+ buyer Integer
  );
 
 
