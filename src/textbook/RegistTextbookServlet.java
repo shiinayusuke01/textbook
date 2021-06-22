@@ -72,7 +72,8 @@ public class RegistTextbookServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		gotoPage(request, response, "ShowMyTextbook");
+
+		gotoPage(request, response, "ShowMyTextbook?inserted_textbook=" + ti);
 	}
 
 	public static String escapeHTML(String a) {
