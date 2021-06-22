@@ -83,7 +83,6 @@
     <td>価格</td>
     <td>状態</td>
     <td>備考</td>
-    <td>登録者ID</td>
     <td>カートに追加</td>
   </tr>
 
@@ -91,7 +90,6 @@
 <tr><td>${Textbook.title}</td><td>${Textbook.author}</td>
 <td>${Textbook.category}</td><td>${Textbook.price}</td>
 <td>${Textbook.status}</td><td>${Textbook.info}</td>
-<td>${Textbook.userId}</td>
 <td>
 <br>
 
@@ -114,7 +112,6 @@
     <td>価格</td>
     <td>状態</td>
     <td>備考</td>
-    <td>登録者ID</td>
     <td>カートに追加</td>
   </tr>
 
@@ -122,7 +119,6 @@
 <tr><td>${Text.title}</td><td>${Text.author}</td>
 <td>${Text.category}</td><td>${Text.price}</td>
 <td>${Text.status}</td><td>${Text.info}</td>
-<td>${Text.userId}</td>
 <td>
 <br>
 
