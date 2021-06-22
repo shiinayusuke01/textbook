@@ -26,8 +26,8 @@
 		<td align="right">${item.status}</td>
 		<td align="right">${item.info}</td>
 		<td>
-<form action="/textbook/CartServlet?action=delete" method="post">
-	<input type="hidden" name="textsid" value="${item.id}">
+<form action="/textbook/OrderServlet?action=delete2" method="post">
+	<input type="hidden" name="textsid2" value="${item.id}">
 	<input type="submit" value="削除">
 </form>
 </td>

@@ -44,14 +44,32 @@ public class OrderServlet extends HttpServlet {
 			}
 
 			String action =request.getParameter("action");
+			list = (List<TextbookBean>) session.getAttribute("cart");
+			MembersBean member = (MembersBean)session.getAttribute("membean");
 			if (action == null || action.length() == 0 || action.equals("purchase")) {
-				list = (List<TextbookBean>) session.getAttribute("cart");
-				MembersBean member = (MembersBean)session.getAttribute("membean");
 				gotoPage(request, response, "/purchase-procedure.jsp");
-			} else if(action.equals("order")) {
+			} else if(action.equals("delete2")){
+				session = request.getSession(false);
+				if(session == null) {
+					request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
+					gotoPage(request, response, "/errInternal.jsp");
+					return;
+				}
+				int id = Integer.parseInt(request.getParameter("textsid2"));
 				list = (List<TextbookBean>) session.getAttribute("cart");
-				MembersBean member = (MembersBean)session.getAttribute("membean");
-
+				for (int i =0; i < list.size(); i++) {
+					if (list.get(i).getId() == id) {
+						list.remove(i);
+						break;
+					}
+				}
+				session.setAttribute("cart", list);
+				if (list == null || list.size() == 0) {
+					gotoPage(request, response, "/cart.jsp");
+				} else {
+					gotoPage(request, response, "/purchase-procedure.jsp");
+				}
+			} else if(action.equals("order")) {
 				if(member == null) {
 					request.setAttribute("message", "正しく操作してください。");
 					gotoPage(request, response, "/errInternal.jsp");
@@ -62,25 +80,10 @@ public class OrderServlet extends HttpServlet {
 				session.removeAttribute("cart");
 				gotoPage(request, response, "/Order.jsp");
 
-			}else if(action.equals("deletetext")){
-				session = request.getSession(false);
-				if(session == null) {
-					request.setAttribute("message", "セッションが切れています。もう一度トップページより操作してください。");
-					gotoPage(request, response, "/errInternal.jsp");
-					return;
-				}
-				int id = Integer.parseInt(request.getParameter("dtext"));
-				list = (List<TextbookBean>) session.getAttribute("cart");
-				list.remove(id);
-				session.setAttribute("cart", list);
-				gotoPage(request, response, "/main-input.jsp");
-
 			}else{
 				request.setAttribute("message", "正しく操作してください。");
 				gotoPage(request, response, "/errInternal.jsp");
 			}
-
-
 		} catch (DAOException e) {
 			e.printStackTrace();
 			request.setAttribute("message", "内部エラーが発生しました。");
