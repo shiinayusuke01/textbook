@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>会員ホーム</title>
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
+<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>会員トップページ</h1>
 <h3>${membean.last_name}さんようこそ！</h3>
 <br>

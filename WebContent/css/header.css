@@ -112,7 +112,7 @@ a.btn-border-shadow:hover:before {
 }
 .cp_iptxt input[type=text] {
 	font: 15px/24px sans-serif;
-	box-sizing: border-box;
+	box-sizing: 100%;
 	width: 100%;
 	margin: 8px 0;
 	padding: 0.3em;

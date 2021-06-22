@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>最終確認</title>
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
+<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h3>下記の内容で注文を行いますか？</h3>
 <h3>教科書情報</h3>
 <c:if test="${not empty cart}">

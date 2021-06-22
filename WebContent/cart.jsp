@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome shopping!</title>
-<link rel="stylesheet" href="header.css">
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
+<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <header>ヘッダー</header>
 <h3>現在のカートの中身</h3>
 

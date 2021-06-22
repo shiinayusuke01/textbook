@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>管理者ホーム</title>
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
+<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>管理者トップページ</h1>
 <br>
 <form action="/textbook/MembersServlet?action=logout" method="post">

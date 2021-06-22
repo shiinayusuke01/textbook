@@ -6,6 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 <title>Member Information Change</title>
+<link href="./css/header.css" rel="stylesheet">
 <script>
 		function func(num){
 			for (var i = 1900; i <= num; i++){
@@ -22,6 +23,7 @@
 	</script>
 </head>
 <body>
+<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>会員情報変更</h1>
 <br>
 <form action="/textbook/MembersServlet" method="post">
