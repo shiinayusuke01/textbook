@@ -56,11 +56,9 @@ public class MembersServlet extends HttpServlet {
 					String ad = escapeHTML(bean.getAddress());
 					String te = escapeHTML(bean.getTel());
 					String em = escapeHTML(bean.getEmail());
-					String year = bean.getYear();
-					String month = bean.getMonth();
-					String day = bean.getDay();
+					String birthday = bean.getBirthday();
 					String pa = escapeHTML(bean.getPassword());
-					bean = new MembersBean(id, la, fi, po, ad, te, em, year, month, day, pa);
+					bean = new MembersBean(id, la, fi, po, ad, te, em, birthday, pa);
 					if (bean.getId() == 0) {
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
@@ -99,7 +97,7 @@ public class MembersServlet extends HttpServlet {
 					gotoPage(request, response, "/newmembermessage.jsp");
 				} else {
 					if (passadd.equals(password)) {
-						MembersBean bean = null;
+
 						String la = escapeHTML(last_name);
 						String fi = escapeHTML(first_name);
 						String po = escapeHTML(postal);
@@ -108,7 +106,7 @@ public class MembersServlet extends HttpServlet {
 						String em = escapeHTML(email);
 						String pa = escapeHTML(password);
 
-						bean = new MembersBean(la, fi, po, ad, te, em, year, month, day, pa);
+						MembersBean bean = new MembersBean(la, fi, po, ad, te, em, year, month, day, pa);
 						dao = new MembersDAO();
 						dao.newMembers(bean);
 						request.setAttribute("message", "登録できました!");
@@ -127,12 +125,18 @@ public class MembersServlet extends HttpServlet {
 				String address = request.getParameter("address");
 				String tel = request.getParameter("tel");
 				String email = request.getParameter("email");
+				String year = request.getParameter("year");
+				String month = request.getParameter("month");
+				String day = request.getParameter("day");
 				String password = request.getParameter("password");
 				String passadd = request.getParameter("passadd");
 
 				if (last_name == null || last_name.length() <= 0 || first_name == null || first_name.length() <= 0 || postal == null || postal.length() <= 0|| address == null || address.length() <= 0|| tel == null || tel.length() <= 0 || email == null || email.length() <= 0|| password == null || password.length() <= 0) {
 					request.setAttribute("message", "登録情報はすべて入力してください");
 					gotoPage(request, response, "/errInternal.jsp");
+				} else if (year.equals("1900") && month.equals("1") && day.equals("1")) {
+					request.setAttribute("message", "生年月日がデフォルトのまま変更されていません。<br>お手数ですが再度登録してください。");
+					gotoPage(request, response, "/memch-message.jsp");
 				} else {
 						if (passadd.equals(password)) {
 						    MembersBean bean = (MembersBean) session.getAttribute("membean");
@@ -142,6 +146,9 @@ public class MembersServlet extends HttpServlet {
 						    bean.setAddress(address);
 						    bean.setTel(tel);
 						    bean.setEmail(email);
+						    bean.setYear(year);
+						    bean.setMonth(month);
+						    bean.setDay(day);
 						    bean.setPassword(password);
 
 
@@ -153,8 +160,9 @@ public class MembersServlet extends HttpServlet {
 							String te = escapeHTML(bean.getTel());
 							String em = escapeHTML(bean.getEmail());
 							String pa = escapeHTML(bean.getPassword());
-							String birthday = bean.getBirthday();
-							bean = new MembersBean(id, la, fi, po, ad, te, em, birthday, pa);
+
+
+							bean = new MembersBean(id, la, fi, po, ad, te, em, year, month, day, pa);
 						    dao = new MembersDAO();
 							dao.changeMembers(bean);
 							request.setAttribute("message", "変更できました!");
