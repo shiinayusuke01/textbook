@@ -8,6 +8,27 @@
 <title>登録した教科書一覧</title>
 </head>
 <body>
+<form action="/textbook/regist-textbook.jsp" method="post">
+<input type="submit" value="新規教科書登録">
+</form>
+<br>
+<form action="/textbook/ShowMyTextbook" method="post">
+<input type="submit" value="登録済み教科書情報変更・削除">
+</form>
+<br>
+<form action="/textbook/mem-info-change.jsp" method="post">
+<input type="submit" value="会員情報変更">
+</form>
+<br>
+<form action="/textbook/taikai.jsp" method="post">
+<input type="submit" value="退会">
+</form>
+<br>
+<form action="/textbook/MembersServlet?action=logout" method="post">
+<input type="submit" value="ログアウト">
+</form>
+
+
 	<h3>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h3>
 	<table  border="1">
 	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th><th> </th><th> </th></tr>
