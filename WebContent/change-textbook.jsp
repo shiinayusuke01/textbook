@@ -16,9 +16,7 @@ if(bean == null) {
 <title>教科書情報の変更</title>
 </head>
 <body>
-<form action="/textbook/main-input.jsp" method="get">
-<input type="submit" value="トップページ">
-</form>
+<a href="/textbook/main-input.jsp">トップページ</a>
 <br />
 
 <h3>教科書情報を変更してください</h3>

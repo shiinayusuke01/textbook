@@ -17,9 +17,7 @@ if(bean == null) {
 <title>教科書の登録</title>
 </head>
 <body>
-<form action="/textbook/main-input.jsp" method="get">
-<input type="submit" value="トップページ">
-</form>
+<a href="/textbook/main-input.jsp">トップページ</a>
 <br />
 
 <h3>${membean.last_name} ${membean.first_name}様</h3>

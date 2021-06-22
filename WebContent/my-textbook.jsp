@@ -8,9 +8,7 @@
 <title>登録した教科書一覧</title>
 </head>
 <body>
-<form action="/textbook/main-input.jsp" method="get">
-<input type="submit" value="トップページ">
-</form>
+<a href="/textbook/main-input.jsp">トップページ</a>
 <br />
 
 	<h3>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h3>
