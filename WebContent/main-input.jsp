@@ -13,7 +13,7 @@
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>会員トップページ</h1>
-<h3>${membean.last_name}さんようこそ！</h3>
+<h3>${membean.last_name} ${membean.first_name}さんようこそ！</h3>
 <br>
 <form action="/textbook/regist-textbook.jsp" method="post">
 <input type="submit" value="新規教科書登録">
@@ -86,7 +86,7 @@
 
 </c:forEach>
 </table>
-
+<br><br>
 
 <h2>販売中教科書一覧</h2>
 <br>

@@ -19,7 +19,7 @@ if(bean == null) {
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-<a href="/textbook/main-input.jsp">トップページ</a>
+<a href="/textbook/MainPageServlet?action=list">トップページ</a>
 <br />
 
 <h3>${membean.last_name} ${membean.first_name}様</h3>
@@ -42,7 +42,7 @@ if(bean == null) {
 		<option value="9">工学部系</option>
 		<option value="10">農学部系</option></p></option></select>
 
-	<p><label>売値：<input type="text" name="price" value="${textbook.price}"></label></p>
+	<p><label>売値：<input type="text" name="price" value="${textbook.price}"></label>円</p>
 	商品状態:<select name="status" size="1">
 		<option value="新品、未使用">新品、未使用</option>
 		<option value="未使用に近い">未使用に近い</option>

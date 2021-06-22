@@ -18,7 +18,7 @@ if(bean == null) {
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-<a href="/textbook/main-input.jsp">トップページ</a>
+<a href="/textbook/MainPageServlet?action=list">トップページ</a>
 <br />
 
 <h3>教科書情報を変更してください</h3>

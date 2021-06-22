@@ -92,8 +92,12 @@ public class CartServlet extends HttpServlet {
 				}
 				int id = Integer.parseInt(request.getParameter("textsid"));
 				list = (List<TextbookBean>) session.getAttribute("cart");
-				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
-				list.remove(bean);
+				for (int i =0; i < list.size(); i++) {
+					if (list.get(i).getId() == id) {
+						list.remove(i);
+						break;
+					}
+				}
 				session.setAttribute("cart", list);
 				gotoPage(request, response, "/main-input.jsp");
 			    }else{

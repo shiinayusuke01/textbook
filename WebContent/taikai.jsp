@@ -11,7 +11,7 @@
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-	<a href="/textbook/main-input.jsp">トップページに戻る</a>
+	<a href="/textbook/MainPageServlet?action=list">トップページに戻る</a>
     <h1>マイページ／会員情報表示</h1>
 
 <table border="1">

@@ -60,5 +60,9 @@ Email:<input type="email" name="email" value="${membean.email}">
 <input type="hidden" name="action" value="change">
 <input type="submit" value="変更">
 </form>
+<br>
+<form action="/textbook/MainPageServlet?action=list" method="post">
+<input type="submit" value="トップページに戻る">
+</form>
 </body>
 </html>

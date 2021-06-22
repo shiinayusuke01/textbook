@@ -26,8 +26,8 @@
 		<td align="right">${item.status}</td>
 		<td align="right">${item.info}</td>
 		<td>
-<form action="/textbook/CartServlet?action=deletetext" method="post">
-	<input type="hidden" name="dtext" value="${item.id}">
+<form action="/textbook/CartServlet?action=delete" method="post">
+	<input type="hidden" name="textsid" value="${item.id}">
 	<input type="submit" value="削除">
 </form>
 </td>
@@ -45,7 +45,7 @@ ${total}円</td></tr>
 	<input type="radio" name="pay" value="card" checked> クレジットカード
 	<input type="radio" name="pay" value="debit"> デビットカード
 	<input type="radio" name="pay" value="cash"> 現金
-<h3>お届け宛先</h3>
+<h3>お届け先</h3>
 氏:<input type="text" name="last_name" value="${membean.last_name}"><br>
 名:<input type="text" name="first_name" value="${membean.first_name}">
 <br>
@@ -56,9 +56,13 @@ ${total}円</td></tr>
 電話番号:<input type="text" name="tel" value="${membean.tel}">
 <br><br>
 </c:if>
-	<form action="/textbook/OrderServlet?action=order" method="post">
-	<input type="submit" value="この注文内容で注文">
-	</form>
+<form action="/textbook/OrderServlet?action=order" method="post">
+<input type="submit" value="この注文内容で注文">
+</form>
+
+<form action="/textbook/MainPageServlet?action=list" method="post">
+<input type="submit" value="トップページに戻る">
+</form>
 
 
 </body>

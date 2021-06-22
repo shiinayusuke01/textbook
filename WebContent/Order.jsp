@@ -13,7 +13,7 @@
 <h1>ご注文ありがとうございました。</h1>
 <h2>またのご利用をお待ちしております。</h2>
 <br>
-<a href="/textbook/main-input.jsp">トップページに戻る</a>
+<a href="/textbook/MainPageServlet?action=list">トップページに戻る</a>
 
 </body>
 </html>

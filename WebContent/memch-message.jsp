@@ -11,6 +11,6 @@
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>${message}</h1>
 
-<a href="/textbook/main-input.jsp">トップページに戻る</a>
+<a href="/textbook/MainPageServlet?action=list">トップページに戻る</a>
 </body>
 </html>

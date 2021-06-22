@@ -10,7 +10,7 @@
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-<a href="/textbook/main-input.jsp">トップページ</a>
+<a href="/textbook/MainPageServlet?action=list">トップページ</a>
 <br />
 
 	<h3>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h3>

@@ -37,18 +37,15 @@
 Email:<input type="email" name="email">
 <br>
 生年月日:
-年:
 	<select name="year">
 		<script>func(2021)</script>
-	</select>
-月:
+	</select>年
 	<select name="month">
 		<script>func2(12)</script>
-	</select>
-日:
+	</select>月
 	<select name="day">
 		<script>func2(31)</script>
-	</select>
+	</select>日
 <br>
 パスワード:<input type="password" name="password">
 <br>
