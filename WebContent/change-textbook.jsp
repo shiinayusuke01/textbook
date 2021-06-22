@@ -17,31 +17,8 @@ if(bean == null) {
 <link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-<form action="/textbook/regist-textbook.jsp" method="post">
-<input type="submit" value="新規教科書登録">
-</form>
-<br>
-<form action="/textbook/ShowMyTextbook" method="post">
-<input type="submit" value="登録済み教科書情報変更・削除">
-</form>
-<br>
-<form action="/textbook/mem-info-change.jsp" method="post">
-<input type="submit" value="会員情報変更">
-</form>
-<br>
-<form action="/textbook/taikai.jsp" method="post">
-<input type="submit" value="退会">
-</form>
-<br>
-<form action="/textbook/MembersServlet?action=logout" method="post">
-<input type="submit" value="ログアウト">
-</form>
-=======
 <a href="/textbook/main-input.jsp">トップページ</a>
 <br />
->>>>>>> 5cf60784147f3454449644cf15a1f57ef1ff8522
 
 <h3>教科書情報を変更してください</h3>
 <form method="POST">
