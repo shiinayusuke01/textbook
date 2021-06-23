@@ -48,7 +48,7 @@ if(insertedTitle != null){
 	<a style="color:red"><%= insertedMsg %></a>
 
 
-	<table  class="brwsr2">
+	<table class="type06">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">分類</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th><th class="data">削除</th><th class="data">変更</th></tr>
 		<c:forEach items="${textbooks}" var="textbook">
 		    <c:if test="${textbook.stock eq 1}">
@@ -72,7 +72,7 @@ if(insertedTitle != null){
 <br><br>
 	<h2>売却済み教科書一覧</h2>
 <br>
-    <table  class="brwsr2">
+    <table class="type06">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">分類</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th></tr>
 		<c:set value="${0}" var="total"></c:set>
 		<c:forEach items="${textbooks}" var="textbook">
