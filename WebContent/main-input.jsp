@@ -109,12 +109,12 @@
 	<table class="type06">
 	<tr>
     <th>タイトル</th>
-    <td class="data fst">著者名</td>
-    <td class="data">分類</td>
-    <td class="data">価格</td>
-    <td class="data">状態</td>
-    <td class="data">備考</td>
-    <td class="data">カートに追加</td>
+    <th >著者名</th>
+    <th >分類</th>
+    <th >価格</th>
+    <th >状態</th>
+    <th >備考</th>
+    <th >カートに追加</th>
   	</tr>
 
 	<c:forEach items="${show}" var="Textbook">
@@ -150,41 +150,24 @@
   </thead>
 
   <tbody>
-    <tr>
-      <td>太郎</td>
-      <td>きびだんご</td>
-    </tr>
-    <tr>
-      <td>二郎</td>
-      <td>ラーメン</td>
-    </tr>
-    <tr>
-      <td>ジョン</td>
-      <td>ドーナツ</td>
-    </tr>
-    <tr>
-      <td>ニキータ</td>
-      <td>ビフストロガノフ</td>
-    </tr>
-    <tr>
-      <td>三郎</td>
-      <td>ちくわ</td>
-    </tr>
-  </tbody>
-	<c:forEach items="${showall}" var="Text">
-	<tr><th>${Text.title}</th><td>${Text.author}</td>
-	<td>${Text.categoryname}</td><td>${Text.price}</td>
-	<td>${Text.status}</td><td>${Text.info}</td>
-	<td>
-	<br>
-
-	<form action="/textbook/CartServlet?action=addtext" method="post">
+  <c:forEach items="${showall}" var="Text">
+  <tr>
+      <td>${Text.title}</td>
+      <td>${Text.author}</td>
+      <td>${Text.categoryname}</td>
+      <td>${Text.price}</td>
+      <td>${Text.status}</td>
+      <td>${Text.info}</td>
+      <td>
+      <form action="/textbook/CartServlet?action=addtext" method="post">
 	<input type="hidden" name="textid" value="${Text.id}">
-	<input type="hidden" name="putid" value="${Text.userId}">
+      <input type="hidden" name="putid" value="${Text.userId}">
 	<input type="submit" value="カートに追加する" class="btn btn-flat">
-	</form></td></tr>
-
-	</c:forEach>
+	</form>
+	</td>
+    </tr>
+    </c:forEach>
+  </tbody>
 	</table>
 </article>
 </div>

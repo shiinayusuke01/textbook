@@ -11,7 +11,7 @@
 }
 aside {
     grid-area: left;
-    height: 500px;
+    height: 800px;
     border: 2px #CCFF99 solid;
 }
 
@@ -95,7 +95,7 @@ ul li {
 
 table, th, td {
   border-collapse: collapse;
-  border: 1px solid #FF9966;
+  border: 1px solid #ccc;
   line-height: 1.5;
 }
 
@@ -104,16 +104,16 @@ table.type06 th {
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
+  background: #FFCCFF;
+  color:  #FF9966;
 }
 table.type06 td {
   width: 350px;
   padding: 10px;
   vertical-align: top;
- }
+}
 
-tr:nth-child(even) {
-  background: black;
- }
+
 body{
 	height: 300px;
  	text-align: center;
