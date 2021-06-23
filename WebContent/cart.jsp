@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome shopping!</title>
-<link href="./css/header.css" rel="stylesheet">
+<link href="./css/title.css" rel="stylesheet">
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
@@ -20,24 +20,30 @@
 
 <c:if test="${not empty cart}">
 <table class="type06"   align="center">
+	<thead>
+	<tr>
+	<th>タイトル</th>
+	<th>著者名</th>
+	<th>値段</th>
+	<th>状態</th>
+	<th>備考</th>
+    <th>削除</th>
+	<tr>
+	<thead>
 
-<tr><th>タイトル</th><td>著者名</td><td>値段</td><td>状態</td><td>備考</td>
-    <td class="data">削除</td>
-
-<c:forEach items="${cart}" var="item">
-<tr>
-	<th align="center">${item.title}</th>
-	<td align="center">${item.author}</td>
-	<td align="right">${item.price}円</td>
-	<td align="right">${item.status}</td>
-	<td align="right">${item.info}</td>
+	<tbody>
+	<c:forEach items="${cart}" var="item">
+	<td>${item.title}</td>
+	<td>${item.author}</td>
+	<td>${item.price}円</td>
+	<td>${item.status}</td>
+	<td>${item.info}</td>
 <td>
 <form action="/textbook/CartServlet?action=delete1" method="post">
 	<input type="hidden" name="textsid" value="${item.id}">
-	<input type="submit" value="削除">
+	<input type="submit" value="削除" class="btn btn-flat">
 </form>
 </td>
-</tr>
 </c:forEach>
 
 <tr><td align="right" colspan="6">合計金額：
@@ -47,15 +53,15 @@
 </c:forEach>
 ${total}円</td></tr>
 </table>
+ </tbody>
 
 <form action="/textbook/OrderServlet?action=purchase" method="post">
-<input type="submit" value="購入する">
+<input type="submit" value="購入する" class="btn btn-flat">
 
 </form>
 </c:if>
 <br>
-<form action="/textbook/MainPageServlet?action=list" method="post">
-<input type="submit" value="トップページに戻る">
+<footer><a href="/textbook/MainPageServlet?action=list">トップページへ</a></footer>
 </form>
 
 </body>
