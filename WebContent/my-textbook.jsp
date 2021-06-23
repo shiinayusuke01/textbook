@@ -35,7 +35,7 @@ if(insertedTitle != null){
 <head>
 <meta charset="UTF-8">
 <title>登録した教科書一覧</title><br>
-<link href="./css/header.css" rel="stylesheet">
+<link href="./css/title.css" rel="stylesheet">
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
@@ -72,7 +72,7 @@ if(insertedTitle != null){
 <br><br>
 	<h2>売却済み教科書一覧</h2>
 <br>
-    <table class="type06">
+	<table class="type06">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">分類</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th></tr>
 		<c:set value="${0}" var="total"></c:set>
 		<c:forEach items="${textbooks}" var="textbook">
