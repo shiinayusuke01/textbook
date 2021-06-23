@@ -14,10 +14,10 @@
 <h1>管理者トップページ</h1>
 <br>
 <form action="/textbook/MembersServlet?action=logout" method="post">
-<input type="submit" value="ログアウト">
+<input type="submit" value="ログアウト" class="btn btn-flat">
 </form>
 
-<h5>会員検索</h5>
+<h3>会員検索</h3>
 <form action="/textbook/AdMainPageServlet" method="post">
 苗字を入力：<input type="text" name="searchname">
 <input type="hidden" name="action" value="memsearch">
@@ -37,10 +37,10 @@
 </form></td></tr>
 
 </c:forEach>
-
+<br>
 </table>
-
-<h5>教科書検索</h5>
+<br><br>
+<h3>教科書検索</h3>
 <form action="/textbook/AdMainPageServlet" method="post">
 タイトルを入力：<input type="text" name="searchtitle">
 <input type="hidden" name="action" value="textsearch">
@@ -48,6 +48,7 @@
 </form>
 
 <table class="brwsr2">
+<br>
 <tr><td>id</td><td>タイトル</td><td>著者名</td><td>状態</td><td>分類</td><td>売値</td><td>備考</td><td>登録者</td><td>削除</td></tr>
 
 <c:forEach items="${showtext}" var="text">
@@ -59,7 +60,7 @@
 <input type="hidden" name="text_id" value="${text.id}">
 <input type="submit" value="削除">
 </form></td></tr>
-
+<br>
 </c:forEach>
 
 </table>

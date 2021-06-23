@@ -15,7 +15,7 @@
 <h1>現在のカートの中身</h1>
 
 <c:if test="${empty cart}">
-現在、カートは空です。
+<h2>現在、カートは空です。</h2>
 </c:if>
 
 <c:if test="${not empty cart}">

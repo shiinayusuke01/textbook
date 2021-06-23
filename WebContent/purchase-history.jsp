@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>${membean.last_name} ${membean.first_name}様の購入履歴</h3>
-	<table border="1">
+	<table class="brwsr2">
 	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th></tr>
 		<c:set value="${0}" var="total"></c:set>
 		<c:forEach items="${purchased_textbooks}" var="textbook">

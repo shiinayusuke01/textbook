@@ -18,7 +18,7 @@ if(bean == null) {
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
-<a href="/textbook/MainPageServlet?action=list">トップページ</a>
+
 <br />
 
 <h1>教科書情報を変更してください</h1>
@@ -52,6 +52,8 @@ if(bean == null) {
 	<p><label>備考：<input type="text" name="info" size="40" value="${textbook.info}"></label></p>
 	<p><input type="submit" value="変更" formaction="/textbook/ChangeTextbookServlet"></p>
 </form>
+<br><br>
+<a href="/textbook/MainPageServlet?action=list">トップページへ</a>
 
 </body>
 </html>

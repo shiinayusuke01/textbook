@@ -20,10 +20,11 @@ if(bean == null) {
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 
-<br />
-
-<h2>${membean.last_name} ${membean.first_name}様</h2>
-<h1>教科書を登録してください</h1>
+<br/>
+<h1>教科書新規登録ページ</h1>
+<br>
+<h2>${membean.last_name} ${membean.first_name}様、教科書情報を入力してください</h2>
+<br>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">
 	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}" class="m-form-text"></label></p>

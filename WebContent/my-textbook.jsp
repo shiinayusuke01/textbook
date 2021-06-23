@@ -34,15 +34,15 @@ if(insertedTitle != null){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>登録した教科書一覧</title>
+<title>登録した教科書一覧</title><br>
 <link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <br />
 
-	<h3>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h3>
-
+	<h2>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h2>
+<br>
 	<a style="color:red"><%= deletedMsg %></a>
 	<a style="color:red"><%= changeMsg %></a>
 	<a style="color:red"><%= insertedMsg %></a>
@@ -69,8 +69,8 @@ if(insertedTitle != null){
 		</c:forEach>
 	</table>
 <br><br>
-	<h3>売却済み教科書一覧</h3>
-<br><br>
+	<h2>売却済み教科書一覧</h2>
+<br>
     <table  class="brwsr2">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th></tr>
 		<c:set value="${0}" var="total"></c:set>
