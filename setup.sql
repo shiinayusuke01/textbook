@@ -26,6 +26,34 @@ password Varchar(12) Not Null
  buyer Integer
  );
 
+ CREATE TABLE categories(
+ id Integer,
+ category VARCHAR(15)
+ )
+
 
 INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthday, password)
 VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
+
+INSERT INTO textbooks(id, category)
+VALUES(0, "文学部系");
+INSERT INTO textbooks(id, category)
+VALUES(1, "教育学部系");
+INSERT INTO textbooks(id, category)
+VALUES(2, "法学部系");
+INSERT INTO textbooks(id, category)
+VALUES(3, "社会学部系");
+INSERT INTO textbooks(id, category)
+VALUES(4, "経済学部系");
+INSERT INTO textbooks(id, category)
+VALUES(5, "理学部系");
+INSERT INTO textbooks(id, category)
+VALUES(6, "医学部系");
+INSERT INTO textbooks(id, category)
+VALUES(7, "歯学部系");
+INSERT INTO textbooks(id, category)
+VALUES(8, "薬学部系");
+INSERT INTO textbooks(id, category)
+VALUES(9, "工学部系");
+INSERT INTO textbooks(id, category)
+VALUES(10, "農学部系");
