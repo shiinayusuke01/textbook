@@ -30,8 +30,8 @@ password Varchar(12) Not Null
  );
 
  CREATE TABLE categories(
- id Integer,
- categoryname VARCHAR(15)
+ id Integer not null,
+ categoryname VARCHAR(15) not null
 );
 
 
@@ -39,24 +39,24 @@ INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthda
 VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
 
 INSERT INTO categories(id, categoryname)
-VALUES(0, '•¶Šw•”Œn');
+VALUES(0, 'ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(1, '‹³ˆçŠw•”Œn');
+VALUES(1, 'ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(2, '–@Šw•”Œn');
+VALUES(2, 'ï¿½@ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(3, 'Ğ‰ïŠw•”Œn');
+VALUES(3, 'ï¿½Ğ‰ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(4, 'ŒoÏŠw•”Œn');
+VALUES(4, 'ï¿½oï¿½ÏŠwï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(5, '—Šw•”Œn');
+VALUES(5, 'ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(6, 'ˆãŠw•”Œn');
+VALUES(6, 'ï¿½ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(7, '•Šw•”Œn');
+VALUES(7, 'ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(8, '–òŠw•”Œn');
+VALUES(8, 'ï¿½ï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(9, 'HŠw•”Œn');
+VALUES(9, 'ï¿½Hï¿½wï¿½ï¿½ï¿½n');
 INSERT INTO categories(id, categoryname)
-VALUES(10, '”_Šw•”Œn');
+VALUES(10, 'ï¿½_ï¿½wï¿½ï¿½ï¿½n');

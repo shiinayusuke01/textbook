@@ -191,6 +191,53 @@ public class TextBookDAO {
 		  }
 	   }
 
+	    public List<TextbookBean> findByAuthor(String author) throws DAOException {
+			if (con == null)
+			getConnection();
+			PreparedStatement st = null;
+			ResultSet rs = null;
+
+		try {
+			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.author like ? AND t.stock=1 order by t.title, t.price";
+			st=con.prepareStatement(sql);
+			st.setString(1, "%" + author +"%");
+			rs = st.executeQuery();
+
+			List<TextbookBean> list = new ArrayList<TextbookBean>();
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String title = rs.getString("title");
+				author = rs.getString("author");
+				 int category = rs.getInt("category");
+				String categoryname = rs.getString("categoryname");
+				String status = rs.getString("status");
+				int price = rs.getInt("price");
+				String info = rs.getString("info");
+				int userId=rs.getInt("user_id");
+				int stock = rs.getInt("stock");
+
+				    TextbookBean bean = new TextbookBean(id, title,category,author,status,price, info, userId, stock, categoryname);
+				    list.add(bean);
+			}
+			return list;
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} finally {
+			try {
+				if (st != null) {
+					st.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+				close();
+			} catch (SQLException e) {
+				throw new DAOException("リソースの開放に失敗しました");
+			}
+		  }
+	   }
+
 	    public List<TextbookBean> findByCategory(int cate) throws DAOException {
 			if (con == null)
 			getConnection();

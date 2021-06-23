@@ -63,6 +63,15 @@
 	<br>
 
 	<form action="/textbook/MainPageServlet" method="post">
+	検索したい著者名を入力してください<br>
+	<input type="text" name="authorname" class="m-form-text" >
+	<input type="hidden" name="action" value="searchauthor">
+	<input type="submit" value="検索" >
+	</form>
+	<br>
+	<br>
+
+	<form action="/textbook/MainPageServlet" method="post">
 	検索したい分類を選択してください<br>
 	<div class="cp_ipselect cp_sl02">
 	<select name="category" size="1" required>
