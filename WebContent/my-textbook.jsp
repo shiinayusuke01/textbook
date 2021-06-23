@@ -69,6 +69,8 @@ if(insertedTitle != null){
 		</c:forEach>
 	</table>
 <br><br>
+	<h3>売却済み教科書一覧</h3>
+<br><br>
     <table  class="brwsr2">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th></tr>
 		<c:set value="${0}" var="total"></c:set>
