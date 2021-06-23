@@ -11,8 +11,8 @@
 }
 aside {
     grid-area: left;
-    width:30%;
-    background-color: gray;
+    background-color: #CCFF99;
+    height: 500px;
 
 }
 
@@ -40,7 +40,7 @@ ul li {
 
 .cp_ipselect {
 	overflow: hidden;
-	width: 25%;
+	width: 50%;
 	margin: 2em auto;
 	text-align: center;
 }
