@@ -1,5 +1,6 @@
 DROP TABLE textbooks CASCADE;
 DROP TABLE members CASCADE;
+DROP TABLE categories;
 
 CREATE TABLE members (
 id SERIAL Not Null Primary Key,
@@ -26,9 +27,9 @@ password Varchar(12) Not Null
  buyer Integer
  );
 
- CREATE TABLE categories(
- id Integer,
- category VARCHAR(15)
+CREATE TABLE categories(
+ id Integer not null,
+ category VARCHAR(15) not null
 );
 
 
