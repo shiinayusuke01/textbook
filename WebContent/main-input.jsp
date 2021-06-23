@@ -97,7 +97,7 @@
 </aside>
 
 <article>
-
+<img src="./img/教科書3.jpg" >
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 <br><br>
