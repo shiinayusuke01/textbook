@@ -15,13 +15,14 @@
 <h3>教科書情報</h3>
 <c:if test="${not empty cart}">
 	<table border="1">
-	<tr><td>タイトル</td><td>著者名</td><td>値段</td><td>状態</td><td>備考</td>
+	<tr><td>タイトル</td><td>著者名</td><td>分類</td><td>値段</td><td>状態</td><td>備考</td>
     <td>削除</td>
 
 <c:forEach items="${cart}" var="item">
 		<tr>
 		<td align="center">${item.title}</td>
 		<td align="center">${item.author}</td>
+		<td align="right">${item.categoryname}</td>
 		<td align="right">${item.price}円</td>
 		<td align="right">${item.status}</td>
 		<td align="right">${item.info}</td>
