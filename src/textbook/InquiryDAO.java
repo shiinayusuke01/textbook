@@ -21,7 +21,7 @@ public class InquiryDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "INSERT INTO categories(content, user_id) VALUES(?, ?)";
+			String sql = "INSERT INTO inquiries(content, user_id) VALUES(?, ?)";
 			st = con.prepareStatement(sql);
 
 			st.setString(1, content);
@@ -55,7 +55,7 @@ public class InquiryDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "DELETE FROM categories WHERE id = ?";
+			String sql = "DELETE FROM inquiries WHERE id = ?";
 			st = con.prepareStatement(sql);
 
 			st.setInt(1, id);

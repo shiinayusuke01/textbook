@@ -13,7 +13,8 @@
 <title>お問い合わせの確認</title>
 </head>
 <body>
-<%=inquiry %>
+<h3>お問い合わせの内容はこちらでよろしいですか？</h3>
+<%=inquiry%>
 <form action="RegistInquiryServlet" method="post">
 <input type="hidden" name="inquiry_content" value="<%=inquiry %>">
 <input type="submit" value="送信">
