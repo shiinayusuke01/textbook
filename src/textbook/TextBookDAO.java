@@ -68,7 +68,7 @@ public class TextBookDAO {
 	    	ResultSet rs = null;
 	    	try {
 
-	    		String sql = "SELECT * FROM textbooks where id = ?";
+	    		String sql = "SELECT * FROM textbooks where id = ? order by title, price";
 	    		st = con.prepareStatement(sql);
 	    		st.setInt(1, code);
 	    		rs = st.executeQuery();
@@ -111,7 +111,7 @@ public class TextBookDAO {
 	    	TextbookBean bean = new TextbookBean();
 	    	beans = new MembersBean();
 			try {
-	     		String sql = "SELECT * FROM textbooks WHERE user_id = ?";
+	     		String sql = "SELECT * FROM textbooks WHERE user_id = ? order by title, price";
 	     		st = con.prepareStatement(sql);
 	     		st.setInt(1, beans.getId());
 	     		rs = st.executeQuery();
@@ -149,7 +149,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks where title like ? AND stock=1";
+			String sql ="select * from textbooks where title like ? AND stock=1 order by title, price";
 			st=con.prepareStatement(sql);
 			st.setString(1, "%" + title +"%");
 			rs = st.executeQuery();
@@ -195,7 +195,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks where category=? AND stock=1";
+			String sql ="select * from textbooks where category=? AND stock=1 order by title, price";
 			st=con.prepareStatement(sql);
 			st.setInt(1, cate);
 			rs = st.executeQuery();
@@ -286,7 +286,7 @@ public class TextBookDAO {
     	ResultSet rs = null;
     	TextbookBean bean = new TextbookBean();
 		try {
-     		String sql = "SELECT * FROM textbooks where stock=1";
+     		String sql = "SELECT * FROM textbooks where stock=1 order by title, price";
      		st = con.prepareStatement(sql);
      		rs = st.executeQuery();
      		List<TextbookBean> list = new ArrayList<TextbookBean>();
@@ -376,7 +376,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks WHERE user_id = ?";
+        String sql = "SELECT * FROM textbooks WHERE user_id = ? order by title, price";
         st = con.prepareStatement(sql);
         st.setInt(1, userId);
         rs = st.executeQuery();
@@ -418,7 +418,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks WHERE id = ?";
+        String sql = "SELECT * FROM textbooks WHERE id = ? order by title, price";
         st = con.prepareStatement(sql);
         st.setInt(1, id);
         rs = st.executeQuery();
@@ -458,7 +458,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks WHERE buyer = ?";
+        String sql = "SELECT * FROM textbooks WHERE buyer = ? order by title, price";
         st = con.prepareStatement(sql);
         st.setInt(1, buyer);
         rs = st.executeQuery();
