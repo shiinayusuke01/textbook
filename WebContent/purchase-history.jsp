@@ -11,6 +11,7 @@
 	<h3>${membean.last_name} ${membean.first_name}様の購入履歴</h3>
 	<table border="1">
 	<tr><th>タイトル</th><th>著者名</th><th>状態</th><th>値段</th><th>備考</th></tr>
+		<c:set value="${0}" var="total"></c:set>
 		<c:forEach items="${purchased_textbooks}" var="textbook">
 			<tr>
 				<td>${textbook.title}</td>
@@ -19,7 +20,11 @@
 				<td>${textbook.price}円</td>
 				<td>${textbook.info}</td>
 			</tr>
+			<c:set var="total" value="${total + textbook.price}"></c:set>
+
 		</c:forEach>
+		<tr><td align="right" colspan="6">合計購入金額：
+		${total}円</td></tr>
 	</table>
 	<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
 </body>
