@@ -8,36 +8,38 @@
 <head>
 <meta charset="UTF-8">
 <title>会員ホーム</title>
-<link href="./css/header.css" rel="stylesheet">
+<link href="./css/title.css" rel="stylesheet">
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header>
+            <ul>
+              <li>
+              <form action="/textbook/regist-textbook.jsp" method="post">
+				<input type="submit" value="新規教科書登録" class="btn btn-flat">
+				</form>
+				</li>
+              <li><form action="/textbook/ShowMyTextbook" method="post">
+				<input type="submit" value="教科書情報変更・削除" class="btn btn-flat">
+				</form>
+				</li>
+              <li><form action="/textbook/mem-info-change.jsp" method="post">
+				<input type="submit" value="会員情報変更" class="btn btn-flat">
+				</form>
+				</li>
+              <li><form action="/textbook/taikai.jsp" method="post">
+				<input type="submit" value="退会" class="btn btn-flat">
+				</form>
+				</li>
+              <li><form action="/textbook/MembersServlet?action=logout" method="post">
+				<input type="submit" value="ログアウト" class="btn btn-flat">
+				</form>
+				</li>
+            </ul>
+
+</header>
 <h1>会員トップページ</h1>
 <h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
-<br>
-<form action="/textbook/regist-textbook.jsp" method="post">
-<input type="submit" value="新規教科書登録" class="btn btn-flat">
-</form>
-<br>
-<form action="/textbook/ShowMyTextbook" method="post">
-<input type="submit" value="登録済み教科書情報変更・削除" class="btn btn-flat">
-</form>
-<br>
-<form action="/textbook/mem-info-change.jsp" method="post">
-<input type="submit" value="会員情報変更" class="btn btn-flat">
-</form>
-<br>
-<form action="/textbook/taikai.jsp" method="post">
-<input type="submit" value="退会" class="btn btn-flat">
-</form>
-<br>
-<form action="/textbook/MembersServlet?action=logout" method="post">
-<input type="submit" value="ログアウト" class="btn btn-flat">
-</form>
-
-<br>
-<br>
-
+<aside>
 <h2>教科書検索</h2>
 
 <form action="/textbook/MainPageServlet" method="post">
@@ -50,7 +52,8 @@
 <br>
 <form action="/textbook/MainPageServlet" method="post">
 検索したい分類を選択してください<br>
-<select name="category" size="1">
+<div class="cp_ipselect cp_sl02">
+<select name="category" size="1" required>
 		<option value="0">文学部系</option>
 		<option value="1">教育学部系</option>
 		<option value="2">法学部系</option>
@@ -61,12 +64,14 @@
 		<option value="7">歯学部系</option>
 		<option value="8">薬学部系</option>
 		<option value="9">工学部系</option>
-		<option value="10">農学部系</option></p></option></select>
-<input type="hidden" name="action" value="searchcate">
-<input type="submit" value="検索">
-</form>
-<br>
-<a href="/textbook/cart.jsp"  class="btn btn-radius-solid">
+		<option value="10">農学部系</option></p></option></select></div>
+<input type="hidden" name="action" value="searchcate"><input type="submit" value="検索" class="btn btn-flat">
+
+</form></h1>
+
+</aside>
+<article>
+<a href="/textbook/cart.jsp"  class="">
 カート/購入ページへ</a>
 
 <br>
@@ -136,6 +141,7 @@
 
 </c:forEach>
 </table>
+</article>
 </body>
 </html>
 
