@@ -20,14 +20,13 @@ if(bean == null) {
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 
 <br />
-
 <h1>教科書情報を変更してください</h1>
 <form method="POST">
 	<input type="hidden" name="id" value="${textbook.id}">
 	<p><label>タイトル：<input type="text" name="title" size="40" value="${textbook.title}"></label></p>
 	<p><label>著者名：<input type="text" name="author" size="40" value="${textbook.author}"></label></p>
 
-	分類：<select name="category" size="1">
+	分類：<select name="category" id="category" size="1">
 		<option value="0">文学部系</option>
 		<option value="1">教育学部系</option>
 		<option value="2">法学部系</option>
@@ -41,7 +40,7 @@ if(bean == null) {
 		<option value="10">農学部系</option></p></option></select>
 
 	<p><label>売値：<input type="text" name="price" size="40" value="${textbook.price}"></label></p>
-	商品状態:<select name="status" size="1">
+	商品状態:<select name="status" id="status" size="1">
 		<option value="新品、未使用">新品、未使用</option>
 		<option value="未使用に近い">未使用に近い</option>
 		<option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
@@ -54,6 +53,10 @@ if(bean == null) {
 </form>
 <br><br>
 <a href="/textbook/MainPageServlet?action=list">トップページへ</a>
+
+<script>
+document.getElementById("category").selectedIndex = ${textbook.category};
+</script>
 
 </body>
 </html>
