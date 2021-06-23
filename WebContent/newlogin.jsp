@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login Shinki</title>
-	<link href="./css/header.css" rel="stylesheet">
+	<link href="./css/title.css" rel="stylesheet">
 	<script>
 		function func(num){
 			for (var i = 1900; i <= num; i++){
@@ -25,16 +25,17 @@
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>新規会員登録</h1>
 <form action="/textbook/MembersServlet" method="post">
-氏:<input type="text" name="last_name">
-名:<input type="text" name="first_name">
+氏:<input type="text" name="last_name"  class="m-form-text">
 <br>
-〒:<input type="text" name="postal">
+名:<input type="text" name="first_name" class="m-form-text">
 <br>
-住所:<input type="text" name="address">
+〒:<input type="text" name="postal" class="m-form-text">
 <br>
-電話番号:<input type="text" name="tel">
+住所:<input type="text" name="address" class="m-form-text">
 <br>
-Email:<input type="email" name="email">
+電話番号:<input type="text" name="tel" class="m-form-text">
+<br>
+Email:<input type="email" name="email" class="m-form-text">
 <br>
 生年月日:
 	<select name="year">
@@ -47,12 +48,12 @@ Email:<input type="email" name="email">
 		<script>func2(31)</script>
 	</select>日
 <br>
-パスワード:<input type="password" name="password">
+パスワード:<input type="password" name="password" class="m-form-text">
 <br>
-パスワードの確認:<input type="password" name="passadd">
+パスワードの確認:<input type="password" name="passadd" class="m-form-text">
 <br>
 <input type="hidden" name="action" value="setinfo">
-<input type="submit" value="登録">
+<input type="submit" value="登録" class="btn btn-flat">
 </form>
 </body>
 </html>

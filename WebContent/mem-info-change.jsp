@@ -28,6 +28,7 @@
 <br>
 <form action="/textbook/MembersServlet" method="post">
 氏:<input type="text" name="last_name" value="${membean.last_name}" class="m-form-text">
+<br>
 名:<input type="text" name="first_name" value="${membean.first_name}" class="m-form-text">
 <br>
 〒:<input type="text" name="postal" value="${membean.postal}" class="m-form-text">

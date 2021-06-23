@@ -19,8 +19,9 @@
 </c:if>
 
 <c:if test="${not empty cart}">
-<table "brwsr2">
-<tr><th class="data fst">タイトル</th><td class="data">著者名</td><td class="data">値段</td><td class="data">状態</td><td class="data">備考</td>
+<table class="type06"   align="center">
+
+<tr><th>タイトル</th><td>著者名</td><td>値段</td><td>状態</td><td>備考</td>
     <td class="data">削除</td>
 
 <c:forEach items="${cart}" var="item">

@@ -118,7 +118,7 @@
   	</tr>
 
 	<c:forEach items="${show}" var="Textbook">
-	<tr><th>${Textbook.title}</th><td>${Textbook.author}</td>
+	<tr><td>${Textbook.title}</td><td>${Textbook.author}</td>
 	<td>${Textbook.categoryname}</td><td>${Textbook.price}</td>
 	<td>${Textbook.status}</td><td>${Textbook.info}</td>
 	<td>
