@@ -10,7 +10,7 @@
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 <h1>新規会員登録</h1>
-<h1>${message}</h1>
+<h2>${message}</h2>
 
 <a href="/textbook/Login.html">ログイン画面に戻る</a>
 </body>

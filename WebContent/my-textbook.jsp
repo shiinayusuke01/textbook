@@ -35,7 +35,7 @@ if(insertedTitle != null){
 <head>
 <meta charset="UTF-8">
 <title>登録した教科書一覧</title><br>
-<link href="./css/header.css" rel="stylesheet">
+<link href="./css/title.css" rel="stylesheet">
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
@@ -48,14 +48,14 @@ if(insertedTitle != null){
 	<a style="color:red"><%= insertedMsg %></a>
 
 
-	<table  class="brwsr2">
+	<table class="type06">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">分類</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th><th class="data">削除</th><th class="data">変更</th></tr>
 		<c:forEach items="${textbooks}" var="textbook">
 		    <c:if test="${textbook.stock eq 1}">
 		      <form method="POST">
 			  <input type="hidden" name="textbook_id" value="${textbook.id}">
 				<tr>
-					<th>${textbook.title}</th>
+					<td>${textbook.title}</td>
 					<td class="data fst">${textbook.author}</td>
 					<td class="data fst">${textbook.categoryname}</td>
 					<td class="data">${textbook.status}</td>
@@ -72,7 +72,7 @@ if(insertedTitle != null){
 <br><br>
 	<h2>売却済み教科書一覧</h2>
 <br>
-    <table  class="brwsr2">
+	<table class="type06">
 	<tr><th class="data fst">タイトル</th><th class="data">著者名</th><th class="data">分類</th><th class="data">状態</th><th class="data">値段</th><th class="data">備考</th><th class="data">販売状態</th></tr>
 		<c:set value="${0}" var="total"></c:set>
 		<c:forEach items="${textbooks}" var="textbook">
@@ -80,7 +80,7 @@ if(insertedTitle != null){
 		      <form method="POST">
 			  <input type="hidden" name="textbook_id" value="${textbook.id}">
 				<tr>
-					<th>${textbook.title}</th>
+					<td>${textbook.title}</td>
 					<td class="data fst">${textbook.author}</td>
 					<td class="data fst">${textbook.categoryname}</td>
 					<td class="data">${textbook.status}</td>
