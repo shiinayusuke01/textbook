@@ -13,8 +13,89 @@ public class TextbookBean implements Serializable {
 	private int userId;
 	private int stock;
 	private int buyer;
+	private String categoryname;
 
 
+
+
+
+	public String getCategoryname() {
+		return categoryname;
+	}
+
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
+	}
+
+	public TextbookBean(String title, int category, String author, String status, int price, String info, int userId, String categoryname) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.categoryname = categoryname;
+	}
+
+	public TextbookBean(int id, String title, int category, String author, String status, int price, String info,
+			int userId, String categoryname) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.categoryname = categoryname;
+	}
+
+	public TextbookBean(int id, String title, int category, String author, String status, int price, String info,
+			int userId, int stock, String categoryname) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.stock = stock;
+		this.categoryname = categoryname;
+	}
+
+	public TextbookBean(int id, String title, String author, String status, int price, String info, int userId,
+			String categoryname) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.categoryname = categoryname;
+	}
+
+	public TextbookBean(int id, String title, int category, String author, String status, int price, String info,
+			int userId, int stock, int buyer, String categoryname) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.author = author;
+		this.status = status;
+		this.price = price;
+		this.info = info;
+		this.userId = userId;
+		this.stock = stock;
+		this.buyer = buyer;
+		this.categoryname = categoryname;
+	}
 
 	public TextbookBean(int id, String title, int category, String author, String status, int price, String info,
 			int userId, int stock, int buyer) {

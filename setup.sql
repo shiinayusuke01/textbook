@@ -1,5 +1,6 @@
 DROP TABLE textbooks CASCADE;
 DROP TABLE members CASCADE;
+DROP TABLE categories CASCADE;
 
 CREATE TABLE members (
 id SERIAL Not Null Primary Key,
@@ -28,32 +29,32 @@ password Varchar(12) Not Null
 
  CREATE TABLE categories(
  id Integer,
- category VARCHAR(15)
+ categoryname VARCHAR(15)
 );
 
 
 INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthday, password)
 VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
 
-INSERT INTO categories(id, category)
-VALUES(0, '•¶Šw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(1, '‹³ˆçŠw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(2, '–@Šw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(3, 'Ğ‰ïŠw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(4, 'ŒoÏŠw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(5, '—Šw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(6, 'ˆãŠw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(7, '•Šw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(8, '–òŠw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(9, 'HŠw•”Œn');
-INSERT INTO categories(id, category)
-VALUES(10, '”_Šw•”Œn');
+INSERT INTO categories(id, categoryname)
+VALUES(0, 'ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(1, 'ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(2, 'ï¿½@ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(3, 'ï¿½Ğ‰ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(4, 'ï¿½oï¿½ÏŠwï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(5, 'ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(6, 'ï¿½ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(7, 'ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(8, 'ï¿½ï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(9, 'ï¿½Hï¿½wï¿½ï¿½ï¿½n');
+INSERT INTO categories(id, categoryname)
+VALUES(10, 'ï¿½_ï¿½wï¿½ï¿½ï¿½n');

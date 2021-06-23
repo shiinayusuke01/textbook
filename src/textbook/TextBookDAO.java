@@ -68,7 +68,7 @@ public class TextBookDAO {
 	    	ResultSet rs = null;
 	    	try {
 
-	    		String sql = "SELECT * FROM textbooks where id = ? order by title, price";
+	    		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id where t.id = ? order by t.title, t.price";
 	    		st = con.prepareStatement(sql);
 	    		st.setInt(1, code);
 	    		rs = st.executeQuery();
@@ -77,12 +77,13 @@ public class TextBookDAO {
 	    		 int id = rs.getInt("id");
 	    		 String title = rs.getString("title");
 				 String author = rs.getString("author");
-				 int category =Integer.parseInt(rs.getString("category"));
+				 int category =rs.getInt("category");
+				 String categoryname =rs.getString("categoryname");
 				 int price =Integer.parseInt(rs.getString("price"));
 				 String info = rs.getString("info");
 				 String status = rs.getString("status");
 				 int userid = rs.getInt("user_id");
-				 TextbookBean bean = new TextbookBean(id, title, author, category, status, price, info, userid);
+				 TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userid, categoryname);
 	    		 return bean;
 	    		} else {
 	    			return null;
@@ -111,7 +112,7 @@ public class TextBookDAO {
 	    	TextbookBean bean = new TextbookBean();
 	    	beans = new MembersBean();
 			try {
-	     		String sql = "SELECT * FROM textbooks WHERE user_id = ? order by title, price";
+	     		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.title, t.price";
 	     		st = con.prepareStatement(sql);
 	     		st.setInt(1, beans.getId());
 	     		rs = st.executeQuery();
@@ -119,13 +120,14 @@ public class TextBookDAO {
 	     		while (rs.next()) {
 					 String title = rs.getString("title");
 					 String author = rs.getString("author");
-					 int category =Integer.parseInt(rs.getString("category"));
+					 int category = rs.getInt("category");
+					 String categoryname =rs.getString("categoryname");
 					 int price =Integer.parseInt(rs.getString("price"));
 					 String info = rs.getString("info");
 					 String status = rs.getString("status");
 					 int userid = rs.getInt("user_id");
 
-					 bean = new TextbookBean(title, author, category, status, price, info, userid);
+					 bean = new TextbookBean(title, category, author, status, price, info, userid, categoryname);
 					 list.add(bean);
 	     		}
 	     			return list;
@@ -149,7 +151,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks where title like ? AND stock=1 order by title, price";
+			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.title like ? AND t.stock=1 order by t.title, t.price";
 			st=con.prepareStatement(sql);
 			st.setString(1, "%" + title +"%");
 			rs = st.executeQuery();
@@ -159,14 +161,15 @@ public class TextBookDAO {
 				int id = rs.getInt("id");
 				title = rs.getString("title");
 				String author = rs.getString("author");
-				int category = rs.getInt("category");
+				 int category = rs.getInt("category");
+				String categoryname = rs.getString("categoryname");
 				String status = rs.getString("status");
 				int price = rs.getInt("price");
 				String info = rs.getString("info");
 				int userId=rs.getInt("user_id");
 				int stock = rs.getInt("stock");
 
-				    TextbookBean bean = new TextbookBean(id, title, category,author,status,price, info, userId, stock);
+				    TextbookBean bean = new TextbookBean(id, title,category,author,status,price, info, userId, stock, categoryname);
 				    list.add(bean);
 			}
 			return list;
@@ -195,7 +198,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks where category=? AND stock=1 order by title, price";
+			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.category=? AND t.stock=1 order by t.title, t.price";
 			st=con.prepareStatement(sql);
 			st.setInt(1, cate);
 			rs = st.executeQuery();
@@ -211,9 +214,10 @@ public class TextBookDAO {
 				String info = rs.getString("info");
 				int userId=rs.getInt("user_id");
 				int stock = rs.getInt("stock");
+				String categoryname = rs.getString("categoryname");
 
 
-				    TextbookBean bean = new TextbookBean(id, title, category,author,status,price, info, userId, stock);
+				    TextbookBean bean = new TextbookBean(id, title, category,author,status,price, info, userId, stock, categoryname);
 				    list.add(bean);
 			}
 			return list;
@@ -286,7 +290,7 @@ public class TextBookDAO {
     	ResultSet rs = null;
     	TextbookBean bean = new TextbookBean();
 		try {
-     		String sql = "SELECT * FROM textbooks where stock=1 order by title, price";
+     		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id where t.stock=1 order by t.title, t.price";
      		st = con.prepareStatement(sql);
      		rs = st.executeQuery();
      		List<TextbookBean> list = new ArrayList<TextbookBean>();
@@ -294,14 +298,15 @@ public class TextBookDAO {
 				 int id = rs.getInt("id");
 				 String title = rs.getString("title");
 				 String author = rs.getString("author");
-				 int category =rs.getInt("category");
+				 int category = rs.getInt("category");
+				 String categoryname =rs.getString("categoryname");
 				 int price =rs.getInt("price");
 				 String info = rs.getString("info");
 				 String status = rs.getString("status");
 				 int userid = rs.getInt("user_id");
 				 int stock = rs.getInt("stock");
 
-				 bean = new TextbookBean(id, title, category, author, status, price, info, userid, stock);
+				 bean = new TextbookBean(id, title, category, author, status, price, info, userid, stock, categoryname);
 				 list.add(bean);
      		}
      			return list;
@@ -376,7 +381,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks WHERE user_id = ? order by title, price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, userId);
         rs = st.executeQuery();
@@ -392,9 +397,10 @@ public class TextBookDAO {
                 int price = rs.getInt("price");
                 String info = rs.getString("info");
 				int stock = rs.getInt("stock");
+				String categoryname = rs.getString("categoryname");
 
 
-                TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock);
+                TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock, categoryname);
                 list.add(bean);
         }
         return list;
@@ -418,7 +424,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks WHERE id = ? order by title, price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.id = ? order by t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, id);
         rs = st.executeQuery();
@@ -432,10 +438,10 @@ public class TextBookDAO {
         String info = rs.getString("info");
         int userId = rs.getInt("user_id");
 		int stock = rs.getInt("stock");
-
+		String categoryname = rs.getString("categoryname");
 
         System.out.println(id + " " + title + " " + author);
-        TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock);
+        TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock, categoryname);
 
 
         return bean;
@@ -458,7 +464,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks WHERE buyer = ? order by title, price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.buyer = ? order by t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, buyer);
         rs = st.executeQuery();
@@ -474,7 +480,9 @@ public class TextBookDAO {
             String info = rs.getString("info");
             int userId = rs.getInt("user_id");
     		int stock = rs.getInt("stock");
-            TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock);
+    		String categoryname = rs.getString("categoryname");
+
+            TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock, categoryname);
             list.add(bean);
         }
 
