@@ -67,22 +67,31 @@ public class CartServlet extends HttpServlet {
 
 			} else if(action.equals("addtext")) {
 				int id = Integer.parseInt(request.getParameter("textid"));
+				int putid = Integer.parseInt(request.getParameter("putid"));
 				HttpSession session = request.getSession(false);
+				MembersBean member = (MembersBean) session.getAttribute("membean");
 				list = (List<TextbookBean>) session.getAttribute("cart");
 				if (list == null) {
 					list = new ArrayList<TextbookBean>();
 				}
-				for (int i =0; i < list.size(); i++) {
-					if (list.get(i).getId() == id) {
-						request.setAttribute("message", "選択した教科書はすでにカートに追加されています");
-						gotoPage(request, response, "/memch-message.jsp");
-						return;
+				if (putid == member.getId()) {
+					request.setAttribute("message", "選択した教科書はご自身で登録された教科書です。");
+					gotoPage(request, response, "/memch-message.jsp");
+				} else {
+					for (int i =0; i < list.size(); i++) {
+						if (list.get(i).getId() == id) {
+							request.setAttribute("message", "選択した教科書はすでにカートに追加されています。");
+							gotoPage(request, response, "/memch-message.jsp");
+							return;
+						}
 					}
+
+					TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
+					list.add(bean);
+					session.setAttribute("cart", list);
+					gotoPage(request, response, "/cart.jsp");
 				}
-				TextbookBean bean = (TextbookBean) dao.findByPrimaryKey(id);
-				list.add(bean);
-				session.setAttribute("cart", list);
-				gotoPage(request, response, "/cart.jsp");
+
 			} else if(action.equals("delete1")){
 				HttpSession session = request.getSession(false);
 				if(session == null) {

@@ -127,6 +127,7 @@
 
 <form action="/textbook/CartServlet?action=addtext" method="post">
 <input type="hidden" name="textid" value="${Text.id}">
+<input type="hidden" name="putid" value="${Text.userId}">
 <input type="submit" value="カートに追加する" class="btn btn-flat">
 </form></td></tr>
 
