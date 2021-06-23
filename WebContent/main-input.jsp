@@ -84,7 +84,6 @@
     <td class="data">価格</td>
     <td class="data">状態</td>
     <td class="data">備考</td>
-    <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
   </tr>
 
@@ -115,7 +114,6 @@
     <td class="data">価格</td>
     <td class="data">状態</td>
     <td class="data">備考</td>
-    <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
   </tr>
 
