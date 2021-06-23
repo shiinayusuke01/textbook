@@ -55,7 +55,7 @@ if(insertedTitle != null){
 		      <form method="POST">
 			  <input type="hidden" name="textbook_id" value="${textbook.id}">
 				<tr>
-					<th>${textbook.title}</th>
+					<td>${textbook.title}</td>
 					<td class="data fst">${textbook.author}</td>
 					<td class="data fst">${textbook.categoryname}</td>
 					<td class="data">${textbook.status}</td>
@@ -80,7 +80,7 @@ if(insertedTitle != null){
 		      <form method="POST">
 			  <input type="hidden" name="textbook_id" value="${textbook.id}">
 				<tr>
-					<th>${textbook.title}</th>
+					<td>${textbook.title}</td>
 					<td class="data fst">${textbook.author}</td>
 					<td class="data fst">${textbook.categoryname}</td>
 					<td class="data">${textbook.status}</td>
