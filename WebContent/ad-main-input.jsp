@@ -24,7 +24,7 @@
 <input type="submit" value="検索">
 </form>
 
-<table border=1>
+<table class="brwsr2">
 <tr><td>id</td><td>氏</td><td>名</td><td>email</td><td>削除</td></tr>
 
 <c:forEach items="${showmem}" var="member">
@@ -47,7 +47,7 @@
 <input type="submit" value="検索">
 </form>
 
-<table border=1>
+<table class="brwsr2">
 <tr><td>id</td><td>タイトル</td><td>著者名</td><td>状態</td><td>分類</td><td>売値</td><td>備考</td><td>登録者</td><td>削除</td></tr>
 
 <c:forEach items="${showtext}" var="text">
