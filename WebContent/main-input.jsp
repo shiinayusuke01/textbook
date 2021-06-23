@@ -53,6 +53,14 @@
 <aside>
 	<h2>教科書検索</h2>
 
+	<form action="confirm-inquiry.jsp" method="post">
+	お問い合わせフォーム<br>
+	<textarea name="inquiry" rows="4" cols="40"></textarea><br>
+	<input type="submit" value="送信">
+	</form>
+	<br>
+	<br>
+
 	<form action="/textbook/MainPageServlet" method="post">
 	検索したいタイトルを入力してください<br>
 	<input type="text" name="searchname" class="m-form-text" >

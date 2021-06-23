@@ -34,6 +34,11 @@ password Varchar(12) Not Null
  categoryname VARCHAR(15) not null
 );
 
+CREATE TABLE inquiries(
+id SERIAL Not Null Primary key,
+content VARCHAR(20),
+user_id Integer not null
+);
 
 INSERT INTO members(id, last_name, first_name, postal,address,tel, email,birthday, password)
 VALUES(0, 'yusuke', 'shiina', '1921111','tokyo', '080000000', 'shiina@gmail.com', '19970524', 'password');
