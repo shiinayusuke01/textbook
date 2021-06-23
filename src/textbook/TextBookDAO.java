@@ -451,6 +451,46 @@ public class TextBookDAO {
         	}
         }
 	}
+    public List<TextbookBean> findByBuyer(int buyer)throws DAOException{
+    	if(con == null)
+        	getConnection();
+
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+        String sql = "SELECT * FROM textbooks WHERE buyer = ?";
+        st = con.prepareStatement(sql);
+        st.setInt(1, buyer);
+        rs = st.executeQuery();
+
+        List<TextbookBean> list = new ArrayList<TextbookBean>();
+        while(rs.next()) {
+        	int id = rs.getInt("id");
+            String title = rs.getString("title");
+            String author = rs.getString("author");
+            int category = rs.getInt("category");
+            String status = rs.getString("status");
+            int price = rs.getInt("price");
+            String info = rs.getString("info");
+            int userId = rs.getInt("user_id");
+    		int stock = rs.getInt("stock");
+            TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock);
+            list.add(bean);
+        }
+
+        return list;
+        } catch (Exception e) {
+                throw new DAOException("レコードの取得に失敗しました。");
+        } finally {
+        try {
+	        if (rs != null) rs.close();
+	        if (st != null) st.close();
+	                close();
+        	}catch(Exception e) {
+                throw new DAOException("リソースの開放に失敗しました。");
+        	}
+        }
+    }
 
 
 	private void close() throws SQLException {

@@ -68,6 +68,10 @@
 <br>
 <a href="/textbook/cart.jsp"  class="btn btn-radius-solid">
 カート/購入ページへ</a>
+
+<br>
+<a href="/textbook/PurchaseHistory">
+購入履歴ページへ</a>
 <br>
 <br>
 
