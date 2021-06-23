@@ -35,7 +35,8 @@ public class RegistInquiryServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MembersBean bean = (MembersBean) session.getAttribute("membean");
 		int userId = bean.getId();
-		String content = request.getParameter("content");
+		String content = request.getParameter("inquiry_content");
+		System.out.println(content);
 
 		try {
 			InquiryDAO dao = new InquiryDAO();

@@ -15,7 +15,7 @@
 <body>
 <%=inquiry %>
 <form action="RegistInquiryServlet" method="post">
-<input type="hidden" value="<%=inquiry %>">
+<input type="hidden" name="inquiry_content" value="<%=inquiry %>">
 <input type="submit" value="送信">
 </form>
 </body>
