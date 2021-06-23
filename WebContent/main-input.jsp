@@ -9,6 +9,16 @@
 <meta charset="UTF-8">
 <title>会員ホーム</title>
 <link href="./css/title.css" rel="stylesheet">
+
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                pause: 5000,
+            });
+        });
+</script>
+
 </head>
 <body>
 <header>
@@ -78,6 +88,7 @@
 </aside>
 
 <article>
+
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 
@@ -95,7 +106,7 @@
 	<h3>検索結果表示</h3>
 
 	<br>
-	<table class="brwsr2">
+	<table class="type06">
 	<tr>
     <th>タイトル</th>
     <td class="data fst">著者名</td>
@@ -108,7 +119,7 @@
 
 	<c:forEach items="${show}" var="Textbook">
 	<tr><th>${Textbook.title}</th><td>${Textbook.author}</td>
-	<td>${Textbook.category}</td><td>${Textbook.price}</td>
+	<td>${Textbook.categoryname}</td><td>${Textbook.price}</td>
 	<td>${Textbook.status}</td><td>${Textbook.info}</td>
 	<td>
 	<br>
@@ -125,20 +136,44 @@
 
 	<h2>販売中教科書一覧</h2>
 	<br>
-	<table class="brwsr2">
-	<tr>
-    <th>タイトル</th>
-    <td class="data fst">著者名</td>
-    <td class="data">分類</td>
-    <td class="data">価格</td>
-    <td class="data">状態</td>
-    <td class="data">備考</td>
-    <td class="data">カートに追加</td>
- 	 </tr>
+	<table class="type06">
+	<thead>
+    <tr>
+      <th>タイトル</th>
+      <th>著者名</th>
+      <th>分類</th>
+      <th>価格</th>
+      <th>状態</th>
+      <th>備考</th>
+      <th>カートに追加</th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <tr>
+      <td>太郎</td>
+      <td>きびだんご</td>
+    </tr>
+    <tr>
+      <td>二郎</td>
+      <td>ラーメン</td>
+    </tr>
+    <tr>
+      <td>ジョン</td>
+      <td>ドーナツ</td>
+    </tr>
+    <tr>
+      <td>ニキータ</td>
+      <td>ビフストロガノフ</td>
+    </tr>
+    <tr>
+      <td>三郎</td>
+      <td>ちくわ</td>
+    </tr>
+  </tbody>
 	<c:forEach items="${showall}" var="Text">
 	<tr><th>${Text.title}</th><td>${Text.author}</td>
-	<td>${Text.category}</td><td>${Text.price}</td>
+	<td>${Text.categoryname}</td><td>${Text.price}</td>
 	<td>${Text.status}</td><td>${Text.info}</td>
 	<td>
 	<br>
