@@ -250,7 +250,7 @@ public class TextBookDAO {
 		try {
 
 			// SQL文の作成
-			String sql = "UPDATE textbooks SET title=?, category=?, author=?, status=?, price=?, info=?, user_id=? WHERE id=? ";
+			String sql = "UPDATE textbooks SET title=?, category=?, author=?, status=?, price=?, info=?, user_id=?, stock=1 WHERE id=? ";
 			st = con.prepareStatement(sql);
 
 			st.setString(1, bean.getTitle());
