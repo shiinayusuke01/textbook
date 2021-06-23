@@ -76,7 +76,9 @@ public class OrderServlet extends HttpServlet {
 				}
 				for (TextbookBean b : list) {
 					order.deleteordered(b.getId());
+					order.setbuyer(member.getId(), b.getId());
 				}
+
 				session.removeAttribute("cart");
 				gotoPage(request, response, "/Order.jsp");
 
