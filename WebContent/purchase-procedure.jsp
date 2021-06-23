@@ -49,12 +49,13 @@
 ${total}円</td></tr>
 	</table></tbody>
 
-	<br>
+	<br><br>
 <h2>支払い方法を選択してください</h2>
-<br>
+<br><br>
 	<input type="radio" name="pay" value="card" checked> クレジットカード
 	<input type="radio" name="pay" value="debit"> デビットカード
 	<input type="radio" name="pay" value="cash"> 現金
+	<br><br>
 <h2>お届け先</h2>
 
 氏:<input type="text" name="last_name" value="${membean.last_name} "class="m-form-text" ><br><br>
@@ -65,15 +66,14 @@ ${total}円</td></tr>
 住所:<input type="text" name="address" value="${membean.address}"class="m-form-text" >
 <br><br>
 電話番号:<input type="text" name="tel" value="${membean.tel}"class="m-form-text" >
-<br>
+<br><br>
 </c:if>
-<form action="/textbook/OrderServlet?action=order" method="post"  class="btn btn-flat">
-<input type="submit" value="この注文内容で注文">
+<br><br>
+<form action="/textbook/OrderServlet?action=order" method="post"  >
+<input type="submit" value="この注文内容で注文" class="btn btn--orange">
 </form>
-
-<form action="/textbook/MainPageServlet?action=list" method="post"  class="btn btn-flat">
-<input type="submit" value="トップページに戻る">
-</form>
+<br><br>
+<footer><a href="/textbook/MainPageServlet?action=list">トップページへ</a></footer>
 
 
 </body>

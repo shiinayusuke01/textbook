@@ -100,11 +100,11 @@
 
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
-
-	<a href="/textbook/cart.jsp"  class="">
+<br><br>
+	<a href="/textbook/cart.jsp" >
 	カート/購入ページへ</a>
 
-	<br>
+	<br><br>
 	<a href="/textbook/PurchaseHistory">
 	購入履歴ページへ</a>
 	<br>
@@ -136,7 +136,7 @@
 	<form action="/textbook/CartServlet?action=add" method="post">
 	<input type="hidden" name="text-id" value="${Textbook.id}">
 	<input type="hidden" name="putid2" value="${Textbook.userId}">
-	<input type="submit" value="カートに追加する" class="btn btn-flat">
+	<input type="submit" value="カートに追加"  class="btn btn--orange">
 	</form></td></tr>
 
 	</c:forEach>
@@ -171,7 +171,7 @@
       <form action="/textbook/CartServlet?action=addtext" method="post">
 	<input type="hidden" name="textid" value="${Text.id}">
       <input type="hidden" name="putid" value="${Text.userId}">
-	<input type="submit" value="カートに追加する" class="btn btn-flat">
+	<input type="submit" value="カートに追加"  class="btn btn--orange">
 	</form>
 	</td>
     </tr>

@@ -240,6 +240,17 @@ a.btn-flat:hover:after {
     box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 }
 
+.btn--orange,
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+}
+.btn--orange:hover,
+a.btn--orange:hover {
+  color: #fff;
+  background: #f56500;
+}
+
 footer{
   height: 50px;
   padding: 20px 0;

@@ -29,6 +29,8 @@
 		<tr><td align="right" colspan="6">合計購入金額：
 		${total}円</td></tr>
 	</table>
+
+	<br><br>
 	<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
 </body>
 </html>
