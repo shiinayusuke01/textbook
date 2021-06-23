@@ -88,7 +88,6 @@
     <td class="data">価格</td>
     <td class="data">状態</td>
     <td class="data">備考</td>
-    <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
   </tr>
 
@@ -101,6 +100,7 @@
 
 <form action="/textbook/CartServlet?action=add" method="post">
 <input type="hidden" name="text-id" value="${Textbook.id}">
+<input type="hidden" name="putid2" value="${Textbook.userId}">
 <input type="submit" value="カートに追加する" class="btn btn-flat">
 </form></td></tr>
 
@@ -118,7 +118,6 @@
     <td class="data">価格</td>
     <td class="data">状態</td>
     <td class="data">備考</td>
-    <td class="data">登録者ID</td>
     <td class="data">カートに追加</td>
   </tr>
 
