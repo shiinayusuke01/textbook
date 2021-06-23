@@ -50,6 +50,11 @@ public class MainPageServlet extends HttpServlet {
 				List<TextbookBean> lists = dao.findByCategory(searchcategory);
 				request.setAttribute("show", lists);
 				gotoPage(request, response, "/main-input.jsp");
+			} else if (action.equals("searchauthor")) {
+				String searchauthor = request.getParameter("authorname");
+				List<TextbookBean> lists = dao.findByAuthor(searchauthor);
+				request.setAttribute("show", lists);
+				gotoPage(request, response, "/main-input.jsp");
 			}
 		} catch (DAOException e) {
 			e.printStackTrace();
