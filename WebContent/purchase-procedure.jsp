@@ -40,7 +40,7 @@
 </td>
 </tr>
 </c:forEach>
-<tr><td align="right" colspan="6">支払金額：
+<tr><td align="right" colspan="7">支払金額：
 
 <c:set value="${0}" var="total"></c:set>
 <c:forEach items="${cart}" var="text">

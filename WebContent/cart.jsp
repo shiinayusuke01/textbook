@@ -24,7 +24,8 @@
 	<tr>
 	<th>タイトル</th>
 	<th>著者名</th>
-	<th>値段</th>
+	<th>分類</th>
+	<th>価格</th>
 	<th>状態</th>
 	<th>備考</th>
     <th>削除</th>
@@ -35,6 +36,7 @@
 	<c:forEach items="${cart}" var="item">
 	<td>${item.title}</td>
 	<td>${item.author}</td>
+	<td>${item.categoryname}</td>
 	<td>${item.price}円</td>
 	<td>${item.status}</td>
 	<td>${item.info}</td>

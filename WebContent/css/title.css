@@ -37,6 +37,66 @@ ul li {
   padding: 26px 10px 20px 10px;
 }
 
+.cp_cssslider {
+	width: 650px;
+	height: 265px;
+	overflow: hidden;
+	margin: 2em auto;
+	border: 10px solid #ffffff;
+	box-shadow:0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+.cp_slide_item {
+	width: 650px;
+	height: 265px;
+	float: left;
+	position: relative;
+}
+.cp_slidewrapper {
+	width: 300%;/* slideの枚数×100% */
+	position: relative;
+	left: 0;
+	animation: slider 20s infinite ease;/* スピード */
+}
+@-webkit-keyframes slider {
+	/* 100%を枚数で割った%に割り振る */
+	0% {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	}
+	33% {
+	-webkit-transform: translateX(-300px);
+	transform: translateX(-300px);
+	}
+	66% {
+	-webkit-transform: translateX(-600px);
+	transform: translateX(-600px);
+	}
+	100% {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	}
+}
+@keyframes slider {
+	/* 100%を枚数で割った%に割り振る */
+	0% {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	}
+	33% {
+	-webkit-transform: translateX(-300px);
+	transform: translateX(-300px);
+	}
+
+	66% {
+	-webkit-transform: translateX(-900px);
+	transform: translateX(-900px);
+	}
+
+	100% {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	}
+}
 .cp_ipselect {
 	overflow: hidden;
 	width: 50%;

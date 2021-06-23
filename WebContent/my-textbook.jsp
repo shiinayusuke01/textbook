@@ -92,7 +92,7 @@ if(insertedTitle != null){
 		<c:set var="total" value="${total + textbook.price}"></c:set>
 		    </c:if>
 		</c:forEach>
-		<tr><td align="right" colspan="6">合計売上金額：
+		<tr><td align="right" colspan="7">合計売上金額：
 		${total}円</td></tr>
 	</table>
 

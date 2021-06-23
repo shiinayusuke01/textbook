@@ -52,12 +52,6 @@
 
 <aside>
 	<h2>教科書検索</h2>
-
-	<form action="confirm-inquiry.jsp" method="post">
-	お問い合わせフォーム<br>
-	<textarea name="inquiry" rows="4" cols="40"></textarea><br>
-	<input type="submit" value="送信">
-	</form>
 	<br>
 	<br>
 
@@ -101,11 +95,24 @@
 	<input type="submit" value="検索" >
 
 	</form>
+	<br><br>
+	<form action="confirm-inquiry.jsp" method="post">
+
+	<h2>お問い合わせフォーム</h2><br>
+	<textarea name="inquiry" rows="4" cols="40"></textarea><br><br>
+	<input type="submit" value="送信">
+	</form>
 
 </aside>
 
 <article>
-<img src="./img/教科書3.jpg" >
+<div class="cp_cssslider">
+	<div class="cp_slidewrapper">
+		<div class="cp_slide_item"><img src="img/教科書1.png"></div>
+		<div class="cp_slide_item"><img src="img/教科書2.jpg"></div>
+		<div class="cp_slide_item"><img src="img/教科書3.jpg"></div>
+	</div>
+</div>
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 <br><br>
