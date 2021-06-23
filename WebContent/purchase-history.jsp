@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="./css/header.css" rel="stylesheet">
+</head>
 <meta charset="UTF-8">
 <title>購入履歴</title>
 </head>
