@@ -2,6 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="textbook.MembersBean"%>
+<%
+MembersBean bean = (MembersBean) session.getAttribute("membean");
+if(bean == null) {
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.html");
+	rd.forward(request, response);
+}
+
+%>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +18,6 @@
 <meta charset="UTF-8">
 <title>会員ホーム</title>
 <link href="./css/title.css" rel="stylesheet">
-
 <script type="text/javascript">
         $(document).ready(function(){
             $('.slider').bxSlider({
@@ -23,26 +31,14 @@
 <body>
 <header>
             <ul>
-              <li>
-              <form action="/textbook/regist-textbook.jsp" method="post">
-				<input type="submit" value="新規教科書登録" class="btn btn-flat">
-				</form>
+              <li><a href="/textbook/regist-textbook.jsp"  class="btn4">新規登録教科書</a>&ensp;&ensp;&ensp;&ensp;
 				</li>
-              <li><form action="/textbook/ShowMyTextbook" method="post">
-				<input type="submit" value="教科書情報変更・削除" class="btn btn-flat">
-				</form>
+              <li><a href="/textbook/ShowMyTextbook" class="btn4">教科書情報変更・削除</a>&ensp;&ensp;&ensp;&ensp;
 				</li>
-              <li><form action="/textbook/mem-info-change.jsp" method="post">
-				<input type="submit" value="会員情報変更" class="btn btn-flat">
-				</form>
+              <li><a href ="/textbook/mem-info-change.jsp" class="btn4">会員情報変更</a>&ensp;&ensp;&ensp;&ensp;</li>
+              <li><a href ="/textbook/taikai.jsp" class="btn4">退会</a>&ensp;&ensp;&ensp;&ensp;
 				</li>
-              <li><form action="/textbook/taikai.jsp" method="post">
-				<input type="submit" value="退会" class="btn btn-flat">
-				</form>
-				</li>
-              <li><form action="/textbook/MembersServlet?action=logout" method="post">
-				<input type="submit" value="ログアウト" class="btn btn-flat">
-				</form>
+              <li><a href="/textbook/MembersServlet?action=logout"  class="btn4">ログアウト</a>&ensp;&ensp;&ensp;&ensp;
 				</li>
             </ul>
 
@@ -90,19 +86,24 @@
 		<option value="10">農学部系</option></p></option>
 		</select>
 	</div>
-	<br>
-	<input type="hidden" name="action" value="searchcate">
-	<input type="submit" value="検索" >
 
 	</form>
 	<br><br>
-	<form action="confirm-inquiry.jsp" method="post">
 
-	<h2>お問い合わせフォーム</h2><br>
-	<textarea name="inquiry" rows="4" cols="40"></textarea><br><br>
-	<input type="submit" value="送信">
-	</form>
+	<input type="hidden" name="action" value="searchcate">
+	<input type="submit" value="検索" >
 
+
+<form action="confirm-inquiry.jsp" method="post">
+<div class="Form">
+  <div class="Form-Item">
+    <p class="Form-Item-Label">
+    	<h2>お問い合わせフォーム</h2><br>
+    	<textarea name="inquiry" rows="4" cols="40" class="Form-Item-Textarea"></textarea><br><br>
+	<input type="submit" value="送信" class="Form-Btn">
+	</div>
+ </div>
+</form>
 </aside>
 
 <article>

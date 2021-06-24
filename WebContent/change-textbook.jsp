@@ -9,6 +9,7 @@ if(bean == null) {
 }
 
 %>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="textbook.MembersBean"%>
+<%
+MembersBean bean = (MembersBean) session.getAttribute("membean");
+if(bean == null) {
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.html");
+	rd.forward(request, response);
+}
 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,18 +48,18 @@
 Email:<input type="email" name="email" value="${membean.email}" class="m-form-text">
 <br>
 生年月日:
-年:
+
 	<select name="year">
 		<script>func(2021)</script>
-	</select>
-月:
+	</select>年
+
 	<select name="month">
 		<script>func2(12)</script>
-	</select>
-日:
+	</select>月
+
 	<select name="day">
 		<script>func2(31)</script>
-	</select>
+	</select>日
 *生年月日は必ず再度ご入力ください
 <br>
 パスワード:<input type="password" name="password" value="${membean.password}" class="m-form-text">

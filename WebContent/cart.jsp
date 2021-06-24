@@ -48,7 +48,7 @@
 </td>
 </c:forEach>
 
-<tr><td align="right" colspan="6">合計金額：
+<tr><td align="right" colspan="7">合計金額：
 <c:set value="${0}" var="total"></c:set>
 <c:forEach items="${cart}" var="text">
 <c:set var="total" value="${total + text.price}"></c:set>

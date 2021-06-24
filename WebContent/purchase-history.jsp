@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="textbook.MembersBean"%>
+<%
+MembersBean bean = (MembersBean) session.getAttribute("membean");
+if(bean == null) {
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.html");
+	rd.forward(request, response);
+}
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
