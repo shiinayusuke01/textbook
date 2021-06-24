@@ -29,10 +29,10 @@
 	<th>状態</th>
 	<th>備考</th>
     <th>削除</th>
-	<tr>
-	<thead>
+    </tr>
+	</thead>
 
-	<tbody>
+	<tbody><tr>
 	<c:forEach items="${cart}" var="item">
 	<td>${item.title}</td>
 	<td>${item.author}</td>
@@ -47,7 +47,8 @@
 </form>
 </td>
 </c:forEach>
-
+</tr>
+ </tbody>
 <tr><td align="right" colspan="7">合計金額：
 <c:set value="${0}" var="total"></c:set>
 <c:forEach items="${cart}" var="text">
@@ -55,7 +56,6 @@
 </c:forEach>
 ${total}円</td></tr>
 </table>
- </tbody>
 
 <form action="/textbook/OrderServlet?action=purchase" method="post">
 <input type="submit" value="購入する" class="btn btn-flat">
@@ -64,7 +64,6 @@ ${total}円</td></tr>
 </c:if>
 <br>
 <footer><a href="/textbook/MainPageServlet?action=list">トップページへ</a></footer>
-</form>
 
 </body>
 </html>
