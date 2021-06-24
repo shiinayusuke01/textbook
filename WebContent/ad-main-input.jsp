@@ -65,7 +65,6 @@
 </table>
 <br>
 <br>
-<a>test</a>
 <table border="1">
 <tr><th>お問い合わせ内容</th><th>名前</th><th>メールアドレス</th></tr>
 <c:forEach items="${inquirybeans}" var="inquiry">
