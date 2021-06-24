@@ -37,7 +37,7 @@ password Varchar(12) Not Null
 
 CREATE TABLE inquiries(
 id SERIAL Not Null Primary key,
-content VARCHAR(20),
+content VARCHAR(2000),
 user_id Integer not null
 );
 

@@ -88,7 +88,7 @@ public class InquiryDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql ="select * from inquiries";
+			String sql ="SELECT * FROM inquiries JOIN members ON inquiries.user_id = members.id";
 			st=con.prepareStatement(sql);
 			rs = st.executeQuery();
 
@@ -97,8 +97,12 @@ public class InquiryDAO {
 				int id = rs.getInt("id");
 				String content = rs.getString("content");
 				int userId = rs.getInt("user_id");
+				String lastName = rs.getString("last_name");
+				String firstName = rs.getString("first_name");
+				String userName = lastName + firstName;
+				String email = rs.getString("email");
 
-				InquiryBean bean = new InquiryBean(id, content, userId);
+				InquiryBean bean = new InquiryBean(id, content, userId, userName, email);
 			    list.add(bean);
 			}
 			return list;

@@ -60,9 +60,16 @@ public class MembersServlet extends HttpServlet {
 					String pa = escapeHTML(bean.getPassword());
 					bean = new MembersBean(id, la, fi, po, ad, te, em, birthday, pa);
 					if (bean.getId() == 0) {
+						InquiryDAO inquiryDao = new InquiryDAO();
+						List<InquiryBean> inquirybeans = inquiryDao.findAll();
+
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
 						session.setAttribute("membean", bean);
+						session.setAttribute("inquirybeans", inquirybeans);
+						for(InquiryBean bean2 : inquirybeans) {
+							System.out.println(bean2.getContent());
+						}
 						gotoPage(request, response, "/ad-main-input.jsp");
 					} else {
 						session = request.getSession();
