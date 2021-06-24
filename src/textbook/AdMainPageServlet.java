@@ -43,7 +43,7 @@ public class AdMainPageServlet extends HttpServlet {
 		try {
 			String action = request.getParameter("action");
 			if (action == null || action.length() == 0) {
-				gotoPage(request, response, "/newlogin.jsp");
+				gotoPage(request, response, "/Login.html");
 
 			} else if (action.equals("memsearch")) {
 				String searchname = request.getParameter("searchname");

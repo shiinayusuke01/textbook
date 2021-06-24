@@ -66,9 +66,18 @@
 <br>
 <br>
 <table border="1">
-<tr><th>お問い合わせ内容</th><th>名前</th></tr>
+<tr><th>お問い合わせ内容</th><th>名前</th><th></th></tr>
 <c:forEach items="${inquirybeans}" var="inquiry">
-	<tr><td>${inquiry.content}</td><td>${inquiry.user}</td></tr>
+	<form method="POST" action="DeleteInquiryServlet">
+	  <input type="hidden" name="inquiry_id" value="${inquiry.id}">
+		<tr>
+			<td>${inquiry.content}</td>
+			<td>${inquiry.user}</td>
+			<input type="hidden" name="action" value="delete">
+			<td><input type="submit" value="削除"></td>
+		</tr>
+	     </form>
+
 </c:forEach>
 
 

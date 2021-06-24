@@ -32,7 +32,6 @@ public class InquiryDAO {
 			// SQLの実行
 			int rows = st.executeUpdate();
 
-			// カテゴリ一覧をListとして返す
 			return rows;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +64,6 @@ public class InquiryDAO {
 			// SQLの実行
 			int rows = st.executeUpdate();
 
-			// カテゴリ一覧をListとして返す
 			return rows;
 		} catch (Exception e) {
 			e.printStackTrace();
