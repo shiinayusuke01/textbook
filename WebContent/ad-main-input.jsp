@@ -94,9 +94,6 @@
 	            </form>
 	            </td>
 			</tr>
-
-<br>
-<br>
 </c:forEach>
 </tbody>
 </table>
