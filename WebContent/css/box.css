@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.box8 {
+
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    width:100%;
+}
+.box8 p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+}
