@@ -35,14 +35,12 @@ public class ShowMyTextbook extends HttpServlet {
 			gotoPage(request, response, "/Login.html");
 		}
 		MembersBean bean = (MembersBean) session.getAttribute("membean");
-		String firstName = bean.getFirst_name();
 		int userId = bean.getId();
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
 			List<TextbookBean> list = dao.selectByUserId(userId);
 			request.setAttribute("textbooks", list);
-			request.setAttribute("first_name", firstName);
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
