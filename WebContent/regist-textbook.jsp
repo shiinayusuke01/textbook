@@ -21,7 +21,6 @@ if(bean == null) {
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
 
 <br/>
-<div class="container">
 <h1>教科書新規登録ページ</h1>
 <br>
 <h2>${membean.last_name} ${membean.first_name}様、教科書情報を入力してください</h2>
@@ -58,6 +57,5 @@ if(bean == null) {
 </form>
 <p style="color: red;"> ${errmsg}</p>
 <footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
-</div>
 </body>
 </html>
