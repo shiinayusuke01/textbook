@@ -100,40 +100,39 @@
 
 <br>
 <br>
-<<<<<<< HEAD
-<table border="1">
-<tr><th>お問い合わせ内容</th><th>名前</th><th></th></tr>
-<c:forEach items="${inquirybeans}" var="inquiry">
-	<form method="POST" action="DeleteInquiryServlet">
-	  <input type="hidden" name="inquiry_id" value="${inquiry.id}">
-		<tr>
-			<td>${inquiry.content}</td>
-			<td>${inquiry.user}</td>
-			<input type="hidden" name="action" value="delete">
-			<td><input type="submit" value="削除"></td>
-		</tr>
-	     </form>
 
-=======
+<h3>問い合わせ一覧表示</h3>
+	<form action="/textbook/AdMainPageServlet" method="post">
+		<input type="hidden" name="action" value="inquiryshow">
+		<input type="submit" value="表示">
+	</form>
 
-<table class="type06">
-	<thead>
-		<tr>
-			<th>お問い合わせ内容</th>
-			<th>名前</th>
-		</tr>
-	</thead>
-		<c:forEach items="${inquirybeans}" var="inquiry">
+	<table class="type06">
+		<thead>
+			<tr>
+				<th>問い合わせ内容</th>
+				<th>名前</th>
+				<th>削除</th>
+
+			</tr>
+		</thead>
+	<c:forEach items="${showinquiry}" var="text">
 		<tbody>
 			<tr>
-				<td>${inquiry.content}</td>
-				<td>${inquiry.user}</td>
+				<td>${text.content}</td>
+				<td>${text.user}</td>
+				<td>
+				<form action="/textbook/AdMainPageServlet?action=inquirydelete" method="post">
+		<input type="hidden" name="inquiry_id" value="${text.id}">
+		<input type="submit" value="削除">
+			</form>
+
+		</td>
 			</tr>
 		</tbody>
->>>>>>> 4a577d74d57c4d4192b408727b588dad6aeda84e
+
+<br>
 </c:forEach>
-
-
 </table>
 </body>
 </html>

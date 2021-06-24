@@ -1,7 +1,6 @@
 package textbook;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,24 +28,6 @@ public class DeleteInquiryServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int inquiryId = Integer.parseInt(request.getParameter("inquiry_id"));
-		System.out.println(inquiryId);
-		try {
-			String action = request.getParameter("action");
-			InquiryDAO dao = new InquiryDAO();
-			List<InquiryBean> inquirybeans = dao.findAll();
-
-			if (action.equals("delete")) {
-			dao.deleteInquiryById(inquiryId);
-			}
-			request.setAttribute("inquirybeans", inquirybeans);
-			gotoPage(request, response, "ad-main-input.jsp");
-
-
-		}catch (DAOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**

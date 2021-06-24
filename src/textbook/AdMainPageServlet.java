@@ -31,10 +31,13 @@ public class AdMainPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MembersDAO dao = null;
 		TextBookDAO tdao = null;
+		InquiryDAO idao = null;
 
 		try {
 			dao = new MembersDAO();
 			tdao = new TextBookDAO();
+			idao = new InquiryDAO();
+
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -67,6 +70,17 @@ public class AdMainPageServlet extends HttpServlet {
 				int text_id = Integer.parseInt(request.getParameter("text_id"));
 				tdao.deleteTextbook(text_id);
 				request.setAttribute("message", "教科書を削除しました。");
+				gotoPage(request, response, "/ad-message.jsp");
+
+			}else if (action.equals("inquiryshow")) {
+				List<InquiryBean> list = idao.findAll();
+				request.setAttribute("showinquiry", list);
+				gotoPage(request, response, "/ad-main-input.jsp");
+
+			} else if (action.equals("inquirydelete")) {
+				int inquiryId = Integer.parseInt(request.getParameter("inquiry_id"));
+				idao.deleteInquiryById(inquiryId);
+				request.setAttribute("message", "問い合わせを削除しました。");
 				gotoPage(request, response, "/ad-message.jsp");
 			}
 		} catch (DAOException e) {

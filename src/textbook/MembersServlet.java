@@ -60,11 +60,10 @@ public class MembersServlet extends HttpServlet {
 					String pa = escapeHTML(bean.getPassword());
 					bean = new MembersBean(id, la, fi, po, ad, te, em, birthday, pa);
 					if (bean.getId() == 0) {
-
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
 						session.setAttribute("membean", bean);
-						gotoPage(request, response, "/DeleteInquiryServlet");
+						gotoPage(request, response, "/ad-main-input.jsp");
 					} else {
 						session = request.getSession();
 						session.setAttribute("isLogin", "true");
