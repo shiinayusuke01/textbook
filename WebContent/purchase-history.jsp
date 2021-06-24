@@ -13,12 +13,13 @@ if(bean == null) {
 <!DOCTYPE html>
 <html>
 <head>
-<link href="./css/title.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <meta charset="UTF-8">
 <title>購入履歴</title>
 </head>
 <body>
+<header></header>
 	<h3>${membean.last_name} ${membean.first_name}様の購入履歴</h3>
 	<table class="type06" align="center">
 	<caption></caption>
@@ -29,7 +30,7 @@ if(bean == null) {
 				<td>${textbook.title}</td>
 				<td>${textbook.author}</td>
 				<td>${textbook.categoryname}</td>
-				<td>${textbook.price}円<td/>
+				<td>${textbook.price}円</td>
 				<td>${textbook.status}</td>
 				<td>${textbook.info}</td>
 			</tr>

@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="./css/title.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 <title>最終確認</title>
 
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 <h2>下記の内容で注文を行いますか？</h2>
 
 <h3>教科書情報</h3>
@@ -70,7 +70,7 @@ ${total}円</td></tr>
 </c:if>
 <br><br>
 <form action="/textbook/OrderServlet?action=order" method="post"  >
-<input type="submit" value="この注文内容で注文" class="btn btn--orange">
+<input type="submit" value="注文確定" class="btn btn--orange">
 </form>
 <br><br>
 <footer><a href="/textbook/MainPageServlet?action=list">トップページへ</a></footer>

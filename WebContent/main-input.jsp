@@ -43,7 +43,7 @@ if(bean == null) {
             </ul>
 
 </header>
-<div class="wrapper">
+<div class="container">
 
 <div class="main-grid">
 
@@ -86,12 +86,13 @@ if(bean == null) {
 		<option value="9">工学部系</option>
 		<option value="10">農学部系</option></p></option>
 		</select>
+
 	</div>
-
-	</form>
-
 	<input type="hidden" name="action" value="searchcate">
 	<input type="submit" value="検索" >
+	</form>
+
+
 
 
 <form action="confirm-inquiry.jsp" method="post">
@@ -154,7 +155,7 @@ if(bean == null) {
 	<form action="/textbook/CartServlet?action=add" method="post">
 	<input type="hidden" name="text-id" value="${Textbook.id}">
 	<input type="hidden" name="putid2" value="${Textbook.userId}">
-	<input type="submit" value="カートに追加"  class="btn btn--orange">
+	<input type="submit" value="カート"  class="btn btn--orange">
 	</form></td></tr>
 
 	</c:forEach>
@@ -199,7 +200,6 @@ if(bean == null) {
 </article>
 </div>
 
-<footer></footer>
 </div>
 </body>
 </html>

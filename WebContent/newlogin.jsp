@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login Shinki</title>
-	<link href="./css/title.css" rel="stylesheet">
+	<link href="./css/header.css" rel="stylesheet">
 	<script>
 		function func(num){
 			for (var i = 1900; i <= num; i++){
@@ -22,7 +22,7 @@
 	</script>
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 <h1>新規会員登録</h1>
 <form action="/textbook/MembersServlet" method="post">
 氏:<input type="text" name="last_name"  class="m-form-text">

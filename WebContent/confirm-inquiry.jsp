@@ -17,14 +17,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>お問い合わせの確認</title>
+<link href="./css/header.css" rel="stylesheet">
 </head>
+
 <body>
-<h3>お問い合わせの内容はこちらでよろしいですか？</h3>
+<header></header>
+
+<h2>お問い合わせの内容はこちらでよろしいですか？</h2>
 <%=inquiry%>
 <form action="RegistInquiryServlet" method="post">
 <input type="hidden" name="inquiry_content" value="<%=inquiry %>">
-<input type="submit" value="送信">
+<input type="submit" value="送信" class="btn btn-flat">
+<br><br>
+<a href="/textbook/MainPageServlet">トップページ</a>
 </form>
 </body>
 </html>

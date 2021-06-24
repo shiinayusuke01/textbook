@@ -31,7 +31,7 @@ if(bean == null) {
 	</script>
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 <h1>会員情報変更</h1>
 <br>
 <form action="/textbook/MembersServlet" method="post">
