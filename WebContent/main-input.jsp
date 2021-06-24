@@ -117,12 +117,12 @@ if(bean == null) {
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 <br><br>
-	<a href="/textbook/cart.jsp" >
-	カート/購入ページへ</a>
+	<font color="black"><a href="/textbook/cart.jsp" >
+	カート/購入ページへ</a></font>
 
 	<br><br>
-	<a href="/textbook/PurchaseHistory">
-	購入履歴ページへ</a>
+	<font color="black"><a href="/textbook/PurchaseHistory">
+	購入履歴ページへ</a></font>
 	<br>
 	<br>
 
@@ -187,7 +187,7 @@ if(bean == null) {
       <form action="/textbook/CartServlet?action=addtext" method="post">
 	<input type="hidden" name="textid" value="${Text.id}">
       <input type="hidden" name="putid" value="${Text.userId}">
-	<input type="submit" value="カートに追加"  class="btn btn--orange">
+	<input type="submit" value="カートへ"  class="btn btn--orange">
 	</form>
 	</td>
     </tr>
