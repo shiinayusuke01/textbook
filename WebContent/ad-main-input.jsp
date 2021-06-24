@@ -48,9 +48,6 @@
 		</form>
 		</td>
 			</tr>
-
-
-
 	</c:forEach>
 	</tbody>
 	</table>
@@ -81,7 +78,6 @@
 		</thead>
 		<tbody>
 	<c:forEach items="${showtext}" var="text">
-
 			<tr>
 				<td>${text.id}</td>
 				<td>${text.title}</td>
@@ -99,9 +95,7 @@
 	            </td>
 			</tr>
 
-
-
-		<br>
+<br>
 <br>
 </c:forEach>
 </tbody>
