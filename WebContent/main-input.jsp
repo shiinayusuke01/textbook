@@ -43,7 +43,7 @@ if(bean == null) {
             </ul>
 
 </header>
-<div class="wrapper">
+<div class="container">
 
 <div class="main-grid">
 
@@ -86,12 +86,13 @@ if(bean == null) {
 		<option value="9">工学部系</option>
 		<option value="10">農学部系</option></p></option>
 		</select>
+
 	</div>
-
-	</form>
-
 	<input type="hidden" name="action" value="searchcate">
 	<input type="submit" value="検索" >
+	</form>
+
+
 
 
 <form action="confirm-inquiry.jsp" method="post">

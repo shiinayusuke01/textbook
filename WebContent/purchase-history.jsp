@@ -29,7 +29,7 @@ if(bean == null) {
 				<td>${textbook.title}</td>
 				<td>${textbook.author}</td>
 				<td>${textbook.categoryname}</td>
-				<td>${textbook.price}円<td/>
+				<td>${textbook.price}円</td>
 				<td>${textbook.status}</td>
 				<td>${textbook.info}</td>
 			</tr>
