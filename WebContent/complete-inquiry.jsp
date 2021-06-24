@@ -9,6 +9,6 @@
 </head>
 <body>
 <h3>お問い合わせが完了しました。</h3>
-<a href="/textbook/MainPageServlet"><font color="blue">トップページへ</font-color>font></a>
+<a href="/textbook/MainPageServlet"><font color="blue">トップページへ</font-color></a>
 </body>
 </html>
