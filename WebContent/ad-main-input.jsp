@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>管理者ホーム</title>
-<link href="./css/header.css" rel="stylesheet">
+<link href="./css/title.css" rel="stylesheet">
 </head>
 <body>
 <header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
@@ -25,20 +25,22 @@
 </form>
 
 <table class="type06">
-
+	<thead>
 	<tr>
-	<td>id</td>
-	<td>氏</td>
-	<td>名</td>
-	<td>email</td>
-	<td>削除</td></tr>
-
+	<th>id</th>
+	<th>氏</th>
+	<th>名</th>
+	<th>email</th>
+	<th>削除</th></tr>
+	</thead>
 <c:forEach items="${showmem}" var="member">
+<tbody>
 	<tr><td>${member.id}</td>
 	<td>${member.last_name}</td>
 	<td>${member.first_name}</td>
 	<td>${member.email}</td>
-	<td>
+	<td></tbody>
+
 <form action="/textbook/AdMainPageServlet?action=memdelete" method="post">
 
 <input type="hidden" name="mem_id" value="${member.id}">
@@ -56,14 +58,16 @@
 <input type="submit" value="検索">
 </form>
 
-<table class="type06">
+<table class="type06"><thead>
 <br>
-<tr><td>id</td><td>タイトル</td><td>著者名</td><td>状態</td><td>分類</td><td>売値</td><td>備考</td><td>登録者</td><td>削除</td></tr>
 
+<tr><td>id</td><td>タイトル</td><td>著者名</td><td>状態</td><td>分類</td><td>売値</td><td>備考</td><td>登録者</td><td>削除</td></tr>
+</thead>
 <c:forEach items="${showtext}" var="text">
+<tbody>
 <tr><td>${text.id}</td><td>${text.title}</td><td>${text.author}</td>
 <td>${text.status}</td><td>${text.category}</td>
-<td>${text.price}</td><td>${text.info}</td><td>${text.userId}</td>
+<td>${text.price}</td><td>${text.info}</td><td>${text.userId}</td></tbody>
 <td>
 <form action="/textbook/AdMainPageServlet?action=textdelete" method="post">
 <input type="hidden" name="text_id" value="${text.id}">
@@ -75,9 +79,9 @@
 <br>
 <br>
 <table border="1">
-<tr><th>お問い合わせ内容</th><th>名前</th></tr>
+<thead><tr><th>お問い合わせ内容</th><th>名前</th></tr></thead>
 <c:forEach items="${inquirybeans}" var="inquiry">
-	<tr><td>${inquiry.content}</td><td>${inquiry.user}</td></tr>
+	<tbody><tr><td>${inquiry.content}</td><td>${inquiry.user}</td></tr></tbody>
 </c:forEach>
 
 
