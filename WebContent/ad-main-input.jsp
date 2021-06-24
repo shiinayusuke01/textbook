@@ -24,14 +24,23 @@
 <input type="submit" value="検索">
 </form>
 
-<table class="brwsr2">
-<tr><td>id</td><td>氏</td><td>名</td><td>email</td><td>削除</td></tr>
+<table class="type06">
+
+	<tr>
+	<td>id</td>
+	<td>氏</td>
+	<td>名</td>
+	<td>email</td>
+	<td>削除</td></tr>
 
 <c:forEach items="${showmem}" var="member">
-<tr><td>${member.id}</td><td>${member.last_name}</td>
-<td>${member.first_name}</td><td>${member.email}</td>
-<td>
+	<tr><td>${member.id}</td>
+	<td>${member.last_name}</td>
+	<td>${member.first_name}</td>
+	<td>${member.email}</td>
+	<td>
 <form action="/textbook/AdMainPageServlet?action=memdelete" method="post">
+
 <input type="hidden" name="mem_id" value="${member.id}">
 <input type="submit" value="削除">
 </form></td></tr>
@@ -47,7 +56,7 @@
 <input type="submit" value="検索">
 </form>
 
-<table class="brwsr2">
+<table class="type06">
 <br>
 <tr><td>id</td><td>タイトル</td><td>著者名</td><td>状態</td><td>分類</td><td>売値</td><td>備考</td><td>登録者</td><td>削除</td></tr>
 

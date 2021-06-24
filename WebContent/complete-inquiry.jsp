@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/title.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
 <h3>お問い合わせが完了しました。</h3>
-<a href="/textbook/MainPageServlet">トップページへ</a>
+<a href="/textbook/MainPageServlet"><font color="blue">トップページへ</font-color>font></a>
 </body>
 </html>

@@ -17,10 +17,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/title.css" rel="stylesheet">
 <title>お問い合わせの確認</title>
 </head>
 <body>
-<h3>お問い合わせの内容はこちらでよろしいですか？</h3>
+<h2>お問い合わせの内容はこちらでよろしいですか？</h2>
 <%=inquiry%>
 <form action="RegistInquiryServlet" method="post">
 <input type="hidden" name="inquiry_content" value="<%=inquiry %>">
