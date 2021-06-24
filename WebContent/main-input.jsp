@@ -88,7 +88,6 @@ if(bean == null) {
 	</div>
 
 	</form>
-	<br><br>
 
 	<input type="hidden" name="action" value="searchcate">
 	<input type="submit" value="検索" >
@@ -117,12 +116,12 @@ if(bean == null) {
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 <br><br>
-	<font color="black"><a href="/textbook/cart.jsp" >
-	カート/購入ページへ</a></font>
+	<a href="/textbook/cart.jsp" ><font color="blue">
+	カート/購入ページへ</font></a>
 
 	<br><br>
-	<font color="black"><a href="/textbook/PurchaseHistory">
-	購入履歴ページへ</a></font>
+	<a href="/textbook/PurchaseHistory"><font color="blue">
+	購入履歴ページへ</font></a>
 	<br>
 	<br>
 
@@ -187,7 +186,7 @@ if(bean == null) {
       <form action="/textbook/CartServlet?action=addtext" method="post">
 	<input type="hidden" name="textid" value="${Text.id}">
       <input type="hidden" name="putid" value="${Text.userId}">
-	<input type="submit" value="カートへ"  class="btn btn--orange">
+	<input type="submit" value="カート"  class="btn btn--orange">
 	</form>
 	</td>
     </tr>
@@ -196,6 +195,7 @@ if(bean == null) {
 	</table>
 </article>
 </div>
+<footer></footer>
 
 </body>
 </html>
