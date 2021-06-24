@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InquiryDAO {
 	private Connection con;
@@ -78,6 +80,44 @@ public class InquiryDAO {
 				throw new DAOException("リソースの開放に失敗しました。");
 			}
 		}
+	}
+	public List<InquiryBean> findAll() throws DAOException{
+		if (con == null)
+			getConnection();
+		PreparedStatement st = null;
+		ResultSet rs = null;
+
+		try {
+			String sql ="select * from inquiries";
+			st=con.prepareStatement(sql);
+			rs = st.executeQuery();
+
+			List<InquiryBean> list = new ArrayList<InquiryBean>();
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String content = rs.getString("content");
+				int userId = rs.getInt("user_id");
+
+				InquiryBean bean = new InquiryBean(id, content, userId);
+			    list.add(bean);
+			}
+			return list;
+		} catch (SQLException e){
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} finally {
+			try {
+				if (st != null) {
+					st.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+				close();
+			} catch (SQLException e) {
+				throw new DAOException("リソースの開放に失敗しました");
+			}
+		  }
 	}
 
 	private void getConnection() throws DAOException {

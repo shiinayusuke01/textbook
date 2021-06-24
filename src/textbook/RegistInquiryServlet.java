@@ -45,7 +45,7 @@ public class RegistInquiryServlet extends HttpServlet {
 		}catch (DAOException e) {
 			e.printStackTrace();
 		}
-		gotoPage(request, response, "MainPageServlet");
+		gotoPage(request, response, "complete-inquiry.jsp");
 	}
 
 	/**
