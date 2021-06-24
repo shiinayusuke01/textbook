@@ -16,13 +16,13 @@ if(bean == null) {
 <head>
 <meta charset="UTF-8">
 <title>メンバーからの退会</title>
-<link href="./css/title.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 <style>
 
 </style>
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 <h1>本当に退会しますか？</h1>
 <table class="type06"   align="center">
 <caption></caption>

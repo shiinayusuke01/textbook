@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="./css/title.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 <title>お問い合わせの確認</title>
 </head>
 <body>

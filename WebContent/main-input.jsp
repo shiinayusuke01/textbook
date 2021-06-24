@@ -155,7 +155,7 @@ if(bean == null) {
 	<form action="/textbook/CartServlet?action=add" method="post">
 	<input type="hidden" name="text-id" value="${Textbook.id}">
 	<input type="hidden" name="putid2" value="${Textbook.userId}">
-	<input type="submit" value="カートに追加"  class="btn btn--orange">
+	<input type="submit" value="カート"  class="btn btn--orange">
 	</form></td></tr>
 
 	</c:forEach>

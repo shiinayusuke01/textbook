@@ -35,10 +35,10 @@ if(insertedTitle != null){
 <head>
 <meta charset="UTF-8">
 <title>登録した教科書一覧</title><br>
-<link href="./css/title.css" rel="stylesheet">
+<link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 <br />
 
 	<h2>${membean.last_name} ${membean.first_name} 様が登録した教科書一覧</h2>

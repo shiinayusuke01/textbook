@@ -18,7 +18,7 @@ if(bean == null) {
 <link href="./css/header.css" rel="stylesheet">
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 
 <br/>
 <h1>教科書新規登録ページ</h1>
