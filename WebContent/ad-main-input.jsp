@@ -66,10 +66,12 @@
 <br>
 <br>
 <table border="1">
-<tr><th>お問い合わせ内容</th><th>名前</th><th>メールアドレス</th></tr>
+<tr><th>お問い合わせ内容</th><th>名前</th></tr>
 <c:forEach items="${inquirybeans}" var="inquiry">
-	<tr><td>${inquiry.content}</td><td>${inquiry.user}</td><td>${inquiry.email}</td></tr>
+	<tr><td>${inquiry.content}</td><td>${inquiry.user}</td></tr>
 </c:forEach>
+
+
 </table>
 </body>
 </html>

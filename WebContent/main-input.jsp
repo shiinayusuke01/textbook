@@ -99,11 +99,13 @@ if(bean == null) {
   <div class="Form-Item">
     <p class="Form-Item-Label">
     	<h2>お問い合わせフォーム</h2><br>
+    	<a style="color:red"> ${inquiry_err_msg}</a>
     	<textarea name="inquiry" rows="4" cols="40" class="Form-Item-Textarea"></textarea><br><br>
 	<input type="submit" value="送信" class="Form-Btn">
 	</div>
  </div>
 </form>
+
 </aside>
 
 <article>

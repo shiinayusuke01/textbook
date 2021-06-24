@@ -3,7 +3,14 @@
  <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8");
- String inquiry = request.getParameter("inquiry");
+ 	String inquiry = request.getParameter("inquiry");
+ 	if(inquiry.equals("")){
+		RequestDispatcher rd = request.getRequestDispatcher("MainPageServlet");
+		request.setAttribute("inquiry_err_msg", "お問い合わせ内容が空です。");
+		rd.forward(request, response);
+ 	}else{
+ 		request.setAttribute("inquiry_err_msg", "");
+ 	}
  %>
 
 <!DOCTYPE html>
