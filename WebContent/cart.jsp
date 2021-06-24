@@ -46,8 +46,9 @@
 	<input type="submit" value="削除" class="btn btn-flat">
 </form>
 </td>
-</c:forEach>
 </tr>
+</c:forEach>
+
  </tbody>
 <tr><td align="right" colspan="7">合計金額：
 <c:set value="${0}" var="total"></c:set>
