@@ -68,7 +68,7 @@ public class TextBookDAO {
 	    	ResultSet rs = null;
 	    	try {
 
-	    		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id where t.id = ? order by t.title, t.price";
+	    		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id where t.id = ? order by t.category, t.title, t.price";
 	    		st = con.prepareStatement(sql);
 	    		st.setInt(1, code);
 	    		rs = st.executeQuery();
@@ -112,7 +112,7 @@ public class TextBookDAO {
 	    	TextbookBean bean = new TextbookBean();
 	    	beans = new MembersBean();
 			try {
-	     		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.title, t.price";
+	     		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.category, t.title, t.price";
 	     		st = con.prepareStatement(sql);
 	     		st.setInt(1, beans.getId());
 	     		rs = st.executeQuery();
@@ -151,7 +151,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.title like ? AND t.stock=1 order by t.title, t.price";
+			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.title like ? AND t.stock=1 order by t.category, t.title, t.price";
 			st=con.prepareStatement(sql);
 			st.setString(1, "%" + title +"%");
 			rs = st.executeQuery();
@@ -198,7 +198,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.author like ? AND t.stock=1 order by t.title, t.price";
+			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.author like ? AND t.stock=1 order by t.category, t.title, t.price";
 			st=con.prepareStatement(sql);
 			st.setString(1, "%" + author +"%");
 			rs = st.executeQuery();
@@ -245,7 +245,7 @@ public class TextBookDAO {
 			ResultSet rs = null;
 
 		try {
-			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.category=? AND t.stock=1 order by t.title, t.price";
+			String sql ="select * from textbooks t JOIN categories c on t.category = c.id where t.category=? AND t.stock=1 order by t.category, t.title, t.price";
 			st=con.prepareStatement(sql);
 			st.setInt(1, cate);
 			rs = st.executeQuery();
@@ -337,7 +337,7 @@ public class TextBookDAO {
     	ResultSet rs = null;
     	TextbookBean bean = new TextbookBean();
 		try {
-     		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id where t.stock=1 order by t.title, t.price";
+     		String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id where t.stock=1 order by t.category, t.title, t.price";
      		st = con.prepareStatement(sql);
      		rs = st.executeQuery();
      		List<TextbookBean> list = new ArrayList<TextbookBean>();
@@ -428,7 +428,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.title, t.price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.category, t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, userId);
         rs = st.executeQuery();
@@ -471,7 +471,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.id = ? order by t.title, t.price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.id = ? order by t.category, t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, id);
         rs = st.executeQuery();
@@ -511,7 +511,7 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.buyer = ? order by t.title, t.price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.buyer = ? order by t.category, t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, buyer);
         rs = st.executeQuery();

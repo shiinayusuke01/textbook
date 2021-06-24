@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MainPageServlet
@@ -35,8 +36,11 @@ public class MainPageServlet extends HttpServlet {
 			TextBookDAO	dao = new TextBookDAO();
 			List<TextbookBean> list = dao.showAllTextbooks();
 			request.setAttribute("showall", list);
-
-
+			HttpSession session = request.getSession(false);
+			if (session == null) {
+				request.setAttribute("message", "セッションが切れています。<br>ログインし直してください。");
+				gotoPage(request, response, "/newmembermessage.jsp");
+			}
 			String action = request.getParameter("action");
 			if (action == null || action.length() == 0 || action.equals("list")) {
 				gotoPage(request, response, "/main-input.jsp");

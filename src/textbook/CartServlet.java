@@ -54,6 +54,10 @@ public class CartServlet extends HttpServlet {
 				if (list == null) {
 					list = new ArrayList<TextbookBean>();
 				}
+				if (member == null) {
+					request.setAttribute("message", "セッションが切れています。ログインし直してください。");
+					gotoPage(request, response, "/newmembermessage.jsp");
+				}
 				if (putid == member.getId()) {
 					request.setAttribute("message", "選択した教科書はご自身で登録された教科書です。");
 					gotoPage(request, response, "/memch-message.jsp");
@@ -79,6 +83,10 @@ public class CartServlet extends HttpServlet {
 				list = (List<TextbookBean>) session.getAttribute("cart");
 				if (list == null) {
 					list = new ArrayList<TextbookBean>();
+				}
+				if (member == null) {
+					request.setAttribute("message", "セッションが切れています。ログインし直してください。");
+					gotoPage(request, response, "/newmembermessage.jsp");
 				}
 				if (putid == member.getId()) {
 					request.setAttribute("message", "選択した教科書はご自身で登録された教科書です。");

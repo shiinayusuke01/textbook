@@ -119,6 +119,9 @@ public class MembersServlet extends HttpServlet {
 
 			} else if (action.equals("change")) {
 				session = request.getSession(false);
+				if (session == null) {
+					gotoPage(request, response, "/Login.html");
+				}
 				String last_name = request.getParameter("last_name");
 				String first_name = request.getParameter("first_name");
 				String postal = request.getParameter("postal");
@@ -176,6 +179,9 @@ public class MembersServlet extends HttpServlet {
 
 			} else if (action.equals("delete")) {
 				    session = request.getSession(false);
+				    if (session == null) {
+						gotoPage(request, response, "/Login.html");
+					}
 				    MembersBean bean = (MembersBean) session.getAttribute("membean");
 					dao = new MembersDAO();
 					dao.deleteMembers(bean.getId());

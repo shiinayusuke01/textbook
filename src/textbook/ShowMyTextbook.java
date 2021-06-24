@@ -30,7 +30,10 @@ public class ShowMyTextbook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+			gotoPage(request, response, "/Login.html");
+		}
 		MembersBean bean = (MembersBean) session.getAttribute("membean");
 		String firstName = bean.getFirst_name();
 		int userId = bean.getId();
