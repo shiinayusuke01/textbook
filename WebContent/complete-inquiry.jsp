@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header></header>
 <h3>お問い合わせが完了しました。</h3>
 <a href="/textbook/MainPageServlet"><font color="blue">トップページへ</font-color></a>
 </body>

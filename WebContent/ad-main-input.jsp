@@ -10,7 +10,7 @@
 <link href="./css/title.css" rel="stylesheet">
 </head>
 <body>
-<header><img src="./img/textbook.jpeg" padding="5px" width="1400px" height="150px"></header>
+<header></header>
 <h1>管理者トップページ</h1>
 <br>
 <form action="/textbook/MembersServlet?action=logout" method="post">

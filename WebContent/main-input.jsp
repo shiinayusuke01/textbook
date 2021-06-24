@@ -200,7 +200,6 @@ if(bean == null) {
 </article>
 </div>
 
-<footer></footer>
 </div>
 </body>
 </html>
