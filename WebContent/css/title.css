@@ -13,17 +13,26 @@ aside {
     grid-area: left;
     height: 800px;
     border: 2px #CCFF99 solid;
+    padding-top: 90px
 }
 
 article {
     grid-area: main;
     background-color: white;
+    padding-top: 90px;
 }
 header {
 width:100%
 height  30px;
  font-size:20px;
  background-color: #CCFF99;
+ position:fixed;
+ padding: 20px 50px;
+ box-sizing: border-box;
+ top: 0;
+ left: 0;
+ display: flex;
+ align-items: center;
 }
 ul {
  overflow:hidden;
