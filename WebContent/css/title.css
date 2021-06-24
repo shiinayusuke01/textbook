@@ -10,9 +10,9 @@
     grid-gap: 20px;
 }
 aside {
-	border:#323339;
+	border:2px #323339;
     grid-area: left;
-    height: 800px;
+    height: 1000px;
     padding-top: 90px;
     background-color: #EDFFBE;
 }
@@ -21,7 +21,7 @@ article {
     grid-area: main;
     background-color: #EDFFBE;
     padding-top: 90px;
-    height: 800px;
+    height: 1000px;
 }
 header {
 width:100%;
@@ -228,8 +228,8 @@ table.type06 th {
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
-  background: #FFCCFF;
-  color:  #FF9966;
+  background: #F26968;
+  color:  white;
 }
 table.type06 td {
   width: 350px;
@@ -239,6 +239,7 @@ table.type06 td {
 
 
 body{
+	padding-top:90px;
 	height: 300px;
  	text-align: center;
  	background-color: #EDFFBE;
@@ -271,7 +272,7 @@ a.btn,
 button.btn {
   width: 50px;
   margin:0px;
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 15;
   line-height: 0.5;
   display: inline-block;
@@ -285,7 +286,6 @@ button.btn {
   transition: all 0.3s;
   text-align: center;
   vertical-align: middle;
-  text-decoration: none;
   letter-spacing: 0.1em;
   color: #212529;
   border-radius: 0.5rem;
