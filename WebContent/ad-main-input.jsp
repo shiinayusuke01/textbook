@@ -62,7 +62,9 @@
 </form></td></tr>
 <br>
 </c:forEach>
-
 </table>
+<br>
+<br>
+
 </body>
 </html>
