@@ -26,6 +26,8 @@
 <form action="RegistInquiryServlet" method="post">
 <input type="hidden" name="inquiry_content" value="<%=inquiry %>">
 <input type="submit" value="送信">
+
+<a href="/textbook/MainPageServlet"><font color="blue">戻る</font-color>font></a>
 </form>
 </body>
 </html>
