@@ -43,6 +43,7 @@ if(bean == null) {
             </ul>
 
 </header>
+<div class="wrapper">
 
 <div class="main-grid">
 
@@ -197,8 +198,9 @@ if(bean == null) {
 	</table>
 </article>
 </div>
-<footer></footer>
 
+<footer></footer>
+</div>
 </body>
 </html>
 

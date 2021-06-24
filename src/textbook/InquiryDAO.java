@@ -88,7 +88,7 @@ public class InquiryDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql ="SELECT * FROM inquiries JOIN members ON inquiries.user_id = members.id";
+			String sql ="SELECT * FROM inquiries JOIN members ON inquiries.user_id = members.id ORDER BY inquiries.id DESC";
 			st=con.prepareStatement(sql);
 			rs = st.executeQuery();
 
