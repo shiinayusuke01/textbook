@@ -463,7 +463,7 @@ public class TextBookDAO {
         	}
         }
 	}
-    public TextbookBean selectById(int id)throws DAOException{
+    public List<TextbookBean> selectById(int id)throws DAOException{
         System.out.println("id :" + id);
     	if(con == null)
         	getConnection();
@@ -471,12 +471,14 @@ public class TextBookDAO {
         PreparedStatement st = null;
         ResultSet rs = null;
         try {
-        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.id = ? order by t.category, t.title, t.price";
+        String sql = "SELECT * FROM textbooks t JOIN categories c on t.category = c.id WHERE t.user_id = ? order by t.category, t.title, t.price";
         st = con.prepareStatement(sql);
         st.setInt(1, id);
         rs = st.executeQuery();
+        List<TextbookBean> list = new ArrayList<TextbookBean>();
 
-        rs.next();
+
+        while (rs.next()) {
         String title = rs.getString("title");
         String author = rs.getString("author");
         int category = rs.getInt("category");
@@ -486,12 +488,10 @@ public class TextBookDAO {
         int userId = rs.getInt("user_id");
 		int stock = rs.getInt("stock");
 		String categoryname = rs.getString("categoryname");
-
-        System.out.println(id + " " + title + " " + author);
         TextbookBean bean = new TextbookBean(id, title, category, author, status, price, info, userId, stock, categoryname);
-
-
-        return bean;
+        list.add(bean);
+        }
+        return list;
         } catch (Exception e) {
                 throw new DAOException("レコードの取得に失敗しました。");
         } finally {

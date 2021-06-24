@@ -88,13 +88,16 @@
 				<td>${text.price}</td>
 				<td>${text.info}</td>
 				<td>${text.userId}</td>
+				<td>
+				<form action="/textbook/AdMainPageServlet?action=textdelete" method="post">
+		        <input type="hidden" name="text_id" value="${text.id}">
+		        <input type="submit" value="削除" class="btn btn-flat">
+	            </form>
+	            </td>
 			</tr>
 
 
-	<form action="/textbook/AdMainPageServlet?action=textdelete" method="post">
-		<input type="hidden" name="text_id" value="${text.id}">
-		<input type="submit" value="削除" class="btn btn-flat">
-	</form>
+
 		<br>
 <br>
 </c:forEach>
