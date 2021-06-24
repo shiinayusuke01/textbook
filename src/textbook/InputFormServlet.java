@@ -34,7 +34,7 @@ public class InputFormServlet extends HttpServlet {
 
 		try {
 			TextBookDAO dao = new TextBookDAO();
-			TextbookBean bean = dao.selectById(id);
+			TextbookBean bean = dao.selectbyid(id);
 
 			request.setAttribute("textbook", bean);
 			gotoPage(request, response, "/change-textbook.jsp");
