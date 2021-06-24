@@ -41,13 +41,16 @@
 				<td>${member.last_name}</td>
 				<td>${member.first_name}</td>
 				<td>${member.email}</td>
-			</tr>
-
-
-		<form action="/textbook/AdMainPageServlet?action=memdelete" method="post">
+				<td>
+				<form action="/textbook/AdMainPageServlet?action=memdelete" method="post">
 			<input type="hidden" name="mem_id" value="${member.id}">
 			<input type="submit" value="削除" class="btn btn-flat">
 		</form>
+		</td>
+			</tr>
+
+
+
 	</c:forEach>
 	</tbody>
 	</table>
