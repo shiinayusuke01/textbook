@@ -54,6 +54,7 @@ Email:<input type="email" name="email" class="m-form-text">
 <br><br>
 <input type="hidden" name="action" value="setinfo">
 <input type="submit" value="登録" class="btn btn-flat">
-</form>
+</form><br><br>
+<footer><a href="/textbook/Login.html"  class="cp_link2" >ログイン画面に戻る</a></footer>
 </body>
 </html>
