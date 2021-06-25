@@ -168,6 +168,7 @@ public class MembersServlet extends HttpServlet {
 							bean = new MembersBean(id, la, fi, po, ad, te, em, year, month, day, pa);
 						    dao = new MembersDAO();
 							dao.changeMembers(bean);
+							request.setAttribute("membean", bean);
 							request.setAttribute("message", "変更できました!");
 							gotoPage(request, response, "/memch-message.jsp");
 						} else {

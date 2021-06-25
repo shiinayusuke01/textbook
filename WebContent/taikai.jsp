@@ -39,6 +39,7 @@ if(bean == null) {
 <input type="hidden" name="action" value="delete">
 <input type="submit" value="退会" class="btn btn-flat">
 </form>
+<br><br>
 <footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
 </body>
 </html>
