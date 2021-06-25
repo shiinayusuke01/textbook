@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>注文完了</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <body>
 <header></header>
 <h1>ご注文ありがとうございました。</h1>
 <h2>またのご利用をお待ちしております。</h2>
 <br>
-<a href="/textbook/MainPageServlet?action=list">トップページに戻る</a>
+<a href="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページに戻る</a>
 
 </body>
 </html>

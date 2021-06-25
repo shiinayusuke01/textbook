@@ -36,6 +36,7 @@ if(insertedTitle != null){
 <meta charset="UTF-8">
 <title>登録した教科書一覧</title><br>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <body>
 <header></header>
@@ -95,7 +96,7 @@ if(insertedTitle != null){
 		<tr><td align="right" colspan="7">合計売上金額：
 		${total}円</td></tr>
 	</table>
-
-	<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
+<br><br>
+	<footer><a href="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページ</a></footer>
 </body>
 </html>

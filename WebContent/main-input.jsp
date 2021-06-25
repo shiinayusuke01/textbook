@@ -18,6 +18,7 @@ if(bean == null) {
 <meta charset="UTF-8">
 <title>会員ホーム</title>
 <link href="./css/title.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 <script type="text/javascript">
         $(document).ready(function(){
             $('.slider').bxSlider({
@@ -120,12 +121,12 @@ if(bean == null) {
 	<h1>会員トップページ</h1>
 	<h2>${membean.last_name} ${membean.first_name}様、いらっしゃいませ</h2>
 <br><br>
-	<a href="/textbook/cart.jsp" ><font color="blue">
-	カート/購入ページへ</font></a>
+	<a href="/textbook/cart.jsp" class="cp_link" >カート/購入ページへ
+	</a>
 
 	<br><br>
-	<a href="/textbook/PurchaseHistory"><font color="blue">
-	購入履歴ページへ</font></a>
+	<a href="/textbook/PurchaseHistory" class="cp_link">
+	購入履歴ページへ</a>
 	<br>
 	<br>
 

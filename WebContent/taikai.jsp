@@ -17,6 +17,7 @@ if(bean == null) {
 <meta charset="UTF-8">
 <title>メンバーからの退会</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 <style>
 
 </style>
@@ -35,10 +36,12 @@ if(bean == null) {
 <tr><th>生年月日</th><td>${membean.birthday}</td></tr>
 
 </table>
+<br>
 <form action="/textbook/MembersServlet" method="post">
 <input type="hidden" name="action" value="delete">
 <input type="submit" value="退会" class="btn btn-flat">
 </form>
-<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
+<br><br>
+<footer><a href="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページ</a></footer>
 </body>
 </html>
