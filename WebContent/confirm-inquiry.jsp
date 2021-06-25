@@ -21,6 +21,7 @@
 <title>お問い合わせの確認</title>
 <link href="./css/header.css" rel="stylesheet">
 <link href="./css/box.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 
 <body>
@@ -34,7 +35,7 @@
 <input type="hidden" name="inquiry_content" value="<%=inquiry %>">
 <input type="submit" value="送信" class="btn btn-flat">
 <br><br>
-<a href="/textbook/MainPageServlet">トップページ</a>
+<a href="/textbook/MainPageServlet" class="cp_link2" >トップページ</a>
 </form>
 </body>
 </html>

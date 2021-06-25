@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Welcome shopping!</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <body>
 <header></header>
@@ -57,14 +58,14 @@
 </c:forEach>
 ${total}円</td></tr>
 </table>
-
+<br>
 <form action="/textbook/OrderServlet?action=purchase" method="post">
 <input type="submit" value="購入する" class="btn btn-flat">
 
 </form>
 </c:if>
 <br>
-<footer><a href="/textbook/MainPageServlet?action=list">トップページへ</a></footer>
+<footer><a href="/textbook/MainPageServlet?action=list" class="cp_link2">トップページへ</a></footer>
 
 </body>
 </html>

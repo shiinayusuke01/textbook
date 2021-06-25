@@ -14,6 +14,7 @@ if(bean == null) {
 <html>
 <head>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <meta charset="UTF-8">
 <title>購入履歴</title>
@@ -42,6 +43,6 @@ if(bean == null) {
 	</table>
 
 	<br><br>
-	<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
+	<footer><a href="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページ</a></footer>
 </body>
 </html>

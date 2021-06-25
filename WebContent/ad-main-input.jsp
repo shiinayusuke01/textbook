@@ -8,12 +8,13 @@
 <meta charset="UTF-8">
 <title>管理者ホーム</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <body>
 <header></header>
 <h1>管理者トップページ</h1>
 <br>
-<a href="/textbook/MembersServlet?action=logout" >ログアウト</a>
+<a href="/textbook/MembersServlet?action=logout"  class="cp_link2" >ログアウト</a>
 </form>
 
 <h3>会員検索</h3>

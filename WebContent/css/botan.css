@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.cp_link {
+	padding: 0.1em 0.3em;
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(255,152,0,1) 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #ff9800;
+}
+.cp_link:hover {
+	background-position: -100% 0;
+	color: #fff;
+}
+
+.cp_link2 {
+	padding: 0.1em 0.3em;
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(255,152,0,1) 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #00CC99;
+}
+.cp_link2:hover {
+	background-position: -100% 0;
+	color: #fff;
+}

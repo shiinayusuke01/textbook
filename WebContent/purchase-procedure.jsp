@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 <title>最終確認</title>
 
 </head>
@@ -73,7 +74,7 @@ ${total}円</td></tr>
 <input type="submit" value="注文確定" class="btn btn--orange">
 </form>
 <br><br>
-<footer><a href="/textbook/MainPageServlet?action=list">トップページへ</a></footer>
+<footer><a href="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページへ</a></footer>
 
 
 </body>

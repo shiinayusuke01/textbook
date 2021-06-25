@@ -51,7 +51,7 @@ Email:<input type="email" name="email" class="m-form-text">
 パスワード:<input type="password" name="password" class="m-form-text">
 <br>
 パスワードの確認:<input type="password" name="passadd" class="m-form-text">
-<br>
+<br><br>
 <input type="hidden" name="action" value="setinfo">
 <input type="submit" value="登録" class="btn btn-flat">
 </form>

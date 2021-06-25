@@ -16,6 +16,7 @@ if(bean == null) {
 <meta charset="UTF-8">
 <title>教科書情報の変更</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <body>
 <header></header>
@@ -53,7 +54,7 @@ if(bean == null) {
 	<p><input type="submit" value="変更" formaction="/textbook/ChangeTextbookServlet"></p>
 </form>
 <br><br>
-<a href="/textbook/MainPageServlet?action=list">トップページへ</a>
+<a href="/textbook/MainPageServlet?action=list" class="cp_link2">トップページへ</a>
 
 <script>
 document.getElementById("category").selectedIndex = ${textbook.category};

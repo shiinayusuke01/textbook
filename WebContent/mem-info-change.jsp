@@ -15,6 +15,7 @@ if(bean == null) {
 	<meta charset="UTF-8">
 <title>Member Information Change</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 <script>
 		function func(num){
 			for (var i = 1900; i <= num; i++){
@@ -70,7 +71,7 @@ Email:<input type="email" name="email" value="${membean.email}" class="m-form-te
 <input type="submit" value="変更" class="btn btn-flat">
 </form>
 <br>
-<footer><a href ="/textbook/MainPageServlet?action=list">トップページ</a></footer>
+<footer><a href ="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページ</a></footer>
 </form>
 </body>
 </html>

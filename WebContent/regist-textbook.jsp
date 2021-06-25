@@ -16,6 +16,7 @@ if(bean == null) {
 <meta charset="UTF-8">
 <title>教科書の登録</title>
 <link href="./css/header.css" rel="stylesheet">
+<link href="./css/botan.css" rel="stylesheet">
 </head>
 <body>
 <header></header>
@@ -56,6 +57,6 @@ if(bean == null) {
 	<p><input type="submit" value="登録" formaction="/textbook/RegistTextbookServlet" class="btn btn-flat"></p>
 </form>
 <p style="color: red;"> ${errmsg}</p>
-<footer><a href="/textbook/MainPageServlet?action=list">トップページ</a></footer>
+<footer><a href="/textbook/MainPageServlet?action=list" class="cp_link2" >トップページ</a></footer>
 </body>
 </html>
